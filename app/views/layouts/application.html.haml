@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title= content_for?(:title) ? "Pisces " + content_for(:title) : "Pisces " + controller_name
+
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body
+    %div#header.clearfix
+      %div#page-heading.clearfix
+        %h1
+          = content_for?(:title) ? "Pisces " + content_for(:title) : "Pisces " + controller_name
+        %div#navigation.clearfix
+          %a{:href => 'projects\index.html'}>All Projects
+          %a{:href => 'projects\index.html'}>Find Projects
+    %div#wrap
+      = yield

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   resources :projects
-  root 'projects#index'
+  root 'projects#show'
   #get 'projects/index'
 
   #get 'projects/show'
