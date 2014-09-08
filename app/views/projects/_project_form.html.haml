@@ -1,0 +1,17 @@
+= form_for @project do |f|
+  = f.label :customer_id, 'Customer: '
+  = f.text_field :customer_id
+  %br
+  = f.label :started, 'Date started: '
+  = f.text_field :started
+  %br
+  = f.label :status_id, 'Status: '
+  = f.text_field :status_id
+  %br
+  = f.label :goal, 'Goal: '
+  = f.text_field :goal
+  %br
+  = f.label :priority_id, 'Priority: '
+  = f.text_field :priority_id
+  %br
+  = f.submit 'Submit'

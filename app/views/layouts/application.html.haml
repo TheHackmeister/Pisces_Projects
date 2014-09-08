@@ -13,7 +13,7 @@
         %h1
           = content_for?(:title) ? "Pisces " + content_for(:title) : "Pisces " + controller_name
         %div#navigation.clearfix
-          %a{:href => 'projects\index.html'}>All Projects
-          %a{:href => 'projects\index.html'}>Find Projects
+          = link_to "All Projects", projects_url
+          = link_to "Find Projects", projects_url
     %div#wrap
       = yield

@@ -1,0 +1,9 @@
+%h1
+  Open projects
+%div
+  - @projects.each do |project|
+    = project.goal
+    = link_to "Project", project
+
+%div
+  %a{:href => 'new'}New project

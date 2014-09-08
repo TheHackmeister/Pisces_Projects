@@ -1,2 +1,20 @@
 %h1
-  Create a new project.
+  Create a new project
+%div
+  = form_tag '/projects/', method:'POST' do
+    = label_tag :customer_id, 'Customer: '
+    = text_field_tag :customer_id
+    %br
+    = label_tag :started, 'Date started: '
+    = text_field_tag :started
+    %br
+    = label_tag :status_id, 'Status: '
+    = text_field_tag :status_id
+    %br
+    = label_tag :goal, 'Goal: '
+    = text_field_tag :goal
+    %br
+    = label_tag :priority_id, 'Priority: '
+    = text_field_tag :priority_id
+    %br
+    = submit_tag 'Create'
