@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  started: 2014-09-08
+  goal: MyString
+  customer_id: 
+  priority_id: 
+  status_id: 
+
+two:
+  started: 2014-09-08
+  goal: MyString
+  customer_id: 
+  priority_id: 
+  status_id: 
