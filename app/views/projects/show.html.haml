@@ -1,7 +1,7 @@
 %div
   %h2
     Project:
-    =@project.customer.customer_name
+    Project Name
   %div
     %p
       Start Date:
@@ -11,7 +11,7 @@
       = @project.goal
     %p
       Customer:
-      = @project.customer.customer_name
+      = Customer.find_by_id(@project.customer_id).customer_name
     %p
       Priority:
       = @project.priority.text

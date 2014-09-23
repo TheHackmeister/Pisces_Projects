@@ -25,8 +25,8 @@ production:
   database: db/production.sqlite3
 
 pisces_database_production:
-  adapter: mysql
-  host: localhost
+  adapter: mysql2
+  host: 127.0.0.1
   username: root
-  password:
+  password: pass
   database: pisces

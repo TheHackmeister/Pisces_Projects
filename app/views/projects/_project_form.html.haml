@@ -1,7 +1,5 @@
-= form_for @project do |f|
-  = f.label :customer_id, 'Customer: '
-  = f.text_field :customer_id
-  %br
+= form_for @project, :html => {:autocomplete => "off"} do |f|
+  - search_html f, :customer_id, "Customer: ", :customer, customers_path + "?customer_name=",  @project.customer.customer_name
   = f.label :started, 'Date started: '
   = f.text_field :started
   %br
