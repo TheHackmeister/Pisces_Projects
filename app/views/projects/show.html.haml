@@ -1,11 +1,14 @@
 %div
   %h2
     Project:
-    Project Name
+    = @project.title
   %div
     %p
       Start Date:
       = @project.started
+    %p
+      Soft Deadline:
+      = @project.soft_deadline
     %p
       Goal:
       = @project.goal
@@ -18,6 +21,23 @@
     %p
       Status:
       = @project.status.name
+    %hr
+    %div.table
+      %div.cell
+        %b
+          Pisces Notes:
+        %div.indent
+          = format_text_field @project.notes
+      %div.cell
+        %b
+          Customer Notes:
+        %div.indent
+          = format_text_field @project.customer_notes
+      %div.cell
+        %b
+          Potential Stumbling Blocks:
+        %div.indent
+          = format_text_field @project.stumbling_blocks
     %div
       = link_to "Edit", edit_project_path(@project)
       = link_to "Back"

@@ -1476,3 +1476,19 @@ ul.filter .active a:hover {
 .button.gold {
   background-color: #D4A017;
 }
+.indent {
+  margin-left: 25px;
+}
+.cell {
+  display: table-cell;
+  padding-right:2%;
+  width:33%;
+}
+.table {
+  display: table;
+  width: 100%;
+}
+.cell textarea {
+  width:100%;
+  height:100px;
+}

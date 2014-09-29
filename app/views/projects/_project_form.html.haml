@@ -1,15 +1,38 @@
-= form_for @project, :html => {:autocomplete => "off"} do |f|
+= form_for setup_project(@project), :html => {:autocomplete => "off"} do |f|
+  = f.label :tile, 'Title: '
+  = f.text_field :title
   - search_html f, :customer_id, "Customer: ", :customer, customers_path + "?customer_name=",  @project.customer.customer_name
+  %p
+    *** Dates are currently very picky. Use YYYY-MM-DD formatting. ****
   = f.label :started, 'Date started: '
   = f.text_field :started
   %br
+  = f.label :soft_deadline, 'Soft Deadline: '
+  = f.text_field :soft_deadline
+  %br
   = f.label :status_id, 'Status: '
-  = f.text_field :status_id
+  = collection_select(:project, :status_id, Status.all, :id, :name.to_s)
   %br
   = f.label :goal, 'Goal: '
   = f.text_field :goal
   %br
-  = f.label :priority_id, 'Priority: '
-  = f.text_field :priority_id
+  = f.label :priority, 'Priority: '
+  = collection_select(:project, :priority_id, Priority.all, :id, :text.to_s)
   %br
+  %hr
+  %div.table
+    %div.cell
+      = f.label :notes, 'Pisces Notes: '
+      %br
+      = f.text_area :notes
+    %div.cell
+      = f.label :customer_notes, 'Customer Notes: '
+      %br
+      = f.text_area :customer_notes
+    %div.cell
+      = f.label :stumbling_blocks, 'Potential Stumbling Blocks: '
+      %br
+      = f.text_area :stumbling_blocks
+  %hr
+
   = f.submit 'Submit'

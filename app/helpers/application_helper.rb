@@ -14,4 +14,12 @@ module ApplicationHelper
       end
     end
   end
+
+  def format_text_field text
+    #May need to research red carpet markdown
+    if text == ""
+      return "None"
+    end
+    simple_format text
+  end
 end
