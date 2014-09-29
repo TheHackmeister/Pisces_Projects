@@ -79,19 +79,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_project_form.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="_project_form.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/projects/_project_form.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="49" column="10" selection-start="1404" selection-end="1404" vertical-scroll-proportion="-27.384615">
+            <state line="48" column="40" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.7631297">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.yml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="database.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="17" selection-start="175" selection-end="175" vertical-scroll-proportion="0.1418144">
+            <state line="8" column="17" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -165,9 +165,9 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/projects.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/scaffolds.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/default.js" />
-        <option value="$PROJECT_DIR$/app/views/projects/_project_form.html.haml" />
         <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/config/database.yml" />
+        <option value="$PROJECT_DIR$/app/views/projects/_project_form.html.haml" />
       </list>
     </option>
   </component>
@@ -1042,13 +1042,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/projects/_project_form.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="10" selection-start="1404" selection-end="1404" vertical-scroll-proportion="-27.384615">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
         <state line="26" column="182" selection-start="602" selection-end="602" vertical-scroll-proportion="0.0">
@@ -1058,7 +1051,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="175" selection-end="175" vertical-scroll-proportion="0.1418144">
+        <state line="8" column="17" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/projects/_project_form.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="48" column="40" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.7631297">
           <folding />
         </state>
       </provider>
