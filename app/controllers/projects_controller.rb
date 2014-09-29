@@ -29,6 +29,6 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit :started, :customer_id, :status_id, :goal, :priority_id, :title, :soft_deadline, :notes, :stumbling_blocks, :customer_notes
+    params.require(:project).permit :started, :customer_id, :status_id, :goal, :priority_id, :title, :soft_deadline, :notes, :stumbling_blocks, :customer_notes,  :project_links_attributes => [:id, :name, :url, :notes]
   end
 end

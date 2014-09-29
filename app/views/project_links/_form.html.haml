@@ -1,0 +1,22 @@
+= form_for @project_link do |f|
+  - if @project_link.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@project_link.errors.count, "error")} prohibited this project_link from being saved:"
+      %ul
+        - @project_link.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :Project
+    = f.text_field :Project
+  .field
+    = f.label :sort
+    = f.number_field :sort
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :url
+    = f.text_field :url
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,25 @@
+%h1 Listing project_links
+
+%table
+  %tr
+    %th Project
+    %th Sort
+    %th Name
+    %th Url
+    %th
+    %th
+    %th
+
+  - @project_links.each do |project_link|
+    %tr
+      %td= project_link.Project
+      %td= project_link.sort
+      %td= project_link.name
+      %td= project_link.url
+      %td= link_to 'Show', project_link
+      %td= link_to 'Edit', edit_project_link_path(project_link)
+      %td= link_to 'Destroy', project_link, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Project link', new_project_link_path

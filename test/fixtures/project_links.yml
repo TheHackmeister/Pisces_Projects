@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  Project_id: 
+  sort: 1
+  name: MyString
+  url: MyString
+
+two:
+  Project_id: 
+  sort: 1
+  name: MyString
+  url: MyString

@@ -2,13 +2,11 @@
   = f.label :tile, 'Title: '
   = f.text_field :title
   - search_html f, :customer_id, "Customer: ", :customer, customers_path + "?customer_name=",  @project.customer.customer_name
-  %p
-    *** Dates are currently very picky. Use YYYY-MM-DD formatting. ****
   = f.label :started, 'Date started: '
-  = f.text_field :started
+  = f.date_select:started
   %br
   = f.label :soft_deadline, 'Soft Deadline: '
-  = f.text_field :soft_deadline
+  = f.date_select :soft_deadline
   %br
   = f.label :status_id, 'Status: '
   = collection_select(:project, :status_id, Status.all, :id, :name.to_s)
@@ -34,5 +32,28 @@
       %br
       = f.text_area :stumbling_blocks
   %hr
-
+  %div
+    %b
+      Links
+    %br
+    = f.fields_for :project_links do |ff|
+      = ff.label :name, 'Name: '
+      = ff.text_field :name
+      = ff.label :url, 'URL: '
+      = ff.text_field :url
+      = ff.label :notes, 'Notes: '
+      = ff.text_field :notes
+    %div
+      New link:
+      %br
+      = form_for ProjectLink.new do |ff|
+        =
+        = ff.label :name, 'Name: '
+        = ff.text_field :name
+        = ff.label :url, 'URL: '
+        = ff.text_field :url
+        = ff.label :notes, 'Notes: '
+        = ff.text_field :notes
+        = ff.button 'Add'
+  %br
   = f.submit 'Submit'
