@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'haml-rails'
 gem 'devise'
 gem 'cancan'
-gem 'mysql2'
+gem 'mysql2', "~>0.3.11
 
 group :test do
   gem "factory_girl_rails", "~> 4.0"
