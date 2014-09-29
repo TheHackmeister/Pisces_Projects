@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20140929184859) do
     t.string   "notes"
   end
 
-  add_index "project_links", ["Project_id"], name: "index_project_links_on_Project_id"
+  add_index "project_links", ["Project_id"], name: "index_project_links_on_Project_id", using: :btree
 
   create_table "projects", force: true do |t|
     t.date     "started"
@@ -53,9 +53,9 @@ ActiveRecord::Schema.define(version: 20140929184859) do
     t.date     "soft_deadline"
   end
 
-  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id"
-  add_index "projects", ["priority_id"], name: "index_projects_on_priority_id"
-  add_index "projects", ["status_id"], name: "index_projects_on_status_id"
+  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
+  add_index "projects", ["priority_id"], name: "index_projects_on_priority_id", using: :btree
+  add_index "projects", ["status_id"], name: "index_projects_on_status_id", using: :btree
 
   create_table "statuses", force: true do |t|
     t.string   "name"

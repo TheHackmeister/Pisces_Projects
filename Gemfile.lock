@@ -197,7 +197,7 @@ DEPENDENCIES
   haml-rails
   jbuilder (~> 2.0)
   jquery-rails
-  mysql2
+  mysql2 (~> 0.3.11)
   rails (= 4.1.5)
   rspec-rails
   sass-rails (~> 4.0.3)

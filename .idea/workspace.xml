@@ -21,7 +21,7 @@
     <file path="/date_format.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1410204336143" ignored="false" />
     <file path="/edit.html.haml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1410206424707" ignored="false" />
     <file path="/_project_form.html.haml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412019541046" ignored="false" />
-    <file path="/database.yml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1410216405406" ignored="false" />
+    <file path="/database.yml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412030206530" ignored="false" />
     <file path="/Gemfile" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412027947169" ignored="false" />
     <file path="/customers_controller.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1411407600426" ignored="false" />
     <file path="/projects.js.coffee" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1411409222039" ignored="false" />
@@ -88,19 +88,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="database.yml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="database.yml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/database.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="178" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0">
+            <state line="8" column="17" selection-start="175" selection-end="175" vertical-scroll-proportion="0.1418144">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Gemfile" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="24" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08863399">
+            <state line="26" column="182" selection-start="602" selection-end="602" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -152,7 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/customer.rb" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/projects.js" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
         <option value="$PROJECT_DIR$/app/views/projects/new.html.haml" />
@@ -168,6 +167,7 @@
         <option value="$PROJECT_DIR$/app/assets/javascripts/default.js" />
         <option value="$PROJECT_DIR$/app/views/projects/_project_form.html.haml" />
         <option value="$PROJECT_DIR$/Gemfile" />
+        <option value="$PROJECT_DIR$/config/database.yml" />
       </list>
     </option>
   </component>
@@ -1049,16 +1049,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/database.yml">
+    <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="178" selection-start="552" selection-end="552" vertical-scroll-proportion="0.0">
+        <state line="26" column="182" selection-start="602" selection-end="602" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
+    <entry file="file://$PROJECT_DIR$/config/database.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="24" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08863399">
+        <state line="8" column="17" selection-start="175" selection-end="175" vertical-scroll-proportion="0.1418144">
           <folding />
         </state>
       </provider>
