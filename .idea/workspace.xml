@@ -20,7 +20,7 @@
     <file path="/project.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412017794695" ignored="false" />
     <file path="/date_format.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1410204336143" ignored="false" />
     <file path="/edit.html.haml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1410206424707" ignored="false" />
-    <file path="/_project_form.html.haml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412019541046" ignored="false" />
+    <file path="/_project_form.html.haml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412031607625" ignored="false" />
     <file path="/database.yml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412030206530" ignored="false" />
     <file path="/Gemfile" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412027947169" ignored="false" />
     <file path="/customers_controller.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1411407600426" ignored="false" />
@@ -82,8 +82,12 @@
       <file leaf-file-name="_project_form.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/projects/_project_form.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="48" column="40" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.7631297">
-              <folding />
+            <state line="47" column="9" selection-start="1352" selection-end="1352" vertical-scroll-proportion="0.83601284">
+              <folding>
+                <marker date="1412031607306" expanded="true" signature="1062:1351" placeholder="%div" />
+                <marker date="1412031607306" expanded="true" signature="1323:1351" placeholder="%div" />
+                <marker date="1412031607306" expanded="true" signature="1349:1351" placeholder="%b" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1058,8 +1062,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/_project_form.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="40" selection-start="1394" selection-end="1394" vertical-scroll-proportion="0.7631297">
-          <folding />
+        <state line="47" column="9" selection-start="1352" selection-end="1352" vertical-scroll-proportion="0.83601284">
+          <folding>
+            <marker date="1412031607306" expanded="true" signature="1062:1351" placeholder="%div" />
+            <marker date="1412031607306" expanded="true" signature="1323:1351" placeholder="%div" />
+            <marker date="1412031607306" expanded="true" signature="1349:1351" placeholder="%b" />
+          </folding>
         </state>
       </provider>
     </entry>
