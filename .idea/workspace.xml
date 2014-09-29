@@ -22,7 +22,7 @@
     <file path="/edit.html.haml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1410206424707" ignored="false" />
     <file path="/_project_form.html.haml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412019541046" ignored="false" />
     <file path="/database.yml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1410216405406" ignored="false" />
-    <file path="/Gemfile" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1410215261808" ignored="false" />
+    <file path="/Gemfile" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412027947169" ignored="false" />
     <file path="/customers_controller.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1411407600426" ignored="false" />
     <file path="/projects.js.coffee" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1411409222039" ignored="false" />
     <file path="/projects.js" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1411416925866" ignored="false" />
@@ -100,7 +100,7 @@
       <file leaf-file-name="Gemfile" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="23" selection-start="97" selection-end="97" vertical-scroll-proportion="0.08863399">
+            <state line="5" column="24" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08863399">
               <folding />
             </state>
           </provider>
@@ -1058,7 +1058,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Gemfile">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="23" selection-start="97" selection-end="97" vertical-scroll-proportion="0.08863399">
+        <state line="5" column="24" selection-start="98" selection-end="98" vertical-scroll-proportion="0.08863399">
           <folding />
         </state>
       </provider>
