@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
+  resources :statuses
+
+  resources :priorities
+
+  post 'project_links/create_ajax' => 'project_links#create_ajax'
+
   resources :project_links
+
+
+
 
   resources :projects
   resources :customers

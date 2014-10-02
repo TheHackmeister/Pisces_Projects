@@ -53,6 +53,11 @@ function searchAJAX(cont,url) {
 function window_ready() {
     $('body').on('keyup', '.search_field', search_field);
     $('body').on('click', 'a.search_selector', select_search);
+    $('form[data-update-target]').on('ajax:success', function(evt, data) {
+        var target = $(this).data('update-target');
+        $('#' + target).append(data);
+        this.reset(); //Clears the form.
+    });
 }
 
 $(window).ready(window_ready);

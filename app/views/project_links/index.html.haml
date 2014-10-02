@@ -12,7 +12,7 @@
 
   - @project_links.each do |project_link|
     %tr
-      %td= project_link.Project
+      %td= project_link.Project.title
       %td= project_link.sort
       %td= project_link.name
       %td= project_link.url

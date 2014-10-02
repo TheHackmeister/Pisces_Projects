@@ -37,6 +37,19 @@ class ProjectLinksController < ApplicationController
     end
   end
 
+  def create_ajax
+    @project_link = ProjectLink.new(project_link_params)
+
+    respond_to do |format|
+      if @project_link.save
+        format.html { render :partial => 'show_single', :content_type => 'text/html', :object => @project_link }
+      else
+      #  format.html { render :new }
+      # Figure out how to handle an error!
+      end
+    end
+  end
+
   # PATCH/PUT /project_links/1
   # PATCH/PUT /project_links/1.json
   def update

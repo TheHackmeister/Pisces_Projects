@@ -20,7 +20,7 @@
       = @project.priority.text
     %p
       Status:
-      = @project.status.name
+      = @project.status.text
     %hr
     %div.table
       %div.cell
@@ -41,13 +41,13 @@
     %hr
     %div
       %b
-        Links
-      - @project.project_links.each do |link|
-        %div.indent
-          = link_to link.name, link.url
-          %br
-          %span.indent
-            = link.notes
+      Links
+      %div#links.indent
+        - @project.project_links.each do |link|
+          = render :partial => '/project_links/show_single', :object => link
+      %br
+      New link
+      = render :partial => "new_link", locals: {:project => @project}
       = link_to "Edit", edit_project_path(@project)
       = link_to "Back"
       = @test

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @priority.text
+%p
+  %b Val:
+  = @priority.val
+
+= link_to 'Edit', edit_priority_path(@priority)
+\|
+= link_to 'Back', priorities_path

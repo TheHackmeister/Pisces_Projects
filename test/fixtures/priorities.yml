@@ -2,8 +2,8 @@
 
 one:
   text: MyString
-  val: 
+  val: 1
 
 two:
   text: MyString
-  val: 
+  val: 1
