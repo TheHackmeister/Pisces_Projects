@@ -13,13 +13,20 @@ class ProjectsController < ApplicationController
 
   def update
     @project = Project.find params[:id]
-    @project.update project_params
-    redirect_to @project
+    if @project.update project_params
+      redirect_to @project
+    else
+      render :edit
+    end
   end
 
   def create
-    @project = Project.create project_params
-    redirect_to @project
+    @project = Project.new project_params
+    if @project.save
+      redirect_to @project
+    else
+      render :new
+    end
   end
 
   def new
@@ -29,6 +36,8 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit :started, :customer_id, :status_id, :goal, :priority_id, :title, :soft_deadline, :notes, :stumbling_blocks, :customer_notes,  :project_links_attributes => [:id, :name, :url, :notes]
+    params.require(:project).permit :started, :customer_id, :status_id, :goal, :priority_id, :title, :soft_deadline, :notes, :stumbling_blocks, :customer_notes,
+        :project_links_attributes => [:id, :name, :url, :notes],
+        :steps_attributes => [:action, :note, :val, :step_status_id, :id]
   end
 end

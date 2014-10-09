@@ -39,15 +39,23 @@
         %div.indent
           = format_text_field @project.stumbling_blocks
     %hr
-    %div
+    %div.two_column
       %b
-      Links
+        Links
       %div#links.indent
         - @project.project_links.each do |link|
           = render :partial => '/project_links/show_single', :object => link
       %br
       New link
       = render :partial => "new_link", locals: {:project => @project}
-      = link_to "Edit", edit_project_path(@project)
-      = link_to "Back"
-      = @test
+    %div.two_column
+      %b
+        Steps
+      %div#steps.indent
+        - @project.steps.each do |step|
+          = render :partial => '/steps/show_single', :object => step
+      %br
+        New step
+        = render :partial => '/steps/new_step', locals: {:project => @project}
+    = link_to "Edit", edit_project_path(@project)
+    = link_to "Back"

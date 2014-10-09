@@ -1,0 +1,5 @@
+= step.label :action, 'Action: '
+= step.text_field :action
+= step.collection_select(:step_status_id, StepStatus.all, :id, :text)
+= step.label :note, 'Note: '
+= step.text_field :note

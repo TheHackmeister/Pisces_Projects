@@ -1,0 +1,21 @@
+%h1 Listing step_statuses
+
+%table
+  %tr
+    %th Text
+    %th Val
+    %th
+    %th
+    %th
+
+  - @step_statuses.each do |step_status|
+    %tr
+      %td= step_status.text
+      %td= step_status.val
+      %td= link_to 'Show', step_status
+      %td= link_to 'Edit', edit_step_status_path(step_status)
+      %td= link_to 'Destroy', step_status, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Step status', new_step_status_path

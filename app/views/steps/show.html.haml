@@ -1,0 +1,22 @@
+%p#notice= notice
+
+%p
+  %b Action:
+  = @step.action
+%p
+  %b Note:
+  = @step.note
+%p
+  %b Val:
+  = @step.val
+%p
+  %b Step status:
+  = @step.step_status.text
+%p
+  %b Step project:
+  = @step.project_id
+
+
+= link_to 'Edit', edit_step_path(@step)
+\|
+= link_to 'Back', steps_path

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  action: MyString
+  note: MyText
+  val: 1
+  step_status_id: 
+
+two:
+  action: MyString
+  note: MyText
+  val: 1
+  step_status_id: 

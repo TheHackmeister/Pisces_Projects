@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @step_status.text
+%p
+  %b Val:
+  = @step_status.val
+
+= link_to 'Edit', edit_step_status_path(@step_status)
+\|
+= link_to 'Back', step_statuses_path

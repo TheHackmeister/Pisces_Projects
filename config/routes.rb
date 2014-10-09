@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :steps
+
+  resources :step_statuses
+
   resources :statuses
 
   resources :priorities
