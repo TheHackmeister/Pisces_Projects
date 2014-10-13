@@ -1,10 +1,5 @@
 %div
   = form_for ProjectLink.new, :url => {:controller => 'project_links', :action => 'create_ajax'}, :remote => true, :html => {'data-update-target' => 'links'}, :method => 'POST' do |pl|
     = pl.hidden_field :Project_id, :value => project.id
-    = pl.label :name, 'Name: '
-    = pl.text_field :name
-    = pl.label :url, 'URL: '
-    = pl.text_field :url
-    = pl.label :notes, 'Notes: '
-    = pl.text_field :notes
+    = render :partial => 'project_links/edit_link', :object => pl
     = submit_tag :Add

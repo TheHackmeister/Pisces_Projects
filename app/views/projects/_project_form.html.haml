@@ -37,12 +37,7 @@
       Links
     %br
     = f.fields_for :project_links do |ff|
-      = ff.label :name, 'Name: '
-      = ff.text_field :name
-      = ff.label :url, 'URL: '
-      = ff.text_field :url
-      = ff.label :notes, 'Notes: '
-      = ff.text_field :notes
+      = render :partial => 'project_links/edit_link', :object => ff
       %br
   %div#steps
     %b
