@@ -55,8 +55,14 @@ function window_ready() {
     $('body').on('click', 'a.search_selector', select_search);
     $('form[data-update-target]').on('ajax:success', function(evt, data) {
         var target = $(this).data('update-target');
-        $('#' + target).append(data);
-        this.reset(); //Clears the form.
+        var result = $('#' + target).append(data);
+        if(!result.children().last().hasClass('validation_error')) {
+            this.reset(); //Clears the form as long as their wasn't an error.
+        }
+    });
+    $('form[data-update-target]').on('ajax:error', function(evt, data) {
+        var target = $(this).data('update-target');
+        $('#' + target).append('<div class="validation_error">There was an error communicating with the server. Please try again. Refresh to remove this error.</div>');
     });
 }
 

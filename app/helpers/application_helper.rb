@@ -16,10 +16,22 @@ module ApplicationHelper
   end
 
   def format_text_field text
-    #May need to research red carpet markdown
     if text == ""
       return "None"
     end
-    simple_format text
+
+    text = sub_tag text, '***', 'b'
+    text = sub_tag text, '*r*', 'font', 'color="red"'
+
+    text.html_safe
+  end
+
+  def sub_tag string, find, tag, options=""
+
+    while string.include?(find) == true
+      string = string.sub(find, '<' + tag + ' ' + options + ' >').sub(find, '</' + tag + '>')
+    end
+    puts string
+    string
   end
 end

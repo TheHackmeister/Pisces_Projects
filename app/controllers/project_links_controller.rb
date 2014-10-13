@@ -46,6 +46,8 @@ class ProjectLinksController < ApplicationController
       else
       #  format.html { render :new }
       # Figure out how to handle an error!
+        format.html {render :partial => 'project_links/bad_link', :content_type => 'text/html', :object => @project_link}
+
       end
     end
   end
