@@ -1,5 +1,5 @@
 %div
-  = form_for Step.new, :url => {:controller => 'steps', :action => 'create'}, :remote => true, :html => {'data-update-target' => 'steps'}, :method => 'POST' do |pl|
+  = form_for Step.new, :url => {:controller => 'steps', :action => 'create', :format => :ajax}, :remote => true, :html => {'data-update-target' => 'steps'}, :method => 'POST' do |pl|
     = pl.hidden_field :project_id, :value => project.id
     = render :partial => 'steps/step', object: pl
     = submit_tag :Add

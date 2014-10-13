@@ -30,24 +30,11 @@ class ProjectLinksController < ApplicationController
       if @project_link.save
         format.html { redirect_to @project_link, notice: 'Project link was successfully created.' }
         format.json { render :show, status: :created, location: @project_link }
+        format.ajax { render :partial => 'project_links/show_single', :object => @project_link, :formats => [:html]}
       else
         format.html { render :new }
         format.json { render json: @project_link.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def create_ajax
-    @project_link = ProjectLink.new(project_link_params)
-
-    respond_to do |format|
-      if @project_link.save
-        format.html { render :partial => 'show_single', :content_type => 'text/html', :object => @project_link }
-      else
-      #  format.html { render :new }
-      # Figure out how to handle an error!
-        format.html {render :partial => 'project_links/bad_link', :content_type => 'text/html', :object => @project_link}
-
+        format.ajax { render :partial => 'project_links/bad_link', :object => @project_link, :formats => [:html]}
       end
     end
   end

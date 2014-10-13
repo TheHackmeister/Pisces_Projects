@@ -30,10 +30,11 @@ class StepsController < ApplicationController
       if @step.save
         format.html { redirect_to @step, notice: 'Step was successfully created.' }
         format.json { render :show, status: :created, location: @step }
-        format.js {render :partial => 'show_single', :content_type => 'text/html', :object => @step}
+        format.ajax {render :partial => 'show_single', :object => @step, :formats => [:html]}
       else
         format.html { render :new }
         format.json { render json: @step.errors, status: :unprocessable_entity }
+        format.ajax {render :partial => 'bad_step', :object => @step, :formats => [:html]}
       end
     end
   end

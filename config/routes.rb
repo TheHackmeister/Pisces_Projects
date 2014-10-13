@@ -7,8 +7,6 @@ Rails.application.routes.draw do
 
   resources :priorities
 
-  post 'project_links/create_ajax' => 'project_links#create_ajax'
-
   resources :project_links
 
 
