@@ -28,7 +28,7 @@
     <file path="/projects.js" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1411416925866" ignored="false" />
     <file path="/application_helper.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1413222612118" ignored="false" />
     <file path="/application.js" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1411423582448" ignored="false" />
-    <file path="/default.js" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1413220676150" ignored="false" />
+    <file path="/default.js" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1413240303929" ignored="false" />
     <file path="/form_helper.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412010880434" ignored="false" />
     <file path="/20140929175136_add_to_projects.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412013163013" ignored="false" />
     <file path="/20141002165658_create_statuses.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1412269055125" ignored="false" />
@@ -85,10 +85,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_new_link.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_new_link.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/project_links/_new_link.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="108" selection-start="113" selection-end="113" vertical-scroll-proportion="0.019790454">
+            <state line="1" column="108" selection-start="113" selection-end="113" vertical-scroll-proportion="-0.65384614">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="default.js" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/assets/javascripts/default.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="53" column="46" selection-start="1464" selection-end="1464" vertical-scroll-proportion="0.6403118">
               <folding />
             </state>
           </provider>
@@ -115,7 +124,7 @@
       <file leaf-file-name="_bad_link.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/project_links/_bad_link.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="147" vertical-scroll-proportion="-0.0">
+            <state line="0" column="0" selection-start="0" selection-end="147" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -124,7 +133,7 @@
       <file leaf-file-name="_bad_step.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/steps/_bad_step.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="12" selection-start="56" selection-end="56" vertical-scroll-proportion="-1.3076923">
+            <state line="2" column="12" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -133,16 +142,7 @@
       <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="63" selection-start="1216" selection-end="1216" vertical-scroll-proportion="-26.038462">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_new_step.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/steps/_new_step.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="93" selection-start="98" selection-end="98" vertical-scroll-proportion="-0.65384614">
+            <state line="54" column="63" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -151,7 +151,7 @@
       <file leaf-file-name="_step.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/steps/_step.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -176,7 +176,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/app/settings.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/settings_controller.rb" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/settings/index.html.haml" />
@@ -192,6 +191,7 @@
         <option value="$PROJECT_DIR$/app/views/steps/_new_step.html.haml" />
         <option value="$PROJECT_DIR$/app/models/step.rb" />
         <option value="$PROJECT_DIR$/app/views/steps/_bad_step.html.haml" />
+        <option value="$PROJECT_DIR$/app/assets/javascripts/default.js" />
       </list>
     </option>
   </component>
@@ -861,13 +861,6 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -897,6 +890,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="false" name="test" type="RakeRunConfigurationType" factoryName="Rake">
@@ -1103,13 +1103,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/project_links/_edit_link.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="28" selection-start="77" selection-end="77" vertical-scroll-proportion="0.0">
@@ -1161,7 +1154,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/steps/_new_step.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="93" selection-start="98" selection-end="98" vertical-scroll-proportion="-0.65384614">
+        <state line="1" column="93" selection-start="98" selection-end="98" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1175,7 +1168,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="63" selection-start="1216" selection-end="1216" vertical-scroll-proportion="-26.038462">
+        <state line="54" column="63" selection-start="1216" selection-end="1216" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1196,7 +1189,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/steps/_bad_step.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="12" selection-start="56" selection-end="56" vertical-scroll-proportion="-1.3076923">
+        <state line="2" column="12" selection-start="56" selection-end="56" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1210,7 +1203,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/project_links/_new_link.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="108" selection-start="113" selection-end="113" vertical-scroll-proportion="0.019790454">
+        <state line="1" column="108" selection-start="113" selection-end="113" vertical-scroll-proportion="-0.65384614">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/default.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="53" column="46" selection-start="1464" selection-end="1464" vertical-scroll-proportion="0.6403118">
           <folding />
         </state>
       </provider>

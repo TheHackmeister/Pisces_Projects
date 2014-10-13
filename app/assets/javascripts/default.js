@@ -3,7 +3,13 @@ function search_field (e) {
         case 13:
         case 10:
             break;
-
+        //Backspace and delete.
+        case 8:
+        case 46:
+            if($(e.target).val() == "") {
+                get_search_container(e.target).eq(0).find('.search_id').eq(0).val('');
+                break;
+            }
         default:
             searchAJAX(e.target,getURL(e.target, "path"));
             //console.log(e.target);
@@ -16,8 +22,20 @@ function getURL(field, tag){
     return field.data(tag) + field.val();
 }
 
+function searchAJAX(cont,url) {
+    $.ajax({
+        context: cont,
+        url: url,
+        dataType: "json"
+    }).done(function(results){
+            results = results.slice(0,7);  //Limits to the top 7 results
+            search_result(cont,results,"id","customer_name");
+        });
+}
+
+
 function search_result(field,results,id_key, display_key) {
-    var r_field = $(field).parent().find("div.search_results");
+    var r_field = get_search_container(field).find(".search_results");
     r_field.html("");
 
     $.each(results, function () {
@@ -30,6 +48,15 @@ function search_result(field,results,id_key, display_key) {
     });
 }
 
+function get_search_container(elm) {
+    elm = $(elm);
+    var container = $(elm).parent();
+    if(container.hasClass('field_with_errors')) {
+        container = $(elm).parent().parent();
+    }
+    return container;
+}
+
 function select_search(e) {
     var elm = $(e.target);
     var search_container = elm.parent().parent();
@@ -37,17 +64,6 @@ function select_search(e) {
     search_container.find(".search_id").val(elm.data('id'));
     search_container.find('.search_results').html("");
 
-}
-
-function searchAJAX(cont,url) {
-    $.ajax({
-        context: cont,
-        url: url,
-        dataType: "json"
-    }).done(function(results){
-            results = results.slice(0,7);  //Limits to the top 7 results
-            search_result(cont,results,"id","customer_name");
-        });
 }
 
 function window_ready() {
