@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
   resources :projects
   resources :customers
+  resources :settings
+
   root 'projects#index'
   #get 'projects/index'
 
