@@ -1,10 +1,25 @@
 %h1
   Open projects
 %div
-  - @projects.each do |project|
-    = project.goal
-    = link_to "Project", project
-    %br
+  %div.table
+    %div.projects_table_row
+      %div
+        = link_to_sorted "Title", :title
+      %div
+        = link_to_sorted 'Goal', :goal
+      %div
+        = link_to_sorted 'Priority', 'priorities.val'
+      %div
+    - @projects.each do |project|
+      %div.projects_table_row
+        %div
+          = link_to project.title, project
+        %div
+          = project.goal
+        %div
+          = project.priority.text
+        %div
+          = link_to "Open Project", project
 %div
   %br
   = link_to "New Project", new_project_url

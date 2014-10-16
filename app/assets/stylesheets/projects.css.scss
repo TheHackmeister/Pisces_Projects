@@ -1498,3 +1498,11 @@ ul.filter .active a:hover {
   padding-right:2%;
   width:50%;
 }
+
+.projects_table_row {
+  display:table-row;
+}
+.projects_table_row div {
+  display: table-cell;
+  width: 25%;
+}

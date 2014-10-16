@@ -1,15 +1,15 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
-    @projects = Project.all
+    @projects = Project.joins(:priority).sorted(params[:sort], 'priorities.val ASC')
   end
 
   def show
-    @project = Project.find params[:id]
+    #@project = Project.find params[:id]
   end
 
   def edit
-    @project = Project.find params[:id]
+    #@project = Project.find params[:id]
   end
 
   def update
