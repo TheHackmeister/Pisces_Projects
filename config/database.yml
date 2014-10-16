@@ -32,6 +32,6 @@ production:
 pisces_database_production:
   adapter: mysql2
   host: 127.0.0.1
-  username: root
-  password: pass
+  username: rails
+  password: niente
   database: pisces
