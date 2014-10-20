@@ -1,8 +1,8 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :ajax, :js
+  respond_to :html, :ajax, :js, :json
   def index
-    @contacts = Contact.all
+    @contacts = Contact.filter(params.slice(:contact_name))
     respond_with(@contacts)
   end
 
@@ -47,6 +47,6 @@ class ContactsController < ApplicationController
     end
 
     def contact_params
-      params.require(:contact).permit(:name, :phone, :email, :address, :project_id)
+      params.require(:contact).permit(:contact_name, :phone, :email, :address, :project_id, :id)
     end
 end

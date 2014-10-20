@@ -1,0 +1,7 @@
+= communication.label :summary, 'Summary: '
+= communication.text_field :summary
+= communication.collection_select(:communication_type_id, CommunicationType.all, :id, :text)
+= communication.collection_select(:communication_status_id, CommunicationStatus.all, :id, :text)
+- search_html communication, :contact_id, "Contact: ", :contact_name, contacts_path + "?contact_name=", "", :contact_name 
+= communication.label :notes, 'Notes: '
+= communication.text_field :notes

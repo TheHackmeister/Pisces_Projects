@@ -75,6 +75,26 @@
           = render :partial => 'contacts/show_single', :object => contact
       %br
         New Contact
-        = render :partial => 'contacts/new_contact', locals: {:project => @project}        
+        = render :partial => 'contacts/new_contact', locals: {:project => @project}  
+    %div.two_column
+      %b
+        Communications      
+      %div#communications_table.table.indent
+        %div.row
+          %div
+            Summary
+          %div
+            Contact
+          %div
+            Type
+          %div
+            Status
+          %div
+            Notes
+        - @project.communications.each do |communication|
+          = render :partial => 'communications/show_single', :object => communication
+      %br
+        New Communication
+        = render :partial => 'communications/new_communication', locals: {:project => @project}           
     = link_to "Edit", edit_project_path(@project)
     = link_to "Back"

@@ -1,7 +1,7 @@
 = form_for setup_project(@project), :html => {:autocomplete => "off"} do |f|
   = f.label :tile, 'Title: '
   = f.text_field :title
-  - search_html f, :customer_id, "Customer: ", :customer, customers_path + "?customer_name=",  @project.customer.customer_name
+  - search_html f, :customer_id, "Customer: ", :customer, customers_path + "?customer_name=",  @project.customer.customer_name, :customer_name
   = f.label :started, 'Date started: '
   = f.date_select:started
   %br
@@ -52,4 +52,11 @@
     %br
     = f.fields_for :contacts do |ff|
       = render :partial => 'contacts/edit_contact', :object => ff 
+  %hr
+  %div#communications
+    %b
+      Communications
+    %br
+    = f.fields_for :communications do |ff|
+      = render :partial => 'communications/communication', :object => ff 
   = f.submit 'Submit'

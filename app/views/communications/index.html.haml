@@ -1,0 +1,27 @@
+%h1 Listing communications
+
+%table
+  %tr
+    %th Summary
+    %th Notes
+    %th Communication status
+    %th Communication type
+    %th Project
+    %th
+    %th
+    %th
+
+  - @communications.each do |communication|
+    %tr
+      %td= communication.summary
+      %td= communication.notes
+      %td= communication.communication_status
+      %td= communication.communication_type
+      %td= communication.project
+      %td= link_to 'Show', communication
+      %td= link_to 'Edit', edit_communication_path(communication)
+      %td= link_to 'Destroy', communication, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Communication', new_communication_path

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @communication_status.text
+%p
+  %b Val:
+  = @communication_status.val
+
+= link_to 'Edit', edit_communication_status_path(@communication_status)
+\|
+= link_to 'Back', communication_statuses_path

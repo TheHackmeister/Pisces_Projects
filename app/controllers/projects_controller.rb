@@ -53,6 +53,7 @@ class ProjectsController < ApplicationController
     params.require(:project).permit :started, :customer_id, :status_id, :goal, :priority_id, :title, :soft_deadline, :notes, :stumbling_blocks, :customer_notes,
         :project_links_attributes => [:id, :name, :url, :notes],
         :steps_attributes => [:action, :note, :val, :step_status_id, :id],
-        :contacts_attributes => [:name, :phone, :email, :address, :id]
+        :contacts_attributes => [:contact_name, :phone, :email, :address, :id],
+        :communications_attributes => [:summary, :notes, :communication_status_id, :communication_type_id, :contact_id]
   end
 end

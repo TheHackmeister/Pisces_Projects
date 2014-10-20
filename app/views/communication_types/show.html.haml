@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Text:
+  = @communication_type.text
+%p
+  %b Val:
+  = @communication_type.val
+
+= link_to 'Edit', edit_communication_type_path(@communication_type)
+\|
+= link_to 'Back', communication_types_path

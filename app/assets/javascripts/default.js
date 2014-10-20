@@ -29,7 +29,7 @@ function searchAJAX(cont,url) {
         dataType: "json"
     }).done(function(results){
             results = results.slice(0,7);  //Limits to the top 7 results
-            search_result(cont,results,"id","customer_name");
+            search_result(cont,results,"id",$(cont).data('display-field'));
         });
 }
 

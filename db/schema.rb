@@ -11,10 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016200424) do
+ActiveRecord::Schema.define(version: 20141020221752) do
+
+  create_table "communication_statuses", force: true do |t|
+    t.string   "text"
+    t.integer  "val"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "communication_types", force: true do |t|
+    t.string   "text"
+    t.integer  "val"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "communications", force: true do |t|
+    t.string   "summary"
+    t.text     "notes"
+    t.integer  "communication_status_id"
+    t.integer  "communication_type_id"
+    t.integer  "project_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "contact_id"
+  end
+
+  add_index "communications", ["communication_status_id"], name: "index_communications_on_communication_status_id", using: :btree
+  add_index "communications", ["communication_type_id"], name: "index_communications_on_communication_type_id", using: :btree
+  add_index "communications", ["contact_id"], name: "index_communications_on_contact_id", using: :btree
+  add_index "communications", ["project_id"], name: "index_communications_on_project_id", using: :btree
 
   create_table "contacts", force: true do |t|
-    t.string   "name"
+    t.string   "contact_name"
     t.string   "phone"
     t.string   "email"
     t.text     "address"

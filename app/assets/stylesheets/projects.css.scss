@@ -1515,6 +1515,11 @@ ul.filter .active a:hover {
   width: 25%;
 }
 
+#communications_table .row div {
+  display: table-cell;
+  width: 20%;
+}
+
 #cs_text {
   display: none;
 }

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :communications
+
+  resources :communication_statuses
+
+  resources :communication_types
+
   resources :contacts
 
   resources :steps

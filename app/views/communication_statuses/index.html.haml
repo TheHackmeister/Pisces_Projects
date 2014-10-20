@@ -1,0 +1,21 @@
+%h1 Listing communication_statuses
+
+%table
+  %tr
+    %th Text
+    %th Val
+    %th
+    %th
+    %th
+
+  - @communication_statuses.each do |communication_status|
+    %tr
+      %td= communication_status.text
+      %td= communication_status.val
+      %td= link_to 'Show', communication_status
+      %td= link_to 'Edit', edit_communication_status_path(communication_status)
+      %td= link_to 'Destroy', communication_status, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Communication status', new_communication_status_path

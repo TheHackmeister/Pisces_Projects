@@ -1,0 +1,2 @@
+module CommunicationStatusesHelper
+end

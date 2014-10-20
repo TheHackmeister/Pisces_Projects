@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Summary:
+  = @communication.summary
+%p
+  %b Notes:
+  = @communication.notes
+%p
+  %b Communication status:
+  = @communication.communication_status
+%p
+  %b Communication type:
+  = @communication.communication_type
+%p
+  %b Project:
+  = @communication.project
+
+= link_to 'Edit', edit_communication_path(@communication)
+\|
+= link_to 'Back', communications_path

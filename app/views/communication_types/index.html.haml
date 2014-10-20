@@ -1,0 +1,21 @@
+%h1 Listing communication_types
+
+%table
+  %tr
+    %th Text
+    %th Val
+    %th
+    %th
+    %th
+
+  - @communication_types.each do |communication_type|
+    %tr
+      %td= communication_type.text
+      %td= communication_type.val
+      %td= link_to 'Show', communication_type
+      %td= link_to 'Edit', edit_communication_type_path(communication_type)
+      %td= link_to 'Destroy', communication_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Communication type', new_communication_type_path
