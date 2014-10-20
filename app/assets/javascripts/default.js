@@ -69,6 +69,15 @@ function select_search(e) {
 function window_ready() {
     $('body').on('keyup', '.search_field', search_field);
     $('body').on('click', 'a.search_selector', select_search);
+    $('body').on('click', '.hide_toggle', function(e) {
+    	$('#' + $(e.target).data('target')).toggle();
+    	if($(e.target).html().indexOf('Show') > -1) {
+    		$(e.target).html($(e.target).html().replace('Show', 'Hide'));	
+    	} else {
+    		$(e.target).html($(e.target).html().replace('Hide', 'Show'));
+    	}
+    	
+    	});
     $('form[data-update-target]').on('ajax:success', function(evt, data) {
         var target = $(this).data('update-target');
         var result = $('#' + target).append(data);
