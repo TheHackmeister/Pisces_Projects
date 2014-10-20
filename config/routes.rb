@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :contacts
+
   resources :steps
 
   resources :step_statuses

@@ -44,4 +44,11 @@
       Steps
     %br
     = render :partial => "steps/edit_step", :object => f
+  %hr
+  %div#contacts
+    %b
+      Contacts
+    %br
+    = f.fields_for :contacts do |ff|
+      = render :partial => 'contacts/edit_contact', :object => ff 
   = f.submit 'Submit'

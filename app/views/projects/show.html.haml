@@ -57,6 +57,24 @@
       %br
         New step
         = render :partial => '/steps/new_step', locals: {:project => @project}
+    %hr
+    %div.two_column
+      %b
+        Contacts      
+      %div#contacts_table.table.indent
+        %div.row
+          %div
+            Name
+          %div
+            Phone Number
+          %div
+            Email Address
+          %div
+            Physical Address
+        - @project.contacts.each do |contact|
+          = render :partial => 'contacts/show_single', :object => contact
+      %br
+        New Contact
+        = render :partial => 'contacts/new_contact', locals: {:project => @project}        
     = link_to "Edit", edit_project_path(@project)
     = link_to "Back"
-    Hello
