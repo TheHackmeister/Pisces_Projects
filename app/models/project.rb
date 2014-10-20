@@ -2,7 +2,7 @@ class Project < ActiveRecord::Base
   belongs_to :customer
   belongs_to :priority
   belongs_to :status
-  has_many :contacts
+  has_many :contacts, :dependent => :destroy
   has_many :project_links, :dependent => :destroy
   has_many :steps, :dependent => :destroy
 

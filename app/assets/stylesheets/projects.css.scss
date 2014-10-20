@@ -1488,6 +1488,9 @@ ul.filter .active a:hover {
   display: table;
   width: 100%;
 }
+.row {
+   display:table-row;
+}
 .cell textarea {
   width:100%;
   height:100px;
@@ -1503,6 +1506,11 @@ ul.filter .active a:hover {
   display:table-row;
 }
 .projects_table_row div {
+  display: table-cell;
+  width: 25%;
+}
+
+#contacts_table .row div{
   display: table-cell;
   width: 25%;
 }
