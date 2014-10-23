@@ -1,5 +1,7 @@
-%div
-  = form_for Contact.new, :url => {:controller => 'contacts', :action => 'create', :format => :ajax}, :remote => true, :html => {'data-update-target' => 'contacts_table'}, :method => 'POST' do |f|
+= form_for Contact.new, :url => {:controller => 'contacts', :action => 'create', :format => :ajax}, :remote => true, :html => {'data-update-target' => 'contacts_table'}, :method => 'POST' do |f|
+  %div.flex.three
     = f.hidden_field :project_id, :value => project.id
     = render :partial => 'contacts/edit_contact', :object => f
-    = submit_tag :Add
+    %div
+      %label
+      = submit_tag :Add

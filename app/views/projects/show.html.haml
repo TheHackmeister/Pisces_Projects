@@ -3,98 +3,114 @@
     Project:
     = @project.title
   %div
-    %p
-      Start Date:
-      = @project.started
-    %p
-      Soft Deadline:
-      = @project.soft_deadline
-    %p
-      Goal:
-      = @project.goal
-    %p
-      Customer:
-      = Customer.find_by_id(@project.customer_id).customer_name
-    %p
-      Priority:
-      = @project.priority.text
-    %p
-      Status:
-      = @project.status.text
+    %div.flex.six
+      %div
+        Customer:
+        = Customer.find_by_id(@project.customer_id).customer_name
+      %div
+        Priority:
+        = @project.priority.text
+      %div
+        Status:
+        = @project.status.text
+      %div
+        Goal:
+        = @project.goal
+      %div
+        Soft Deadline:
+        = @project.soft_deadline
+      %div
+        Start Date:
+        = @project.started
     %hr
-    %div.table
-      %div.cell
-        %b
-          Pisces Notes:
-        %div.indent
-          = format_text_field @project.notes
-      %div.cell
-        %b
-          Customer Notes:
-        %div.indent
-          = format_text_field @project.customer_notes
-      %div.cell
-        %b
-          Potential Stumbling Blocks:
-        %div.indent
-          = format_text_field @project.stumbling_blocks
+    %div.table.three
+      %div
+        %div
+          %b
+            Pisces Notes:
+          %div.indent
+            = format_text_field @project.notes
+        %div
+          %b
+            Customer Notes:
+          %div
+            = format_text_field @project.customer_notes
+        %div
+          %b
+            Potential Stumbling Blocks:
+          %div.indent
+            = format_text_field @project.stumbling_blocks
     %hr
-    %div.two_column
-      %b
-        Links
-      %div#links.indent
-        - @project.project_links.each do |link|
-          = render :partial => '/project_links/show_single', :object => link
-      %br
-      New link
-      = render :partial => "/project_links/new_link", locals: {:project => @project}
-    %div.two_column
-      %b
-        Steps
-      %div#steps.indent
-        - @project.steps.each do |step|
-          = render :partial => '/steps/show_single', :object => step
-      %br
-        New step
-        = render :partial => '/steps/new_step', locals: {:project => @project}
+    %div.flex.two
+      %div
+        %b
+          Links
+        %div#links
+          %div.flex.two.list
+            %div
+              Link
+            %div
+              Notes
+          - @project.project_links.each do |link|
+            = render :partial => '/project_links/show_single', :object => link
+        New link
+        = render :partial => "/project_links/new_link", locals: {:project => @project}
+      %div
+        %b
+          Steps
+        %div#steps
+          %div.flex.three.list
+            %div
+              Action
+            %div
+              Status
+            %div
+              Notes
+          - @project.steps.each do |step|
+            = render :partial => '/steps/show_single', :object => step
+        %br
+          New step
+          = render :partial => '/steps/new_step', locals: {:project => @project}
     %hr
-    %div.two_column
-      %b
-        Contacts      
-      %div#contacts_table.table.indent
-        %div.row
-          %div
-            Name
-          %div
-            Phone Number
-          %div
-            Email Address
-          %div
-            Physical Address
-        - @project.contacts.each do |contact|
-          = render :partial => 'contacts/show_single', :object => contact
-      %br
-        New Contact
-        = render :partial => 'contacts/new_contact', locals: {:project => @project}  
-    %div.two_column
-      %b
-        Communications      
-      %div#communications_table.table.indent
-        %div.row
-          %div
-            Summary
-          %div
-            Contact
-          %div
-            Type
-          %div
-            Status
-          %div
-            Notes
-        - @project.communications.each do |communication|
-          = render :partial => 'communications/show_single', :object => communication
-      %br
-        New Communication
-        = render :partial => 'communications/new_communication', locals: {:project => @project}           
+    %div.flex.two
+      %div
+        %b
+          Communications      
+        %div#communications_table
+          %div.flex.five.list
+            %div
+              Summary
+            %div
+              Contact
+            %div
+              Type
+            %div
+              Status
+            %div
+              Notes
+          - @project.communications.each do |communication|
+            = render :partial => 'communications/show_single', :object => communication
+        %br
+          New Communication
+          = render :partial => 'communications/new_communication', locals: {:project => @project}  
+      %div
+        %b
+          Contacts      
+        %div#contacts_table
+          %div.flex.four.list
+            %div
+              Name
+            %div
+              Phone Number
+            %div
+              Email Address
+            %div
+              Physical Address
+          - @project.contacts.each do |contact|
+            = render :partial => 'contacts/show_single', :object => contact
+        %br
+          New Contact
+          = render :partial => 'contacts/new_contact', locals: {:project => @project}          
     = link_to "Edit", edit_project_path(@project)
+    \|
     = link_to "Back"

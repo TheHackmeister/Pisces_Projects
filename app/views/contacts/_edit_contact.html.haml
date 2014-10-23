@@ -1,8 +1,12 @@
-= edit_contact.label :contact_name, 'Name: '
-= edit_contact.text_field :contact_name
-= edit_contact.label :phone, 'Phone Number: '
-= edit_contact.text_field :phone
-= edit_contact.label :email, 'Email: '
-= edit_contact.text_field :email
-= edit_contact.label :address, 'Address: '
-= edit_contact.text_field :address
+%div
+  = edit_contact.label :contact_name, 'Name: '
+  = edit_contact.text_field :contact_name
+%div
+  = edit_contact.label :phone, 'Phone: '
+  = edit_contact.text_field :phone
+%div
+  = edit_contact.label :email, 'Email: '
+  = edit_contact.text_field :email
+%div
+  = edit_contact.label :address, 'Address: '
+  = edit_contact.text_field :address

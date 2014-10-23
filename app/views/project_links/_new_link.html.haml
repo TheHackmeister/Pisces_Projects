@@ -1,5 +1,7 @@
-%div
-  = form_for ProjectLink.new, :url => {:controller => 'project_links', :action => 'create', :format => :ajax}, :remote => true, :html => {'data-update-target' => 'links'}, :method => 'POST' do |pl|
+= form_for ProjectLink.new, :url => {:controller => 'project_links', :action => 'create', :format => :ajax}, :remote => true, :html => {'data-update-target' => 'links'}, :method => 'POST' do |pl|
+  %div.flex.two
     = pl.hidden_field :Project_id, :value => project.id
     = render :partial => 'project_links/edit_link', :object => pl
-    = submit_tag :Add
+    %div
+      %label
+      = submit_tag :Add

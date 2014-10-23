@@ -1,62 +1,76 @@
 = form_for setup_project(@project), :html => {:autocomplete => "off"} do |f|
-  = f.label :tile, 'Title: '
-  = f.text_field :title
-  - search_html f, :customer_id, "Customer: ", :customer, customers_path + "?customer_name=",  @project.customer.customer_name, :customer_name
-  = f.label :started, 'Date started: '
-  = f.date_select:started
-  %br
-  = f.label :soft_deadline, 'Soft Deadline: '
-  = f.date_select :soft_deadline
-  %br
-  = f.label :status_id, 'Status: '
-  = f.collection_select(:status_id, Status.all, :id, :text.to_s)
-  %br
-  = f.label :goal, 'Goal: '
-  = f.text_field :goal
-  %br
-  = f.label :priority, 'Priority: '
-  = f.collection_select(:priority_id, Priority.all, :id, :text.to_s)
-  %br
+  %div.flex.grow
+    %div
+      = f.label :tile, 'Title: '
+      = f.text_field :title
+    %div
+      = f.label :priority, 'Priority: '
+      = f.collection_select(:priority_id, Priority.all, :id, :text.to_s)
+    %div
+      = f.label :status_id, 'Status: '
+      = f.collection_select(:status_id, Status.all, :id, :text.to_s)
+    %div
+      - search_html f, :customer_id, "Customer: ", :customer, customers_path + "?customer_name=",  @project.customer.customer_name, :customer_name
+    %div
+      = f.label :goal, 'Goal: '
+      = f.text_field :goal
+    %div
+      = f.label :started, 'Date started: ', :class => 'long'
+      = f.date_select:started
+    %div
+      = f.label :soft_deadline, 'Soft Deadline: ', :class => 'long'
+      = f.date_select :soft_deadline
   %hr
-  %div.table
-    %div.cell
-      = f.label :notes, 'Pisces Notes: '
-      %br
-      = f.text_area :notes
-      = render :partial => 'settings/notes_cheat_sheet'
-    %div.cell
-      = f.label :customer_notes, 'Customer Notes: '
-      %br
-      = f.text_area :customer_notes
-    %div.cell
-      = f.label :stumbling_blocks, 'Potential Stumbling Blocks: '
-      %br
-      = f.text_area :stumbling_blocks
+  %div.table.three
+    %div
+      %div.no_wrap
+        = f.label :notes, 'Pisces Notes: ', :class => 'long'
+        %br
+        = f.text_area :notes
+        = render :partial => 'settings/notes_cheat_sheet'
+      %div
+        = f.label :customer_notes, 'Customer Notes: ', :class => 'long'
+        %br
+        = f.text_area :customer_notes
+      %div
+        = f.label :stumbling_blocks, 'Potential Stumbling Blocks: ', :class => 'long'
+        %br
+        = f.text_area :stumbling_blocks
   %hr
-  %div#links
-    %b
-      Links
-    %br
-    = f.fields_for :project_links do |ff|
-      = render :partial => 'project_links/edit_link', :object => ff
-      %br
-  %div#steps
-    %b
-      Steps
-    %br
-    = render :partial => "steps/edit_step", :object => f
+  %div.table.two
+    %div
+      %div
+        %b
+          Links
+        %br
+        = f.fields_for :project_links do |ff|
+          %div.flex
+            = render :partial => 'project_links/edit_link', :object => ff
+      %div
+        %b
+          Steps
+        %br
+        = render :partial => "steps/edit_step", :object => f
   %hr
-  %div#contacts
-    %b
-      Contacts
-    %br
-    = f.fields_for :contacts do |ff|
-      = render :partial => 'contacts/edit_contact', :object => ff 
+  %div.table.two
+    %div
+      %div
+        %b
+          Communications
+        %br
+        = f.fields_for :communications do |ff|
+          %div.flex.three
+            = render :partial => 'communications/communication', :object => ff 
+      %div
+        %b
+          Contacts
+        %br
+        = f.fields_for :contacts do |ff|
+          %div.flex.three
+            = render :partial => 'contacts/edit_contact', :object => ff 
   %hr
-  %div#communications
-    %b
-      Communications
-    %br
-    = f.fields_for :communications do |ff|
-      = render :partial => 'communications/communication', :object => ff 
   = f.submit 'Submit'
+  \|
+  = link_to 'Cancel', @project
+  \|
+  = link_to 'Destroy Project', @project, :method => :delete, :data => { :confirm => 'Are you sure?' }
