@@ -4,11 +4,11 @@
 %div
   - search_html communication, :contact_id, "Contact: ", :contact_name, contacts_path + "?contact_name=", communication.object.contact.contact_name, :contact_name 
 %div
-  = communication.label :notes, 'Notes: '
-  = communication.text_field :notes
-%div
   = communication.label :communication_type_id, 'Type: '
   = communication.collection_select(:communication_type_id, CommunicationType.all, :id, :text)
 %div
   = communication.label :communication_status_id, 'Status: '
   = communication.collection_select(:communication_status_id, CommunicationStatus.all, :id, :text)
+%div
+  = communication.label :notes, 'Notes: '
+  = communication.text_area :notes
