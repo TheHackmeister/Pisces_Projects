@@ -1,4 +1,4 @@
-= form_for setup_project(@project), :html => {:autocomplete => "off"} do |f|
+= form_for @project, :html => {:autocomplete => "off"} do |f|
   %div.flex.grow
     %div
       = f.label :tile, 'Title: '
@@ -59,7 +59,7 @@
           Communications
         %br
         = f.fields_for :communications do |ff|
-          %div.flex.three
+          %div.flex.four
             = render :partial => 'communications/communication', :object => ff 
       %div
         %b

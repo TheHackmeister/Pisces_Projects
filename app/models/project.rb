@@ -17,4 +17,14 @@ class Project < ActiveRecord::Base
   validates_associated :customer, :priority, :status, :project_links, :steps, :contacts, :communications
   
   before_save{ |project| project.notes = project.notes.gsub("%28", "(").gsub("%29", ")").gsub("%20", " ")}
+  
+  
+  after_initialize {
+    self.customer ||= Customer.new
+    self.priority ||= Priority.new
+    if self.steps.length == 0 
+      self.steps.new
+      puts "New Step"
+    end
+  }
 end

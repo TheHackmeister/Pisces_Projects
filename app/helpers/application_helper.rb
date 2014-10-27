@@ -22,7 +22,9 @@ module ApplicationHelper
 
     text = sub_tag text, '***', 'b'
     text = sub_tag text, '*r*', 'font', 'color="red"'
-
+    text = sub_tag text, '\n', 'br'
+    text = simple_format text
+    
     text.html_safe
   end
 

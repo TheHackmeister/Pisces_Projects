@@ -6,4 +6,8 @@ class Communication < ActiveRecord::Base
   
   validates_associated :communication_status, :communication_type
   validates :contact, :project, :communication_status, :communication_type, :presence => true
+  
+  after_initialize {
+    self.contact ||= Contact.new
+  }
 end
