@@ -59,13 +59,15 @@
         %b
           Steps
         %div#steps
-          %div.flex.three.list
+          %div.flex.four.list
             %div
               Action
             %div
               Status
             %div
               Notes
+            %div
+              Due
           - @project.steps.each do |step|
             = render :partial => '/steps/show_single', :object => step
         %br

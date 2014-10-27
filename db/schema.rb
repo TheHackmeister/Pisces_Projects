@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020221752) do
+ActiveRecord::Schema.define(version: 20141027204048) do
 
   create_table "communication_statuses", force: true do |t|
     t.string   "text"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20141020221752) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
+    t.date     "due"
   end
 
   add_index "steps", ["project_id"], name: "index_steps_on_project_id", using: :btree

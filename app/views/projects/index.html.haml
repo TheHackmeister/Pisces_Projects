@@ -10,7 +10,7 @@
       %div
         = link_to_sorted 'Priority', 'priorities.val'
       %div
-        Next step
+        Next step | Due
     - @projects.each do |project|
       %div.projects_table_row
         %div
@@ -21,6 +21,8 @@
           = project.priority.text
         %div
           = project.steps.first.action
+          | 
+          = project.steps.first.due        
 %div
   %br
   = link_to "New Project", new_project_url

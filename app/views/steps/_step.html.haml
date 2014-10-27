@@ -7,3 +7,6 @@
 %div
   = step.label :status, 'Status: '
   = step.collection_select(:step_status_id, StepStatus.all, :id, :text)
+%div
+  = step.label :due, 'Due: '
+  = step.date_select :due

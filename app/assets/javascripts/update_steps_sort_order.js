@@ -13,7 +13,6 @@ function update_steps_sort_order() {
       update: function(e, ui) {
         var item_id, position;
         item_id = ui.item.data('item-id');
-        console.log(item_id);
         position = ui.item.index();
         return $.ajax({
           type: 'POST',
