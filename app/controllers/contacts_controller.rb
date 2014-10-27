@@ -2,7 +2,7 @@ class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   respond_to :html, :ajax, :js, :json
   def index
-    @contacts = Contact.filter(params.slice(:contact_name))
+    @contacts = Contact.filter(params.slice(:contact_name)).filter(params.slice(:project_id))
     respond_with(@contacts)
   end
 
