@@ -62,6 +62,15 @@ class StepsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def update_row_order
+    @step = Step.find(step_params[:step_id])
+    @step.val_position = step_params[:row_order_position]
+    @step.save
+
+    render nothing: true # this is a POST action, updates sent via AJAX, no view rendered
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -71,6 +80,6 @@ class StepsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def step_params
-      params.require(:step).permit(:action, :note, :val, :step_status_id, :project_id)
+      params.require(:step).permit(:action, :note, :val, :step_status_id, :project_id, :step_id, :row_order_position)
     end
 end

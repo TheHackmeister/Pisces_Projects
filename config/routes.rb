@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
   resources :contacts
 
-  resources :steps
+  resources :steps do
+    post :update_row_order, on: :collection
+  end
 
   resources :step_statuses
 

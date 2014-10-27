@@ -90,6 +90,7 @@ function window_ready() {
         $('#' + target).append('<div class="validation_error">There was an error communicating with the server. Please try again. Refresh to remove this error.</div>');
     });
     $('.full_text').autosize();    
+    update_steps_sort_order();
 }
 
 $(window).ready(window_ready);

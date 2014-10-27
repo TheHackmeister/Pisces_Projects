@@ -22,9 +22,9 @@ class Project < ActiveRecord::Base
   after_initialize {
     self.customer ||= Customer.new
     self.priority ||= Priority.new
+    puts self.steps
     if self.steps.length == 0 
       self.steps.new
-      puts "New Step"
     end
   }
 end

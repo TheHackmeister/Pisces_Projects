@@ -5,6 +5,8 @@ gem 'devise'
 gem 'cancan'
 gem 'mysql2', "~>0.3.11"
 gem 'sorted'
+gem 'ranked-model', :git => 'git@github.com:mixonic/ranked-model.git'
+gem 'jquery-ui-rails'
 
 group :test do
   gem "factory_girl_rails", "~> 4.0"

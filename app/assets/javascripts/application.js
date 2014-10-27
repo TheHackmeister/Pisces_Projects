@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require_tree .
 //= require default.js
+//= require jquery-ui/sortable
