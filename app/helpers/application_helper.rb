@@ -3,7 +3,7 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
-  def search_html form, label, label_text, sub_label, path, value, display
+  def search_html_old form, label, label_text, sub_label, path, value, display
     haml_tag(:div, :class => "search") do
       haml_concat(form.label label, label_text)
       haml_concat(form.hidden_field label, :class => 'search_id')
@@ -14,6 +14,25 @@ module ApplicationHelper
       end
     end
   end
+
+  def search_html form, base, associated, label, search, display, value
+    haml_tag(:div, :class => "search") do
+      
+      base = base.to_s.classify.constantize
+      base = base.reflections[associated].foreign_key
+      
+      #Base.assocaited?to_s.classify.constantize
+      haml_concat(form.label base, label)
+      haml_concat(form.hidden_field base, :class => 'search_id')
+      haml_concat((form.fields_for associated do |t|
+        form.text_field associated, :class => 'search_field', :data => {:path => search.as_json, 'display-field' => display}, :value => value
+      end))
+      haml_tag(:div, :class => "search_results") do
+      end
+    end
+  end
+
+
 
   def format_text_field text
     if text == ""

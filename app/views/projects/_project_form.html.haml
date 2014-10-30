@@ -10,7 +10,7 @@
       = f.label :status_id, 'Status: '
       = f.collection_select(:status_id, Status.all, :id, :text.to_s)
     %div
-      - search_html f, :customer_id, "Customer: ", :customer, customers_path + "?customer_name=",  @project.customer.customer_name, :customer
+      - search_html f, :project, :customer, "Customer: ", {:path => customers_path, :input => :customer_name}, :customer_name, @project.customer.customer_name 
     %div
       = f.label :goal, 'Goal: '
       = f.text_field :goal
@@ -60,7 +60,7 @@
         %br
         = f.fields_for :communications do |ff|
           %div.flex.four
-            = render :partial => 'communications/communication', :object => ff 
+            = render :partial => 'communications/communication', :object => ff, locals: {:project => @project}
       %div
         %b
           Contacts

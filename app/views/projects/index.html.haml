@@ -12,7 +12,7 @@
       %div
         Next step | Due
     - @projects.each do |project|
-      = project = setup_project project
+      - project = setup_project project
       %div.projects_table_row
         %div
           = link_to project.title, project

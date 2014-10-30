@@ -19,7 +19,23 @@ function search_field (e) {
 
 function getURL(field, tag){
     field = $(field).eq(0);
-    return field.data(tag) + field.val();
+    var json = jQuery.extend({},field.data(tag)); //This weird call clones the json object.
+    var url = json.path + "?";
+    var input = json.input;
+    console.log(json);
+    delete json.path;
+    delete json.input;
+   // if(Object.keys(json).length > 0) {
+		$(json).each(function(key, val){
+			$.each(val, function(key, val) {
+				console.log("Key: " + key + " Val: " + val);
+				url += key + "=" + val + "&";
+			});
+		});
+	//}
+    url += input + "=" + field.val();
+    console.log(url); 
+    return  url;
 }
 
 function searchAJAX(cont,url) {
