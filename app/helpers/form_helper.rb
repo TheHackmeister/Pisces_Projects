@@ -1,9 +1,9 @@
 module FormHelper
-  def setup_project(project) 
+  def setup_project(project, steps: true) 
     project.customer ||= Customer.new
     project.priority ||= Priority.new
-    if project.steps.length == 0 
-      project.steps.new
+    if project.steps.length == 0 && steps
+      project.steps.build
     end
    # project.communications.each do |comm|
     #  comm.contact ||= Contact.new  

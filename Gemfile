@@ -7,6 +7,7 @@ gem 'mysql2', "~>0.3.11"
 gem 'sorted'
 gem 'ranked-model'
 gem 'jquery-ui-rails'
+gem 'kaminari'
 
 group :test do
   gem "factory_girl_rails", "~> 4.0"

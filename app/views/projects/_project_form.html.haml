@@ -1,4 +1,4 @@
-= form_for setup_project(@project), :html => {:autocomplete => "off"} do |f|
+= form_for setup_project(@project, :steps => false), :html => {:autocomplete => "off"} do |f|
   %div.flex.grow
     %div
       = f.label :tile, 'Title: '
