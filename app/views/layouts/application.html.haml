@@ -17,10 +17,9 @@
           = link_to "Find Projects", projects_url
           = link_to 'Settings', settings_url
           = render 'devise/login'
-      %div#flash 
-        %p.notice
+      %div.center><
+        %div#flash><
           = notice
-        %p.alert
           = alert
     %div#wrap
       = yield
