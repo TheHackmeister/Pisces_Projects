@@ -1,4 +1,5 @@
 class CustomersController < ApplicationController
+  load_and_authorize_resource 
   def index
 
     @customers = Customer.filter(params.slice(:customer_name))

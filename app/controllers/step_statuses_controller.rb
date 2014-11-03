@@ -1,4 +1,5 @@
 class StepStatusesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_step_status, only: [:show, :edit, :update, :destroy]
 
   # GET /step_statuses

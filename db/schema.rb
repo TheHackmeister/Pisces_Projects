@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103161639) do
+ActiveRecord::Schema.define(version: 20141103173428) do
 
   create_table "communication_statuses", force: true do |t|
     t.string   "text"
@@ -96,6 +96,21 @@ ActiveRecord::Schema.define(version: 20141103161639) do
   add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
   add_index "projects", ["priority_id"], name: "index_projects_on_priority_id", using: :btree
   add_index "projects", ["status_id"], name: "index_projects_on_status_id", using: :btree
+
+  create_table "role_assignments", force: true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "role_assignments", ["role_id"], name: "index_role_assignments_on_role_id", using: :btree
+  add_index "role_assignments", ["user_id"], name: "index_role_assignments_on_user_id", using: :btree
+
+  create_table "roles", force: true do |t|
+    t.string   "title"
+    t.integer  "val"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "statuses", force: true do |t|
     t.string   "text"

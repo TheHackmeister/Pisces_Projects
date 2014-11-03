@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
     @projects = Project.joins(:priority).sorted(params[:sort], 'priorities.val ASC').page(params[:page]).per 25

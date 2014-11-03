@@ -1,4 +1,5 @@
 class CommunicationStatusesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_communication_status, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js, :json, :ajax
 

@@ -1,4 +1,5 @@
 class PrioritiesController < ApplicationController
+  load_and_authorize_resource 
   before_action :set_priority, only: [:show, :edit, :update, :destroy]
 
   # GET /priorities

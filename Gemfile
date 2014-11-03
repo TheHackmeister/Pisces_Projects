@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'haml-rails'
 gem 'devise'
-gem 'cancan'
+gem 'cancancan'
 gem 'mysql2', "~>0.3.11"
 gem 'sorted'
 gem 'ranked-model'
