@@ -1,7 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="24f8ed65-cfe6-4211-9039-f577d35bae09" name="Default" comment="" />
+    <list default="true" id="24f8ed65-cfe6-4211-9039-f577d35bae09" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/communications/_bad_communication.html.haml" afterPath="$PROJECT_DIR$/app/views/communications/_bad_communication.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/contacts/_edit_contact.html.haml" afterPath="$PROJECT_DIR$/app/views/contacts/_edit_contact.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/project_links/_edit_link.html.haml" afterPath="$PROJECT_DIR$/app/views/project_links/_edit_link.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/steps/_edit_step.html.haml" afterPath="$PROJECT_DIR$/app/views/steps/_edit_step.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/contacts/_new_contact.html.haml" afterPath="$PROJECT_DIR$/app/views/contacts/_new_contact.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/project_links/_new_link.html.haml" afterPath="$PROJECT_DIR$/app/views/project_links/_new_link.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/steps/_new_step.html.haml" afterPath="$PROJECT_DIR$/app/views/steps/_new_step.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/settings/_notes_cheat_sheet.html.haml" afterPath="$PROJECT_DIR$/app/views/settings/_notes_cheat_sheet.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/communications/_show_single.html.haml" afterPath="$PROJECT_DIR$/app/views/communications/_show_single.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/contacts/_show_single.html.haml" afterPath="$PROJECT_DIR$/app/views/contacts/_show_single.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/project_links/_show_single.html.haml" afterPath="$PROJECT_DIR$/app/views/project_links/_show_single.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/steps/_show_single.html.haml" afterPath="$PROJECT_DIR$/app/views/steps/_show_single.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/steps/_step.html.haml" afterPath="$PROJECT_DIR$/app/views/steps/_step.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/auto_size.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/auto_size.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/edit.html.haml" afterPath="$PROJECT_DIR$/app/views/projects/edit.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/settings/index.html.haml" afterPath="$PROJECT_DIR$/app/views/settings/index.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/project.rb" afterPath="$PROJECT_DIR$/app/models/project.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/project_links_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/project_links_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/helpers/projects_helper.rb" afterPath="$PROJECT_DIR$/app/helpers/projects_helper.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/projects/show.html.haml" afterPath="$PROJECT_DIR$/app/views/projects/show.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/step.rb" afterPath="$PROJECT_DIR$/app/models/step.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/steps_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/steps_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/update_steps_sort_order.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/update_steps_sort_order.js" />
+    </list>
     <ignored path="Pisces_Projects.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/routes.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1413224753654" ignored="false" />
@@ -57,7 +84,7 @@
     <file path="/mime_types.rb" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1413231249182" ignored="false" />
     <file path="/_edit_link.mobile.haml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1413230873034" ignored="false" />
     <file path="/_bad_step.html.haml" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1413231689027" ignored="false" />
-    <file path="/Dummy.txt" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1413472188950" ignored="false" />
+    <file path="/Dummy.txt" changelist="24f8ed65-cfe6-4211-9039-f577d35bae09" time="1414716848821" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +107,7 @@
       <file leaf-file-name="project.rb" pinned="true" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/models/project.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="41" selection-start="193" selection-end="193" vertical-scroll-proportion="0.08863399">
+            <state line="7" column="41" selection-start="280" selection-end="280" vertical-scroll-proportion="0.13709678">
               <folding />
             </state>
           </provider>
@@ -89,7 +116,7 @@
       <file leaf-file-name="_new_link.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/project_links/_new_link.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="108" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0">
+            <state line="1" column="108" selection-start="211" selection-end="211" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -98,7 +125,7 @@
       <file leaf-file-name="default.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/javascripts/default.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="30" selection-start="1944" selection-end="1944" vertical-scroll-proportion="0.0">
+            <state line="97" column="30" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -107,7 +134,7 @@
       <file leaf-file-name="steps_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/steps_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="36" column="49" selection-start="903" selection-end="903" vertical-scroll-proportion="0.0">
+            <state line="45" column="49" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -116,7 +143,7 @@
       <file leaf-file-name="step.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/step.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
+            <state line="18" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -143,7 +170,7 @@
       <file leaf-file-name="show.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="55" column="63" selection-start="1280" selection-end="1280" vertical-scroll-proportion="0.0">
+            <state line="109" column="63" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -205,10 +232,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1928" />
-    <option name="y" value="-320" />
-    <option name="width" value="1936" />
-    <option name="height" value="1096" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1696" />
+    <option name="height" value="1026" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -236,6 +263,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="RailsProjectView" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -749,18 +777,17 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="RailsProjectView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="recentsLimit" value="5" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
-    <property name="options.searchVisible" value="true" />
     <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -874,13 +901,6 @@
       <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUNNER_OPTIONS" VALUE="" />
       <method />
     </configuration>
-    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
-      <JSRemoteDebuggerConfigurationSettings>
-        <option name="engineId" value="embedded" />
-        <option name="fileUrl" />
-      </JSRemoteDebuggerConfigurationSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="CucumberRunConfigurationType" factoryName="Cucumber">
       <predefined_log_file id="RUBY_CUCUMBER" enabled="true" />
       <module name="" />
@@ -910,6 +930,13 @@
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="CUCUMBER_RUNNER_PATH" VALUE="" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="USE_CUSTOM_RUNNER" VALUE="false" />
       <CUCUMBER_RUN_CONFIG_SETTINGS_ID NAME="SETTINGS_VERSION" VALUE="2" />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugSession" factoryName="Remote" singleton="true">
+      <JSRemoteDebuggerConfigurationSettings>
+        <option name="engineId" value="embedded" />
+        <option name="fileUrl" />
+      </JSRemoteDebuggerConfigurationSettings>
       <method />
     </configuration>
     <configuration default="false" name="test" type="RakeRunConfigurationType" factoryName="Rake">
@@ -1032,14 +1059,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1928" y="-320" width="1936" height="1096" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17135416" sideWeight="0.67005074" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17083333" sideWeight="0.67005074" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
@@ -1164,14 +1191,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/projects/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="55" column="63" selection-start="1280" selection-end="1280" vertical-scroll-proportion="0.0">
+        <state line="109" column="63" selection-start="2736" selection-end="2736" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/step.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="0" selection-start="123" selection-end="123" vertical-scroll-proportion="0.0">
+        <state line="18" column="0" selection-start="323" selection-end="323" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -1192,28 +1219,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/steps_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="36" column="49" selection-start="903" selection-end="903" vertical-scroll-proportion="0.0">
+        <state line="45" column="49" selection-start="1095" selection-end="1095" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/project_links/_new_link.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="108" selection-start="113" selection-end="113" vertical-scroll-proportion="0.0">
+        <state line="1" column="108" selection-start="211" selection-end="211" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/default.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="30" selection-start="1944" selection-end="1944" vertical-scroll-proportion="0.0">
+        <state line="97" column="30" selection-start="2895" selection-end="2895" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/models/project.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="41" selection-start="193" selection-end="193" vertical-scroll-proportion="0.08863399">
+        <state line="7" column="41" selection-start="280" selection-end="280" vertical-scroll-proportion="0.13709678">
           <folding />
         </state>
       </provider>
