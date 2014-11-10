@@ -19,4 +19,7 @@
 /config/database.yml
 config/database.yml
 config/database.yml
+GEM_HOME
 .project
+.gem
+console
