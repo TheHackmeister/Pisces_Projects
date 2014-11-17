@@ -1,3 +1,16 @@
+GIT
+  remote: git://github.com/betam4x/sunspot.git
+  revision: c24835f07179c9b04c35ff36e5c18966ea8e8619
+  specs:
+    sunspot (2.1.1)
+      pr_geohash (~> 1.0)
+      rsolr (~> 1.0.7)
+    sunspot_rails (2.1.1)
+      nokogiri
+      rails (>= 3)
+      sunspot (= 2.1.1)
+    sunspot_solr (2.1.1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -111,6 +124,7 @@ GEM
       mini_portile (= 0.6.0)
     orm_adapter (0.5.0)
     polyglot (0.3.5)
+    pr_geohash (1.0.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -136,6 +150,8 @@ GEM
       json (~> 1.4)
     responders (1.1.1)
       railties (>= 3.2, < 4.2)
+    rsolr (1.0.10)
+      builder (>= 2.1.2)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -224,6 +240,8 @@ DEPENDENCIES
   selenium-webdriver
   sorted
   sqlite3
+  sunspot_rails!
+  sunspot_solr!
   turbolinks
   tzinfo-data
   uglifier (>= 1.3.0)

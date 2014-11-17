@@ -17,6 +17,10 @@
           = link_to "Find Projects", projects_url
           = link_to 'Settings', settings_url
           = render 'devise/login'
+          %form{:action => projects_path, :method => :get , :class => :inline}  
+            %input{:type => :text, :value => params[:q], :name => :q}
+            %button{:value => :Search}
+              Submit
       %div.center><
         %div#flash><
           = notice

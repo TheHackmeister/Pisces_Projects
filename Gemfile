@@ -8,6 +8,10 @@ gem 'sorted'
 gem 'ranked-model'
 gem 'jquery-ui-rails'
 gem 'kaminari'
+#gem 'sunspot_rails', "~>2.1.0", :git => 'https://github.com/sunspot/sunspot.git'
+#gem 'sunspot_solr', "~>2.1.0", :git => 'https://github.com/sunspot/sunspot.git'
+gem 'sunspot_rails', github: "betam4x/sunspot" # , '2.1.1'
+gem 'sunspot_solr', github: "betam4x/sunspot" # '2.1.1'
 
 group :test do
   gem "factory_girl_rails", "~> 4.0"

@@ -23,3 +23,10 @@ GEM_HOME
 .project
 .gem
 console
+solr/data
+solr/test
+solr/development
+solr/default/data
+log/*.log.lck
+solr/pids
+log/sunspot*

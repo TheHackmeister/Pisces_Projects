@@ -2,7 +2,19 @@ class ProjectsController < ApplicationController
   load_and_authorize_resource 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
   def index
-    @projects = Project.joins(:priority).sorted(params[:sort], 'priorities.val ASC').page(params[:page]).per 25
+    @search = Project.joins(:priority).search do 
+      fulltext params[:q]
+      puts params[:sort]
+      
+      #This splits the sort pram call. 
+      view_context.set_sort_order(params[:sort], :priority_val_asc) do |call,dir| 
+        order_by(call, dir)
+      end 
+      #order_by(:priority_val, :asc) 
+      paginate(:page => params[:page] || 1, :per_page => 25)
+    end
+    puts params
+    @projects = @search.results #.sorted(params[:sort], 'priorities.val ASC').page(params[:page]).per 25
   end
 
   def show
