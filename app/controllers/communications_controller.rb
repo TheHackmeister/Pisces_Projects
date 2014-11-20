@@ -49,6 +49,6 @@ class CommunicationsController < ApplicationController
     end
 
     def communication_params
-      params.require(:communication).permit(:summary, :notes, :communication_status_id, :communication_type_id, :project_id, :contact_id)
+      params.require(:communication).permit(:summary, :notes, :communication_status_id, :communication_type_id, :project_id, :contact_id, :comm_date)
     end
 end

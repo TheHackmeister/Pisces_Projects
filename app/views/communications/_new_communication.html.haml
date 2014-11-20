@@ -1,5 +1,5 @@
 = form_for Communication.new, :url => {:controller => 'communications', :action => 'create', :format => :ajax}, :remote => true, :html => {'data-update-target' => 'communications_table'}, :method => 'POST' do |pl|
-  %div.flex.four
+  %div.flex
     = pl.hidden_field :project_id, :value => project.id
     = render :partial => 'communications/communication', object: pl, locals: {:project => project}
     %div

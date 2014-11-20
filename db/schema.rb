@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103173428) do
+ActiveRecord::Schema.define(version: 20141120202558) do
 
   create_table "communication_statuses", force: true do |t|
     t.string   "text"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 20141103173428) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "contact_id"
+    t.date     "comm_date"
   end
 
   add_index "communications", ["communication_status_id"], name: "index_communications_on_communication_status_id", using: :btree

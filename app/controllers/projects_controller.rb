@@ -67,6 +67,6 @@ class ProjectsController < ApplicationController
         :project_links_attributes => [:id, :name, :url, :notes],
         :steps_attributes => [:action, :note, :val, :step_status_id, :id, :due],
         :contacts_attributes => [:contact_name, :phone, :email, :address, :id],
-        :communications_attributes => [:summary, :notes, :communication_status_id, :communication_type_id, :contact_id, :id]
+        :communications_attributes => [:summary, :notes, :communication_status_id, :communication_type_id, :contact_id, :id, :comm_date]
   end
 end

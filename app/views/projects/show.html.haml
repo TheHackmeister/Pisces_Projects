@@ -79,7 +79,7 @@
         %b
           Communications      
         %div#communications_table
-          %div.flex.four
+          %div.flex.five.label_br
             %div
               Summary
             %div
@@ -88,6 +88,8 @@
               Type
             %div
               Status
+            %div
+              Date
           - @project.communications.each do |communication|
             = render :partial => 'communications/show_single', :object => communication
         %br

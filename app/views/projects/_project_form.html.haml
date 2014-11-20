@@ -59,7 +59,7 @@
           Communications
         %br
         = f.fields_for :communications do |ff|
-          %div.flex.four
+          %div.flex
             = render :partial => 'communications/communication', :object => ff, locals: {:project => @project}
       %div
         %b

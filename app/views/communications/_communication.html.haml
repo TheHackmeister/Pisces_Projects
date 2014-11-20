@@ -1,17 +1,17 @@
 %div
   = communication.label :summary, 'Summary: '
-  %br
   = communication.text_field :summary
 %div
   - search_html communication, :communication, :contact, "Contact: ", {:path => contacts_path, :input => :contact_name, :project_id => project.id.to_s}, :contact_name, communication.object.contact.contact_name 
 %div
   = communication.label :communication_type_id, 'Type: '
-  %br
   = communication.collection_select(:communication_type_id, CommunicationType.all, :id, :text)
 %div
   = communication.label :communication_status_id, 'Status: '
-  %br
   = communication.collection_select(:communication_status_id, CommunicationStatus.all, :id, :text)
+%div
+  = communication.label :comm_date, "Date: "
+  = communication.date_select :comm_date
 %div.o_one
   %span
     Notes: 
