@@ -1,4 +1,4 @@
-= form_for setup_project(@project, :steps => false), :html => {:autocomplete => "off"} do |f|
+= form_for @project, :html => {:autocomplete => "off"} do |f|
   %div.flex.grow
     %div
       = f.label :tile, 'Title: '
@@ -10,7 +10,7 @@
       = f.label :status_id, 'Status: '
       = f.collection_select(:status_id, Status.all, :id, :text.to_s)
     %div
-      - search_html f, :project, :customer, "Customer: ", {:path => customers_path, :input => :customer_name}, :customer_name, @project.customer.customer_name 
+      - search_html f, :project, :customer, "Customer: ", {:path => customers_path, :input => :customer_name}, :customer_name, @project.customer_name 
     %div
       = f.label :goal, 'Goal: '
       = f.text_field :goal

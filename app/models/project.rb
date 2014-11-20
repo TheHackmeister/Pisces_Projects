@@ -24,7 +24,30 @@ class Project < ActiveRecord::Base
   #delegate :name, :url, :notes, :to => :project_links, :allow_nil => true, :prefix => true
   #delegate :summary, :notes, :to => :communications, :allow_nil => true, :prefix => true
   
+  def get_first_step_action
+    if self.steps.length == 0
+        return ""
+    else 
+        return self.steps.first.action
+    end
+  end
   
+  def get_first_step_date
+    if self.steps.length == 0
+      return ""
+    else 
+      return self.steps.first.due
+    end
+  end
+  
+  def customer_name
+    if self.customer.blank?
+      return ""
+    else 
+      return self.customer.customer_name
+    end
+  end
+
   #text :customer
   #text :communications
   #text :contacts

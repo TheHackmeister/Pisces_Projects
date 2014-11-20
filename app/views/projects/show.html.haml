@@ -23,23 +23,22 @@
         Start Date:
         = @project.started
     %hr
-    %div.table.three
+    %div.flex.three
       %div
+        %b
+          Pisces Notes:
+        %div.indent
+          = format_text_field @project.notes
+      %div
+        %b
+          Customer Notes:
         %div
-          %b
-            Pisces Notes:
-          %div.indent
-            = format_text_field @project.notes
-        %div
-          %b
-            Customer Notes:
-          %div
-            = format_text_field @project.customer_notes
-        %div
-          %b
-            Potential Stumbling Blocks:
-          %div.indent
-            = format_text_field @project.stumbling_blocks
+          = format_text_field @project.customer_notes
+      %div
+        %b
+          Potential Stumbling Blocks:
+        %div.indent
+          = format_text_field @project.stumbling_blocks
     %hr
     %div.flex.two
       %div
