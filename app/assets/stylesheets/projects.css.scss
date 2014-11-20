@@ -164,16 +164,6 @@ h4 a:hover { color: #ef4034; text-decoration: none; }
 .no_wrap {
    white-space:nowrap;
 }
-/*
-.flex.three div div, .table.three div div div {
-  width: initial;
-}
-*/
-.table>div>div>textarea {
-  width:100%;
-  height:100px;
-}
-
 .flex {
   display: flex;
   flex-wrap: wrap;
@@ -194,38 +184,29 @@ h4 a:hover { color: #ef4034; text-decoration: none; }
   margin-right: 1%;
 }
 
-.table {
-  display: table;
-  width: 100%;
-}
-.table>div{
-  display: table-row;
-}
-.table>div>div {
-  display: table-cell;
-  padding-right:2%;  
-}
-
 div.flex>div.o_one {
   width: 98%;
 }
 
-.flex.two>div, .table.two>div>div, div.flex>div.o_two{
+div.flex>div textarea {
+  width:100%;
+}
+.flex.two>div, div.flex>div.o_two{
   width:46%;
 }
-.flex.three>div, .table.three>div>div{
+.flex.three>div{
   width:31%;
 }
-.flex.four>div, .table.four>div>div{
+.flex.four>div{
   width:23%;
 }
-.flex.five>div, .table.five>div>div{
+.flex.five>div{
   width:18%;
 }
-.flex.six>div, .table.six>div>div{
+.flex.six>div{
   width:14%;
 }
-.flex.seven>div, .table.seven>div>div{
+.flex.seven>div{
   width:14%;
 }
 .clear_with {
@@ -236,11 +217,6 @@ div.flex>div.o_one {
   align-self: flex-end;
 }
 
-label {
-  //display: inline-block;
-  //width: 50px;
-  //text-align: right;
-}
 label.long{
   display: inline;
 }
@@ -297,7 +273,7 @@ label.long{
 label {
   display: block;
   //background-color:red;
-  margin-top: 10px;
+  margin-top: 5px;
 }
 
 .projects_table_row {

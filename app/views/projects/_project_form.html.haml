@@ -15,59 +15,53 @@
       = f.label :goal, 'Goal: '
       = f.text_field :goal
     %div
-      = f.label :started, 'Date started: ', :class => 'long'
+      = f.label :started, 'Date started: '
       = f.date_select :started
     %div
-      = f.label :soft_deadline, 'Soft Deadline: ', :class => 'long'
+      = f.label :soft_deadline, 'Soft Deadline: '
       = f.date_select :soft_deadline
   %hr
-  %div.table.three
+  %div.flex.three
+    %div.no_wrap
+      = f.label :notes, 'Pisces Notes: '
+      = f.text_area :notes
+      = render :partial => 'settings/notes_cheat_sheet'
     %div
-      %div.no_wrap
-        = f.label :notes, 'Pisces Notes: ', :class => 'long'
-        %br
-        = f.text_area :notes
-        = render :partial => 'settings/notes_cheat_sheet'
-      %div
-        = f.label :customer_notes, 'Customer Notes: ', :class => 'long'
-        %br
-        = f.text_area :customer_notes
-      %div
-        = f.label :stumbling_blocks, 'Potential Stumbling Blocks: ', :class => 'long'
-        %br
-        = f.text_area :stumbling_blocks
+      = f.label :customer_notes, 'Customer Notes: '
+      = f.text_area :customer_notes
+    %div
+      = f.label :stumbling_blocks, 'Potential Stumbling Blocks: '
+      = f.text_area :stumbling_blocks
   %hr
-  %div.table.two
+  %div.flex.two
     %div
-      %div
-        %b
-          Links
-        %br
-        = f.fields_for :project_links do |ff|
-          %div.flex
-            = render :partial => 'project_links/edit_link', :object => ff
-      %div
-        %b
-          Steps
-        %br
-        = render :partial => "steps/edit_step", :object => f
+      %b
+        Links
+      %br
+      = f.fields_for :project_links do |ff|
+        %div.flex
+          = render :partial => 'project_links/edit_link', :object => ff
+    %div
+      %b
+        Steps
+      %br
+      = render :partial => "steps/edit_step", :object => f
   %hr
-  %div.table.two
+  %div.flex.two
     %div
-      %div
-        %b
-          Communications
-        %br
-        = f.fields_for :communications do |ff|
-          %div.flex
-            = render :partial => 'communications/communication', :object => ff, locals: {:project => @project}
-      %div
-        %b
-          Contacts
-        %br
-        = f.fields_for :contacts do |ff|
-          %div.flex.three
-            = render :partial => 'contacts/edit_contact', :object => ff 
+      %b
+        Communications
+      %br
+      = f.fields_for :communications do |ff|
+        %div.flex
+          = render :partial => 'communications/communication', :object => ff, locals: {:project => @project}
+    %div
+      %b
+        Contacts
+      %br
+      = f.fields_for :contacts do |ff|
+        %div.flex.three
+          = render :partial => 'contacts/edit_contact', :object => ff 
   %hr
   = f.submit 'Submit'
   \|

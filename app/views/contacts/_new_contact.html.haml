@@ -2,6 +2,6 @@
   %div.flex.three
     = f.hidden_field :project_id, :value => project.id
     = render :partial => 'contacts/edit_contact', :object => f
-    %div
+    %div.o_one
       %label
       = submit_tag :Add

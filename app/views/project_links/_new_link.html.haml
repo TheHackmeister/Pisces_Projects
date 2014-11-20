@@ -2,6 +2,6 @@
   %div.flex.two
     = pl.hidden_field :Project_id, :value => project.id
     = render :partial => 'project_links/edit_link', :object => pl
-    %div
-      %label
+    %div.o_one
+      %label        
       = submit_tag :Add
