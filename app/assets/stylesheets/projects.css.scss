@@ -42,9 +42,14 @@ a {
   text-decoration: none;
   color: #7da1bc;
 }
-a:hover {
+a:hover, .selected {
   color: #ef4034;
 }
+.selected {
+   color: #fff;
+    background-color: #000;
+}
+ 
 p { margin: 0 0 1em }
 
 /*-----------------------------------------------------------------------------------*
