@@ -30,3 +30,5 @@ solr/default/data
 log/*.log.lck
 solr/pids
 log/sunspot*
+public/assets/*
+config/secrets.yml
