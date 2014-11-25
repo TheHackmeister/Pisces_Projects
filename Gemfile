@@ -14,14 +14,19 @@ gem 'sunspot_rails', github: "betam4x/sunspot" # , '2.1.1'
 gem 'sunspot_solr', github: "betam4x/sunspot" # '2.1.1'
 
 group :test do
-  gem "factory_girl_rails", "~> 4.0"
-  gem 'rspec-rails'
+  gem 'faker'
+  gem 'guard-rspec'
+  gem 'launchy'
   gem 'cucumber-rails'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+  gem "factory_girl_rails", "~> 4.0"
+end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
