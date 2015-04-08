@@ -4,7 +4,7 @@ gem 'haml-rails'
 gem 'devise'
 gem 'cancancan'
 gem 'mysql2', "~>0.3.11"
-gem 'sorted'
+gem 'sorted', '1.0.1'
 gem 'ranked-model'
 gem 'jquery-ui-rails'
 gem 'kaminari'
@@ -12,20 +12,27 @@ gem 'kaminari'
 #gem 'sunspot_solr', "~>2.1.0", :git => 'https://github.com/sunspot/sunspot.git'
 gem 'sunspot_rails', github: "betam4x/sunspot" # , '2.1.1'
 gem 'sunspot_solr', github: "betam4x/sunspot" # '2.1.1'
+#gem 'progress_bar'
+gem 'rsolr', "1.0.10"
 
 group :test do
   gem 'faker'
   gem 'guard-rspec'
   gem 'launchy'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'selenium-webdriver'
+  gem 'poltergeist'
+  gem 'phantomjs', require: 'phantomjs/poltergeist'
   gem 'database_cleaner'
+  gem "accept_values_for"
+  gem 'formulaic'
 end
 
 group :development, :test do
   gem 'rspec-rails'
-  gem "factory_girl_rails", "~> 4.0"
+  gem "factory_girl_rails", "~> 4.5"
+#  gem "factory_girl_rails", "~> 4.5", github: "thoughtbot/factory_girl_rails"
 end
 
 
