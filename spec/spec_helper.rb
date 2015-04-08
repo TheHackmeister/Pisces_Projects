@@ -39,7 +39,7 @@ RSpec.configure do |config|
   end
 
 config.disable_monkey_patching!
-config.warnings = true
+config.warnings = false
 config.order = :random
 
 # The settings below are suggested to provide a good initial experience
