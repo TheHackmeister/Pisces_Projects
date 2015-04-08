@@ -13,7 +13,7 @@ class Ability
     
     if user.has_role? :user
       can :manage, :all
-      cannot :delete, :all
+      cannot :destroy, :all
     end
     
     if user.has_role? :admin
