@@ -1,10 +1,15 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
+  
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = exception.message
+    render :edit
+  end
+  
   def index
     @search = Project.joins(:priority).search do 
       fulltext params[:q]
-      puts params[:sort]
       
       #This splits the sort pram call. 
       view_context.set_sort_order(params[:sort], :priority_val_asc) do |call,dir| 
@@ -13,7 +18,7 @@ class ProjectsController < ApplicationController
       #order_by(:priority_val, :asc) 
       paginate(:page => params[:page] || 1, :per_page => 25)
     end
-    puts params
+    
     @projects = @search.results #.sorted(params[:sort], 'priorities.val ASC').page(params[:page]).per 25
   end
 
@@ -30,6 +35,7 @@ class ProjectsController < ApplicationController
     if @project.update project_params
       redirect_to @project
     else
+      flash[:alert] = @project.errors.full_messages 
       render :edit
     end
   end
@@ -39,6 +45,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to @project
     else
+      @flash = flash
       render :new
     end
   end

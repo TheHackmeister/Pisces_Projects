@@ -19,10 +19,10 @@
           %form{:action => projects_path, :method => :get , :class => :inline}  
             %input{:type => :text, :value => params[:q], :name => :q}
             %button{:value => :Search}
-              Submit
+              Search 
       %div.center><
         %div#flash><
-          = notice
-          = alert
+          = display_notice(notice)
+          = display_alert(alert)
     %div#wrap
       = yield

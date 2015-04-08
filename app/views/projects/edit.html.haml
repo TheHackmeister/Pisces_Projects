@@ -1,9 +1,4 @@
 %h1
   Edit
 %div
-  %div
-    %b
-      - @project.errors.full_messages.each do |message|
-        = message + '.'
-        %br
   = render "project_form"
