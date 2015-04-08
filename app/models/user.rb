@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   #has_many :roles, through: :role_assigment, source: :role
   
   def has_role?(role_sym)
-    roles.any? { |r| r.title.underscore.to_sym == role_sym }
+    roles.any? { |r| r.title.underscore.downcase.to_sym == role_sym }
   end
   
    before_save :assign_default_role
