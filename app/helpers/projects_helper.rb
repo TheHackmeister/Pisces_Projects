@@ -7,7 +7,6 @@ module ProjectsHelper
     string_array.each do |s|
       direction = s.split("_")[-1]
       s = s.remove("_" + direction)
-      puts s + direction
       yield s, direction 
     end
   end
