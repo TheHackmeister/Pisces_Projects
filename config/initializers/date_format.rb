@@ -7,7 +7,7 @@
 #Date::DATE_FORMATS[:default] = "%e %b %Y"  # 3 Nov 2013
 #Date::DATE_FORMATS[:default] = "%Y%m%d"    # 20131103
 #Date::DATE_FORMATS[:default] = "%e %b"     # 3 Nov
-Date::DATE_FORMATS[:default] = "%m-%d-%y"          # custom
+Date::DATE_FORMATS[:default] = "%d/%m/%Y"          # custom
 
 # DateTime
 # ----------------------------
