@@ -38,7 +38,20 @@ module ApplicationHelper
     while string.include?(find) == true
       string = string.sub(find, '<' + tag + ' ' + options + ' >').sub(find, '</' + tag + '>')
     end
-    puts string
+    #puts string # I don't think I need this.
     string
   end
+  
+  def display_alert alert
+    if(alert.kind_of?(Array)) then
+      s = "" 
+      alert.each do |message|
+        s += message + "\n"
+      end
+      return s
+    else 
+      return alert
+    end
+  end
+  alias_method :display_notice, :display_alert
 end
