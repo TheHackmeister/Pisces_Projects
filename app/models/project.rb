@@ -12,6 +12,7 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :steps
   accepts_nested_attributes_for :contacts
   accepts_nested_attributes_for :communications
+  
 
   validates :title, :customer, :priority, :status, :presence => true
   validates_associated :customer, :priority, :status, :project_links, :steps, :contacts, :communications
@@ -60,6 +61,7 @@ class Project < ActiveRecord::Base
     text :customer_notes
     text :stumbling_blocks
     text :priority_text
+    text :status_text
     text :customer_name
     text :steps do
       steps.map(&:action)
