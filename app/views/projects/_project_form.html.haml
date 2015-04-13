@@ -60,7 +60,7 @@
         Contacts
       %br
       = f.fields_for :contacts do |ff|
-        %div.flex.three
+        %div.flex.two
           = render :partial => 'contacts/edit_contact', :object => ff 
   %hr
   = f.submit 'Submit'

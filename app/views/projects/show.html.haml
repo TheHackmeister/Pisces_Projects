@@ -5,22 +5,34 @@
   %div
     %div.flex.six
       %div
-        Customer:
+        %b
+          Customer:
+        %br
         = Customer.find_by_id(@project.customer_id).customer_name
       %div
-        Priority:
+        %b
+          Priority:
+        %br
         = @project.priority.text
       %div
-        Status:
+        %b
+          Status:
+        %br
         = @project.status.text
       %div
-        Goal:
+        %b
+          Goal:
+        %br
         = @project.goal
       %div
-        Soft Deadline:
+        %b
+          Soft Deadline:
+        %br
         = @project.soft_deadline
       %div
-        Start Date:
+        %b
+          Start Date:
+        %br
         = @project.started
     %hr
     %div.flex.three
@@ -52,6 +64,7 @@
               Notes
           - @project.project_links.each do |link|
             = render :partial => '/project_links/show_single', :object => link
+        %br
         New link
         = render :partial => "/project_links/new_link", locals: {:project => @project}
       %div
