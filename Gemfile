@@ -14,6 +14,7 @@ gem 'sunspot_rails', github: "betam4x/sunspot" # , '2.1.1'
 gem 'sunspot_solr', github: "betam4x/sunspot" # '2.1.1'
 #gem 'progress_bar'
 gem 'rsolr', "1.0.10"
+gem 'coffee-script-source', '1.8.0'
 
 group :test do
   gem 'faker'
