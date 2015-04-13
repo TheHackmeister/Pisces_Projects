@@ -34,3 +34,4 @@ solr/pids
 log/sunspot*
 public/assets/*
 config/secrets.yml
+config/sunspot.yml
