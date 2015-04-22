@@ -20,8 +20,8 @@ RSpec.describe Project, :type => :feature do
         visit new_project_path
         expect(current_path).to eq(new_project_path)
         fill_in :project_title, :with => "Project Title"
-        select_date('16/10/2015'.to_date, :from => :project_started)
-        select_date('16/10/2016'.to_date, :from => :project_soft_deadline)
+        select_date('10/16/2015'.to_date, :from => :project_started)
+        select_date('10/16/2016'.to_date, :from => :project_soft_deadline)
         select('Urgent', :from => :project_priority_id)
         select('Not Started', :from => :project_status_id)
         fill_in :project_goal, :with => "GOAL"
@@ -89,8 +89,8 @@ RSpec.describe Project, :type => :feature do
         @modified_form = {'title' => "New Title", 'goal' => 'New Goal', 'notes' => 'New Note', 'customer_notes' => "New customer notes", 'stumbling_blocks' => 'New stumbling'}
         
         fill_attributes :project, @modified_form
-        select_date('16/10/2015'.to_date, :from => :project_started)
-        select_date('16/10/2016'.to_date, :from => :project_soft_deadline)
+        select_date('10/16/2015'.to_date, :from => :project_started)
+        select_date('10/16/2016'.to_date, :from => :project_soft_deadline)
         select('Urgent', :from => :project_priority_id)
         select('Not Started', :from => :project_status_id)
         find('input#project_customer_customer').native.send_keys('Pisces')
