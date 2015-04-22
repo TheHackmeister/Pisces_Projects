@@ -1,5 +1,7 @@
-%div.flex.two.list
+%div.flex.three.list
   %div
     = link_to show_single.name, show_single.url, :target => '_blank'
   %div
     = show_single.notes
+  %div
+    = link_to "X", project_link_path(show_single, format: :ajax), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, remote: true, class: :remove_button

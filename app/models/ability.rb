@@ -14,6 +14,7 @@ class Ability
     if user.has_role? :user
       can :manage, :all
       cannot :destroy, :all
+      can :destroy, ProjectLink
     end
     
     if user.has_role? :admin

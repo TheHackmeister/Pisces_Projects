@@ -114,6 +114,10 @@ function window_ready() {
     	}
     	
     	});
+    $('body').on('ajax:success', '.remove_button', function(evt, data) {
+	var element = $(this);
+	element.parent().parent().html(data); // Assumption is div(row) > div(column) > a(link).
+    });
     $('form[data-update-target]').on('ajax:success', function(evt, data) {
         var target = $(this).data('update-target');
         var result = $('#' + target).append(data);

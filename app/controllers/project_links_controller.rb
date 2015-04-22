@@ -61,6 +61,7 @@ class ProjectLinksController < ApplicationController
     respond_to do |format|
       format.html { redirect_to project_links_url, notice: 'Project link was successfully destroyed.' }
       format.json { head :no_content }
+      format.ajax { render :partial => 'project_links/ajax_delete', :object => @project_link, :formats => [:html] }
     end
   end
 

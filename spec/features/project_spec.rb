@@ -114,10 +114,10 @@ RSpec.describe Project, :type => :feature do
       cap_login
       visit project_path @project
     end
+    let(:link_attributes) {{'name' => 'Link Name', 'url' => "Link URL", 'notes' => "Link notes" }}
     #Assumed logged in? 
     context 'if valid' do
       it 'can be added' do
-        link_attributes = {'name' => 'Link Name', 'url' => "Link URL", 'notes' => "Link notes" }
         within('#new_project_link') do 
           fill_attributes :project_link, link_attributes
           
@@ -139,7 +139,18 @@ RSpec.describe Project, :type => :feature do
         expect(page).to have_content("Could not add link. Name can't be blank. Refresh to remove this error.")
       end
     end
-    it 'can be deleted' 
+
+    it 'can be deleted' do
+      FactoryGirl.create(:project_link, :Project => @project, :notes => "Test notes.")
+      visit project_path @project
+      within('#links') do
+	click_link "X"
+      end
+      expect(page).to_not have_content("Test notes.")
+      expect(page).to have_content("Project link deleted.")
+      visit project_path @project
+      expect(page).to_not have_content("Test notes.")
+    end
   end
 
 
