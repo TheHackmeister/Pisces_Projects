@@ -28,15 +28,18 @@ module ApplicationHelper
     text = sub_tag text, '***', 'b'
     text = sub_tag text, '*r*', 'font', 'color="red"'
     text = sub_tag text, '\n', 'br'
-    text = simple_format text
+    text = simple_format text,{} ,:sanitize => false
     
     text.html_safe
   end
 
   def sub_tag string, find, tag, options=""
+		if(options != "") 
+			options = " " + options 
+		end
 
     while string.include?(find) == true
-      string = string.sub(find, '<' + tag + ' ' + options + ' >').sub(find, '</' + tag + '>')
+      string = string.sub(find, '<' + tag + options + '>').sub(find, '</' + tag + '>')
     end
     #puts string # I don't think I need this.
     string

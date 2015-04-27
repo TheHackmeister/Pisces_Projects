@@ -41,7 +41,7 @@ Should be an intigration test.
       expect(helper.format_text_field "Hello ***Bold***.").to eq("<p>Hello <b>Bold</b>.</p>")
     end
     it 'turns *r* into <font color="red">' do #Ah, this fails. Gotta fix it some time.
-      pending("Has been broken.")
+      #pending("Has been broken.")
       expect(helper.format_text_field "*r*Red*r*.").to eq("<p><font color=\"red\">Red</font>.</p>")      
     end
     it 'turns \\n into </br>' do
