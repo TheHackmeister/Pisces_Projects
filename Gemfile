@@ -16,6 +16,8 @@ gem 'sunspot_solr', github: "betam4x/sunspot" # '2.1.1'
 gem 'rsolr', "1.0.10"
 gem 'coffee-script-source', '1.8.0'
 gem 'american_date'
+gem 'rack', '1.6.1'
+gem 'thin'
 
 group :test do
   gem 'faker'
