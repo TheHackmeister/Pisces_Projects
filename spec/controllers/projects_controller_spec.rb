@@ -13,6 +13,39 @@ RSpec.describe ProjectsController do
          expect(response).to redirect_to(new_user_session_path)
        end
      end
+
+			context 'has a json page' do
+				render_views
+				before(:each) do 
+					sign_in user
+					request.accept = "application/json"
+				end
+
+				it 'that returns in json format' do				
+					get :index
+					expect(response.content_type).to include "application/json"
+				end
+
+				it 'that returns projects' do
+					27.times do FactoryGirl.create(:project, multiple_projects: true) end
+					Project.reindex
+					get :index 
+					json = JSON.parse(response.body)
+					expect(json).to have_content "Title" 
+				end				 																
+
+				it 'that can search for a title' do
+					FactoryGirl.create(:project, :title => "FunGuy")
+					FactoryGirl.create(:project, :title => "Testing")
+					FactoryGirl.create(:project, :title => "Nonsense")
+
+					Project.reindex
+					get :index, :q => "fun"
+					expect(JSON.parse(response.body).length).to eq 1
+				end
+
+		 end
+
      
      context 'searching' do
        before(:each) do
