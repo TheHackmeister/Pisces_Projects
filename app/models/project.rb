@@ -21,7 +21,6 @@ class Project < ActiveRecord::Base
   delegate :customer_name, :to => :customer
   delegate :text, :val, :to => :status, :prefix => true
   #delegate :action, :note, :to => :step, :allow_nil => true, :prefix => true
-  #delegate :contact_name, :phone, :email, :address, :to => :contacts, :allow_nil => true, :prefix => true
   #delegate :name, :url, :notes, :to => :project_links, :allow_nil => true, :prefix => true
   #delegate :summary, :notes, :to => :communications, :allow_nil => true, :prefix => true
   
@@ -68,9 +67,9 @@ class Project < ActiveRecord::Base
       steps.map(&:note)
     end
     text :contacts do
-      contacts.map(&:contact_name)
-      contacts.map(&:email)
-      contacts.map(&:address)
+      contacts.map{|contact|
+				contact.contact_name
+				contact.email}
     end
     text :project_links do
       project_links.map(&:url)
