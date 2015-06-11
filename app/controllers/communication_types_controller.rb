@@ -3,7 +3,10 @@ class CommunicationTypesController < ApplicationController
   before_action :set_communication_type, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js, :json, :ajax
 
-  def index
+	# Remove
+	skip_before_action :authenticate_user!, :only => [:index]
+  
+	def index
     @communication_types = CommunicationType.all
     respond_with(@communication_types)
   end

@@ -1,8 +1,11 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-  
-  rescue_from CanCan::AccessDenied do |exception|
+	
+	# REMOVE
+	skip_before_action :authenticate_user!, :only => [:index]
+  	
+	rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = exception.message
     render :edit
   end
