@@ -2,22 +2,19 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
-#  before_action :authenticate_user!
-	before_action :authorize
+  before_action :authenticate_user!
 
-  # Fix for CanCan 
+	# Needed for API. If a user doesn't have a valid token, the authentication strategy will NOT roll over into the usual html auth.
+	skip_before_action :verify_authenticity_token, if: :json_request? 
+ 
+	# Fix for CanCan 
   resource = controller_name.singularize.to_sym
   method = "#{resource}_params"
   params[resource] &&= send(method) if respond_to?(method, true)
 
 	private 
 	
-	def authorize
-		if params[:format] != 'json'
-			authenticate_user!
-		else
-			# If it has cookies error out?
-			# Figure out my own authentication.
-		end
+	def json_request?
+		request.format.symbol == :json
 	end
 end

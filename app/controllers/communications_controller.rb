@@ -3,11 +3,6 @@ class CommunicationsController < ApplicationController
   before_action :set_communication, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js, :json, :ajax
 
-	# REMOVE
-	skip_before_action :authenticate_user! , :only => [:create] 
-	skip_before_action :verify_authenticity_token, :only => [:create]
-	skip_load_and_authorize_resource :only => [:create]
-
 	def index
     @communications = Communication.all
     respond_with(@communications)

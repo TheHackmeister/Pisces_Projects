@@ -16,7 +16,14 @@ class User < ActiveRecord::Base
     roles.any? { |r| r.title.underscore.downcase.to_sym == role_sym }
   end
   
-   before_save :assign_default_role
+  before_save :assign_default_role
+
+	def create_token
+		self.token = SecureRandom.hex(16) #self.secure_token.generate_unique_secure_token
+		self.save
+	end
+
+
 
   protected
   

@@ -3,9 +3,6 @@ class CommunicationStatusesController < ApplicationController
   before_action :set_communication_status, only: [:show, :edit, :update, :destroy]
   respond_to :html, :js, :json, :ajax
 	
-	# REMOVE
-	skip_before_action :authenticate_user!, :only => [:index]
-  
 	def index
     @communication_statuses = CommunicationStatus.all
     respond_with(@communication_statuses)
