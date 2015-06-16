@@ -46,6 +46,23 @@ RSpec.describe CommunicationsController do
 			expect(response).to redirect_to(Communication.first)
 		end
 	end
+
+	describe "CSRF Token checking" do
+		before(:each) do ActionController::Base.allow_forgery_protection = true end
+		after(:each) do ActionController::Base.allow_forgery_protection = false end
+		let(:user) do FactoryGirl.create(:token_user) end
+		let(:communication) {FactoryGirl.build :communication}
+
+		it "is disabled for JSON requests" do
+			request.accept = "application/json"
+			post :create, {:email => user.email, :token => user.token}.merge(:communication => communication.attributes)
+			expect(response.status).to eq 201
+		end
+
+		it "is enabled for normal requests" do
+			expect {post :create, :communication => communication.attributes}.to raise_error
+		end
+	end
 end
 
 
