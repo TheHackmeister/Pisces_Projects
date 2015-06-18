@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :projects
   resources :customers
   resources :settings
+	get 'token/show' 
 
   root 'projects#index'
   #get 'projects/index'

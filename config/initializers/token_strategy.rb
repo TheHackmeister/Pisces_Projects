@@ -4,8 +4,6 @@ module Devise
 	module Strategies
 		class TokenAuth < Authenticatable
 			def authenticate!
-				
-				puts "\nIn authenticate\n"
 				user = User.find_by_email(params['email'])	
 				if user == nil
 					fail!("Couldn't find user")
@@ -16,8 +14,6 @@ module Devise
 				else
 					fail!("Could not validate token")
 				end
-				#u = User.authenticate(params['email'], params['token'])
-				#u.nil ? fail!("Could not log in") : success!(u)
 			end
 
 			# Only valid for json pages.
