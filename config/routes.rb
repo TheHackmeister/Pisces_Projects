@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :customers
   resources :settings
 	get 'token/show' 
+	get 'token/update'
 
   root 'projects#index'
   #get 'projects/index'

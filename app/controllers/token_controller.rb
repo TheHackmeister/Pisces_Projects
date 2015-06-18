@@ -1,14 +1,18 @@
 class TokenController < ApplicationController
 #	load_and_authorize_resource
 	respond_to :json
-	skip_before_action :authenticate_user!, :only => [:show]
-	before_action :authorize, :only => [:show]
+	skip_before_action :authenticate_user!, :only => [:show, :update]
+	before_action :authorize, :only => [:show, :update]
 
   def show
 		@user = current_user
-		# Auth goes here.
-		# Need to setup route.
   end
+
+	def update
+		@user = current_user
+		@user.create_token
+		render "show" # No reason to duplicate show when that's what is being displayed anyway. 
+	end
 
 	private
 

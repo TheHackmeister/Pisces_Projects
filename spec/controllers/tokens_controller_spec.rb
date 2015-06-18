@@ -42,15 +42,16 @@ RSpec.describe TokenController do
 		it 'creates a new token with proper authorization' do
 			oldToken = user.token
 			get :update, :format=> :json, :email => user.email, :password => user.password
+			user.reload
 			expect(user.token).not_to eq oldToken
-			expect(response.body).to have_contect user.token
+			expect(response.body).to have_content user.token
 		end
 
 		it 'displays an error with improper authorization' do
 			oldToken = user.token
 			get :update, :format=> :json, :email => user.email, :password => "WrongPass"
 			expect(user.token).to eq oldToken
-			expect(response.body).to have_contect user.token
+			expect(response.status).to eq 401
 		end
 	end
 end
