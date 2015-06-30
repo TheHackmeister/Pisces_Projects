@@ -12,5 +12,6 @@ class Contact < ActiveRecord::Base
 
 	def reindex_project
 		Sunspot.index(project)
+		yield
 	end
 end
