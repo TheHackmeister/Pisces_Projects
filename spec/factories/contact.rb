@@ -4,7 +4,13 @@ FactoryGirl.define do
     phone "123-456-7980"
     email "Contact@email.com"
     address "123 Test Lane"
-    project_id 1
+		sequence(:project_id) { 
+			if(Project.count == 0) then
+				(create :project).id
+			else
+				Project.find(1).id
+			end
+		}
   end
 end
 
