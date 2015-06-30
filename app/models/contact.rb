@@ -8,10 +8,14 @@ class Contact < ActiveRecord::Base
   validates :contact_name, :presence => true
 	
 	after_save :reindex_project
-	around_destroy :reindex_project
+	around_destroy :reindex_deleted_contact
 
 	def reindex_project
 		Sunspot.index(project)
+	end
+
+	def reindex_deleted_contact
+		reindex_project
 		yield
 	end
 end
