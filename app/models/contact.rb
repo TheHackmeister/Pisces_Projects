@@ -6,4 +6,11 @@ class Contact < ActiveRecord::Base
   scope :project_id, ->(project_id) {where(:project_id => project_id)}
   #scope :cust_name, ->(c_name) {where c_name}
   validates :contact_name, :presence => true
+	
+	after_save :reindex_project
+	around_destroy :reindex_project
+
+	def reindex_project
+		Sunspot.index(project)
+	end
 end
