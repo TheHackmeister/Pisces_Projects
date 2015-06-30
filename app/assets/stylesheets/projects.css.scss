@@ -274,7 +274,20 @@ label.long{
 .outline{
   border-style: dashed;
   border-width: 1px;
+  max-height: 6em;
+  overflow-y: hidden;
+  background-image: url('/plus.png');
+  background-repeat: no-repeat;
+//  background-attachment: fixed;
+  background-position: right top;
 }
+
+.outline_expanded {
+  max-height: 100%;
+  background-image: url('/minus.png');
+}
+
+
 
 label {
   display: block;

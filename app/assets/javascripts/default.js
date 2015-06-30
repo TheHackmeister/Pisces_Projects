@@ -102,7 +102,7 @@ function select_search(e) {
 }
 
 function window_ready() {
-	$('.search_field').keypress(function(event) { if(event.keyCode == 13) {return false;} else {return true;}});
+    $('.search_field').keypress(function(event) { if(event.keyCode == 13) {return false;} else {return true;}});
     $('.search_field').on('keyup', search_field);
     $('body').on('click', 'a.search_selector', select_search);
     $('body').on('click', '.hide_toggle', function(e) {
@@ -130,6 +130,9 @@ function window_ready() {
         $('#' + target).append('<div class="validation_error">There was an error communicating with the server. Please try again. Refresh to remove this error.</div>');
     });
     $('.full_text').autosize();    
+    $('body').on('click', '.outline', function(){
+	    $(this).toggleClass("outline_expanded");
+    });
     update_steps_sort_order();
 }
 
