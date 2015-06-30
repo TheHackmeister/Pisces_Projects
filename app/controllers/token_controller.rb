@@ -21,6 +21,7 @@ class TokenController < ApplicationController
 
 		if params[:password] != nil
 			user = User.find_by_email(params[:email])
+			if user.token == "" then user.create_token end
 			sign_in user if user.valid_password?(params[:password])
 		end
 		authenticate_user!

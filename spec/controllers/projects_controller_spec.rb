@@ -53,7 +53,6 @@ RSpec.describe ProjectsController do
 					request.accept = "application/json"	
 					get :index, :email => ntuser.email
 					expect(response.status).to eq 401
-					expect(response.body).to have_content "User does not have a token"
 				end
 
 				it 'uses tokens to authenticate' do

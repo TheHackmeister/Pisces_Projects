@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   end
   
   before_save :assign_default_role
+	after_create :create_token
 
 	def create_token
 		self.token = SecureRandom.hex(16) #self.secure_token.generate_unique_secure_token

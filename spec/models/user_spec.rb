@@ -46,4 +46,11 @@ RSpec.describe User do
     user
     expect(user.roles.first.title).to eq("User")
   end
+
+	it 'when created, generates a token' do
+		new_user = FactoryGirl.build :user
+		expect(new_user.token).to eq ""
+		new_user.save
+		expect(new_user.token).to_not eq ""
+	end
 end
