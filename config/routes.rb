@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :project_types
+
   resources :roles
 
   devise_for :users, :controllers => { registrations: 'registrations' }

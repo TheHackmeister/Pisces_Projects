@@ -1,0 +1,25 @@
+%h1 Listing project_types
+
+%table
+  %thead
+    %tr
+      %th Text
+      %th Val
+      %th Sort
+      %th
+      %th
+      %th
+
+  %tbody
+    - @project_types.each do |project_type|
+      %tr
+        %td= project_type.text
+        %td= project_type.val
+        %td= project_type.sort
+        %td= link_to 'Show', project_type
+        %td= link_to 'Edit', edit_project_type_path(project_type)
+        %td= link_to 'Destroy', project_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Project type', new_project_type_path
