@@ -65,11 +65,8 @@ RSpec.describe ProjectsController do
 					expect(response.status).to eq 200
 					expect(response.body).to have_content p.title
 				end
-
-
 		 end
 
-     
      context 'searching' do
        before(:each) do
          sign_in user
@@ -122,7 +119,7 @@ RSpec.describe ProjectsController do
        expect(assigns(:projects)).to eq([project])
      end
    end
-    
+
    describe "GET #show" do      
      context 'user is not logged in' do
        it 'redirects to the login page' do

@@ -64,6 +64,8 @@ RSpec.describe Project do
         expect(@project).to_not be_valid        
       end 
     end  
+
+		it 'requires a project type'
   end
 # End tests for validation.  
   
@@ -116,6 +118,8 @@ RSpec.describe Project do
     it 'returns status value' do 
       expect(project.status_val).to eq 1
     end
+
+		it 'returns project type text'
 
   end
 # End tests for delegations.
