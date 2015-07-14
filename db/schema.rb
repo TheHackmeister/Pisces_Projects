@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150611200256) do
+ActiveRecord::Schema.define(version: 20150701205627) do
 
   create_table "communication_statuses", force: true do |t|
     t.string   "text"
@@ -39,10 +39,10 @@ ActiveRecord::Schema.define(version: 20150611200256) do
     t.date     "comm_date"
   end
 
-  add_index "communications", ["communication_status_id"], name: "index_communications_on_communication_status_id"
-  add_index "communications", ["communication_type_id"], name: "index_communications_on_communication_type_id"
-  add_index "communications", ["contact_id"], name: "index_communications_on_contact_id"
-  add_index "communications", ["project_id"], name: "index_communications_on_project_id"
+  add_index "communications", ["communication_status_id"], name: "index_communications_on_communication_status_id", using: :btree
+  add_index "communications", ["communication_type_id"], name: "index_communications_on_communication_type_id", using: :btree
+  add_index "communications", ["contact_id"], name: "index_communications_on_contact_id", using: :btree
+  add_index "communications", ["project_id"], name: "index_communications_on_project_id", using: :btree
 
   create_table "contacts", force: true do |t|
     t.string   "contact_name"
@@ -77,7 +77,15 @@ ActiveRecord::Schema.define(version: 20150611200256) do
     t.string   "notes"
   end
 
-  add_index "project_links", ["Project_id"], name: "index_project_links_on_Project_id"
+  add_index "project_links", ["Project_id"], name: "index_project_links_on_Project_id", using: :btree
+
+  create_table "project_types", force: true do |t|
+    t.string   "text"
+    t.integer  "val"
+    t.integer  "sort"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "projects", force: true do |t|
     t.date     "started"
@@ -88,23 +96,24 @@ ActiveRecord::Schema.define(version: 20150611200256) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "title"
-    t.text     "notes",            limit: 255
-    t.text     "customer_notes",   limit: 255
-    t.text     "stumbling_blocks", limit: 255
+    t.text     "notes"
+    t.text     "customer_notes"
+    t.text     "stumbling_blocks"
     t.date     "soft_deadline"
+    t.integer  "project_type_id"
   end
 
-  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id"
-  add_index "projects", ["priority_id"], name: "index_projects_on_priority_id"
-  add_index "projects", ["status_id"], name: "index_projects_on_status_id"
+  add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree
+  add_index "projects", ["priority_id"], name: "index_projects_on_priority_id", using: :btree
+  add_index "projects", ["status_id"], name: "index_projects_on_status_id", using: :btree
 
   create_table "role_assignments", force: true do |t|
     t.integer "user_id"
     t.integer "role_id"
   end
 
-  add_index "role_assignments", ["role_id"], name: "index_role_assignments_on_role_id"
-  add_index "role_assignments", ["user_id"], name: "index_role_assignments_on_user_id"
+  add_index "role_assignments", ["role_id"], name: "index_role_assignments_on_role_id", using: :btree
+  add_index "role_assignments", ["user_id"], name: "index_role_assignments_on_user_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "title"
@@ -138,8 +147,8 @@ ActiveRecord::Schema.define(version: 20150611200256) do
     t.date     "due"
   end
 
-  add_index "steps", ["project_id"], name: "index_steps_on_project_id"
-  add_index "steps", ["step_status_id"], name: "index_steps_on_step_status_id"
+  add_index "steps", ["project_id"], name: "index_steps_on_project_id", using: :btree
+  add_index "steps", ["step_status_id"], name: "index_steps_on_step_status_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -156,10 +165,12 @@ ActiveRecord::Schema.define(version: 20150611200256) do
     t.string   "last"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "uid",                    default: "", null: false
     t.string   "token"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid_and_provider", unique: true, using: :btree
 
 end

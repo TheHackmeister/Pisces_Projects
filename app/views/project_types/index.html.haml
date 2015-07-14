@@ -1,25 +1,28 @@
-%h1 Listing project_types
+%h1 Listing Project Types
 
-%table
-  %thead
-    %tr
-      %th Text
-      %th Val
-      %th Sort
-      %th
-      %th
-      %th
+%div
+  %div.flex.three.list
+    %div 
+      Project Type
+    %div
+      Project Title
+    %div
+      Goal
 
-  %tbody
-    - @project_types.each do |project_type|
-      %tr
-        %td= project_type.text
-        %td= project_type.val
-        %td= project_type.sort
-        %td= link_to 'Show', project_type
-        %td= link_to 'Edit', edit_project_type_path(project_type)
-        %td= link_to 'Destroy', project_type, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+  - @project_types.each do |project_type|
+    %div.outline.large
+      %div.flex.three.list
+        %div
+          = link_to project_type.text, project_type
+        %div
+        %div
+      - project_type.projects.each do |project|
+        %div.flex.three.list
+          %div
+          %div
+            = link_to project.title, project
+          %div
+            = link_to project.goal, project
 %br
 
 = link_to 'New Project type', new_project_type_path

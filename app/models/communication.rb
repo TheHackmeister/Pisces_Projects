@@ -17,13 +17,9 @@ class Communication < ActiveRecord::Base
 	def create_contact(email, name) 
 		# There isn't a contact with that email. 
 		if(self.project.contacts.find_by_email(email) == nil)  
-			puts "If"
 			self.contact = Contact.create(project_id: self.project.id, email: email, contact_name: name)
 		else #Otherwise, use that email. 
-			puts "Else"
-			puts "Email: " + self.project.contacts.find_by_email(email).email.to_s
 			self.contact = self.project.contacts.find_by_email(email)
-			puts "Contact: " + self.contact.email.to_s
 		end	
 	end
 end

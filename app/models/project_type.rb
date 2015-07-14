@@ -1,3 +1,10 @@
 class ProjectType < ActiveRecord::Base
-	has_many projects
+	has_many :projects
+	validates :text, :presence => true
+
+	default_scope { order('sort ASC')}
+
+	searchable do
+		text :text
+	end
 end

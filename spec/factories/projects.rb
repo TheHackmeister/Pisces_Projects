@@ -7,6 +7,7 @@ FactoryGirl.define do
       step_action 'Action'
       multiple_projects false
     end
+		project_type
     started '11/01/2010'
     sequence(:goal) { |n| "Project Goal " + n.to_s }
     customer_id 381 # Should be Pisces Molecular

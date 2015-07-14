@@ -1,10 +1,20 @@
 class ProjectTypesController < ApplicationController
+	load_and_authorize_resource
   before_action :set_project_type, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
+	rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = exception.message
+    render :edit
+  end
+
   def index
-    @project_types = ProjectType.all
+    search = ProjectType.search do
+			paginate(:page => params[:page] || 1, :per_page => 5)
+		end
+
+		@project_types = search.results
     respond_with(@project_types)
   end
 

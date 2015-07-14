@@ -282,8 +282,13 @@ label.long{
   background-position: right top;
 }
 
+
+.outline.large {
+  max-height: 9em;
+}
+
 .outline_expanded {
-  max-height: 100%;
+  max-height: 100% !important; // For some reason, a large outilne doesn't work without the !important, regardless of if it's before or after this block.
   background-image: url('/minus.png');
 }
 
