@@ -18,7 +18,7 @@ RSpec.describe ProjectType, :type => :feature do
 			end
 
 			it 'creates a new project_type' do
-				expect(Project.count).to eq 1
+				expect(ProjectType.count).to eq 1
 			end
 
 			it 'redirects to the new project_type' do
@@ -27,17 +27,39 @@ RSpec.describe ProjectType, :type => :feature do
 		end
 	end
 
-	context 'views projects by project_type' do
-		it 'shows 5 project types per page' 
+	context 'views projects by project_type', :js do
+		before :each do
+			7.times do
+				FactoryGirl.create(:project_type)
+			end
+			
+			7.times do
+				FactoryGirl.create :project, project_type: ProjectType.first
+			end
 
-		it 'shows only 5 projects per project type'
-		it 'can be clicked to show all projects of a project type'
+			cap_login
+			visit project_types_path
+		end
+
+		it 'shows 5 project types per page' do
+			expect(page).to have_css('.outline', count: 5)
+		end
+
+		it 'shows only 5 projects per project type' #do
+# I don't currently have a good way of testing for this. 
+#			expect(Project.count).to eq 7
+#			expect(Project.first.project_type).to eq ProjectType.first
+#			expect(page).to have_css('.project', count: 5, visible: true)	
+#		end
+		it 'can be clicked to show all projects of a project type' do 
+			first(".outline div").click 
+			expect(page).to have_css('.outline_expanded', count: 1) 
+		end
 	end
 	
 	it 'has a settings link' do
 		cap_login
-		visit 'settings/'
-		expect(current_path).to eq "settings/"
+		visit "/settings" 
 		click_link 'Project Types'
 		expect(current_path).to eq project_types_path
 	end

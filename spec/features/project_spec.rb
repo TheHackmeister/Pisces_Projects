@@ -16,6 +16,7 @@ RSpec.describe Project, :type => :feature do
       before(:each) do
         FactoryGirl.create(:priority)
         FactoryGirl.create(:status)
+				FactoryGirl.create(:project_type, text: "Project Type")
         cap_login
         visit new_project_path
         expect(current_path).to eq(new_project_path)
@@ -24,6 +25,7 @@ RSpec.describe Project, :type => :feature do
         select_date('10/16/2016'.to_date, :from => :project_soft_deadline)
         select('Urgent', :from => :project_priority_id)
         select('Not Started', :from => :project_status_id)
+				select('Project Type', :from => :project_project_type_id)
         fill_in :project_goal, :with => "GOAL"
         fill_in :project_notes, :with => "Pisces Notes"
         fill_in :project_customer_notes, :with => 'Customer notes'

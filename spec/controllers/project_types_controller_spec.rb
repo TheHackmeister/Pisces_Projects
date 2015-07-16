@@ -65,7 +65,14 @@ RSpec.describe ProjectTypesController, type: :controller do
 				expect(assigns(:project_types).count).to eq 5
 			end
 
-			it 'sorts the project_types via the sort order variable'
+			it 'sorts the project_types via the sort order variable' do
+				6.times do FactoryGirl.create(:project_type) end 
+				first = FactoryGirl.create(:project_type, sort: 0)
+				ProjectType.reindex
+				get :index
+				expect(assigns(:project_types).first).to eq first
+			end
+
 		end
 	end
   

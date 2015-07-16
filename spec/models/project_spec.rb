@@ -65,7 +65,13 @@ RSpec.describe Project do
       end 
     end  
 
-		it 'requires a project type'
+		it 'requires a project type' do
+			[nil].each do |obj|
+				@project.project_type_id = obj
+				expect(@project).to_not be_valid
+			end
+		end
+
   end
 # End tests for validation.  
   
@@ -119,7 +125,9 @@ RSpec.describe Project do
       expect(project.status_val).to eq 1
     end
 
-		it 'returns project type text'
+		it 'returns project type text' do
+			expect(project.project_type_text).to include "Project Type"
+		end
 
   end
 # End tests for delegations.

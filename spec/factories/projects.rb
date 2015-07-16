@@ -7,10 +7,17 @@ FactoryGirl.define do
       step_action 'Action'
       multiple_projects false
     end
-		project_type
+		project_type_id  {
+			if ProjectType.count == 0 
+				FactoryGirl.create(:project_type).id	
+			else 
+				ProjectType.first.id	
+			end
+		}
     started '11/01/2010'
     sequence(:goal) { |n| "Project Goal " + n.to_s }
     customer_id 381 # Should be Pisces Molecular
+
     sequence(:priority_id) { |n| 
       if(Priority.count == 0) then 
         FactoryGirl.create(:priority, text: 'Urgent', val: 1)

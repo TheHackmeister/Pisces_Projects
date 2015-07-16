@@ -179,8 +179,10 @@ RSpec.describe ProjectsController do
        end
 
        context "with valid attributes" do 
-         let(:project) {FactoryGirl.attributes_for(:project)}                   
+         let(:project) {
+					 FactoryGirl.attributes_for(:project)}                   
          it "saves the new project in the database" do
+					 
            expect{post :create, project: project}.to change(Project,:count).by(1)
          end
          
