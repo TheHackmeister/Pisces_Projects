@@ -13,7 +13,8 @@
         %h1
           = content_for?(:title) ? "Pisces " + content_for(:title) : "Pisces " + controller_name
         %div#navigation.clearfix
-          = link_to "All Projects", projects_url
+          = link_to "Projects", projects_url
+          = link_to "Projects (Sort: Type)", project_types_url
           = link_to 'Settings', settings_url
           = render 'devise/login'
           %form{:action => projects_path, :method => :get , :class => :inline}  
