@@ -15,12 +15,13 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :communications
   
 
-  validates :title, :customer, :priority, :status, :presence => true
+  validates :title, :customer, :priority, :status, :project_type, :presence => true
   validates_associated :customer, :priority, :status, :project_links, :steps, :contacts, :communications
   
   delegate :text, :val, :to => :priority, :prefix => true
   delegate :customer_name, :to => :customer
   delegate :text, :val, :to => :status, :prefix => true
+	delegate :text, :sort, :to => :project_type, :prefix => true
   #delegate :action, :note, :to => :step, :allow_nil => true, :prefix => true
   #delegate :name, :url, :notes, :to => :project_links, :allow_nil => true, :prefix => true
   #delegate :summary, :notes, :to => :communications, :allow_nil => true, :prefix => true

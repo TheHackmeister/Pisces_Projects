@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   load_and_authorize_resource 
   before_action :set_project, only: [:show, :edit, :update, :destroy]
-	
+
 	rescue_from CanCan::AccessDenied do |exception|
     flash[:alert] = exception.message
     render :edit
@@ -70,7 +70,7 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit :started, :customer_id, :status_id, :goal, :priority_id, :title, :soft_deadline, :notes, :stumbling_blocks, :customer_notes,
+    params.require(:project).permit :started, :customer_id, :status_id, :project_type_id, :goal, :priority_id, :title, :soft_deadline, :notes, :stumbling_blocks, :customer_notes,
         :project_links_attributes => [:id, :name, :url, :notes],
         :steps_attributes => [:action, :note, :val, :step_status_id, :id, :due],
         :contacts_attributes => [:contact_name, :phone, :email, :address, :id],

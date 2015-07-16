@@ -21,9 +21,9 @@
         = @project.status.text
       %div
         %b
-          Goal:
+          Project Type:
         %br
-        = @project.goal
+        = @project.project_type.text
       %div
         %b
           Soft Deadline:
@@ -34,6 +34,10 @@
           Start Date:
         %br
         = @project.started
+    %div
+      %b
+        Goal:
+      = @project.goal
     %hr
     %div.flex.three
       %div

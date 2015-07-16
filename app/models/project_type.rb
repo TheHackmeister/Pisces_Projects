@@ -6,5 +6,6 @@ class ProjectType < ActiveRecord::Base
 
 	searchable do
 		text :text
+		integer :sort
 	end
 end

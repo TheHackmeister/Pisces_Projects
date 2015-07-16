@@ -1,6 +1,7 @@
 class ProjectTypesController < ApplicationController
 	load_and_authorize_resource
-  before_action :set_project_type, only: [:show, :edit, :update, :destroy]
+  
+	before_action :set_project_type, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
 
@@ -11,6 +12,7 @@ class ProjectTypesController < ApplicationController
 
   def index
     search = ProjectType.search do
+			order_by(:sort, :asc)
 			paginate(:page => params[:page] || 1, :per_page => 5)
 		end
 
