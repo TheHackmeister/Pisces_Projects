@@ -32,10 +32,14 @@ RSpec.describe ProjectType, :type => :feature do
 			7.times do
 				FactoryGirl.create(:project_type)
 			end
+
+			ProjectType.reindex
 			
 			7.times do
 				FactoryGirl.create :project, project_type: ProjectType.first
 			end
+
+			Project.reindex
 
 			cap_login
 			visit project_types_path
@@ -44,13 +48,16 @@ RSpec.describe ProjectType, :type => :feature do
 		it 'shows 5 project types per page' do
 			expect(page).to have_css('.outline', count: 5)
 		end
-
-		it 'shows only 5 projects per project type' #do
+		
+		# I'd like to test showing only 5 projects per project type, but there seems to be no good way of doing that without setting the projects to be hidden.
+		# Currently, they are hidden by being in the div overflow. 
+#		it 'shows only 5 projects per project type' do
 # I don't currently have a good way of testing for this. 
 #			expect(Project.count).to eq 7
 #			expect(Project.first.project_type).to eq ProjectType.first
 #			expect(page).to have_css('.project', count: 5, visible: true)	
 #		end
+
 		it 'can be clicked to show all projects of a project type' do 
 			first(".outline div").click 
 			expect(page).to have_css('.outline_expanded', count: 1) 

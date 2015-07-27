@@ -4,6 +4,6 @@ FactoryGirl.define do
     name 'Project Link'
     url 'http://ProjectLinkURL'
     notes 'Link Notes'
-    Project {FactoryGirl.create(:project)}
+    project {FactoryGirl.create(:project)}
   end
 end
