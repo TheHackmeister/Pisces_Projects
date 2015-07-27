@@ -1,38 +1,37 @@
 class StepsController < ApplicationController
   load_and_authorize_resource 
   before_action :set_step, only: [:show, :edit, :update, :destroy]
+	respond_to :html
+	respond_to :json, only: [:create]
 
-  # GET /steps
-  # GET /steps.json
   def index
     @steps = Step.all
+		respond_with(@steps)
   end
 
-  # GET /steps/1
-  # GET /steps/1.json
   def show
+		respond_with(@step)
   end
 
-  # GET /steps/new
   def new
     @step = Step.new
+		respond_with(@step)
   end
 
-  # GET /steps/1/edit
   def edit
+		respond_with(@step)
   end
 
-  # POST /steps
-  # POST /steps.json
   def create
     @step = Step.new(step_params)
 
-    respond_to do |format|
+		respond_with(@step) do |format|
       if @step.save
         format.html { redirect_to @step, notice: 'Step was successfully created.' }
         format.json { render :show, status: :created, location: @step }
         format.ajax {render :partial => 'show_single', :object => @step, :formats => [:html]}
       else
+				flash[:alert] = @step.errors.full_messages 
         format.html { render :new }
         format.json { render json: @step.errors, status: :unprocessable_entity }
         format.ajax {render :partial => 'bad_step', :object => @step, :formats => [:html]}
@@ -40,28 +39,18 @@ class StepsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /steps/1
-  # PATCH/PUT /steps/1.json
   def update
-    respond_to do |format|
-      if @step.update(step_params)
-        format.html { redirect_to @step, notice: 'Step was successfully updated.' }
-        format.json { render :show, status: :ok, location: @step }
-      else
-        format.html { render :edit }
-        format.json { render json: @step.errors, status: :unprocessable_entity }
-      end
-    end
+		if not @step.update(step_params)
+			flash[:alert] = @step.errors.full_messages 
+		end
+		respond_with(@step)
   end
 
-  # DELETE /steps/1
-  # DELETE /steps/1.json
   def destroy
-    @step.destroy
-    respond_to do |format|
-      format.html { redirect_to steps_url, notice: 'Step was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    if not @step.destroy
+			flash[:alert] = @step.errors.full_messages 
+		end
+		respond_with(@step)
   end
   
   def update_row_order

@@ -1,18 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe CommunicationsController do
-  let(:admin) {FactoryGirl.create(:user, role_title: 'admin', role_val: '2')}
 	
-	describe "POST #create" do
+	include_context 'application' # Sets up user, admin, and communication_status
+	
+	it_behaves_like 'an index page'
+	it_behaves_like 'a show page'
+	it_behaves_like 'an edit page'
+	it_behaves_like 'a new page'
+	it_behaves_like 'a create page', {:summary => nil}
+	it_behaves_like 'an update page', {:summary => nil}, {:summary => "Example Text"}
+	it_behaves_like 'a delete page' 
+
+	describe "contact managament" do
 		before(:each) do 
-			sign_in admin 
-			FactoryGirl.create(:communication_status)
-			FactoryGirl.create(:communication_type)
-			FactoryGirl.create(:project)
+			sign_in user 
 		end
 
 		let(:communication) do 
-			FactoryGirl.attributes_for(:communication, :communication_status_id => 1, :communication_type_id => 1, :project_id => 1) #.merge(:contact_email => "test@email.com", :contact_name => "Test Name")
+			FactoryGirl.attributes_for(:communication, contact: nil) #.merge(:contact_email => "test@email.com", :contact_name => "Test Name")
 		end
 
 		describe "accepts contact_email and contact_name" do
@@ -24,7 +30,7 @@ RSpec.describe CommunicationsController do
 			end
 
 			it "and uses the contact with the same email if it already exisits" do
-				contact = FactoryGirl.create(:contact, email: "test@email.com", project_id: 1)
+				contact = FactoryGirl.create(:contact, email: "test@email.com")
 				post :create, :communication => communication , :contact_email => "test@email.com", :contact_name => "Test Name"  
 				expect(response).to redirect_to(Communication.first)
 				expect(Contact.count).to eq 1
@@ -33,7 +39,7 @@ RSpec.describe CommunicationsController do
 		end
 
 		it "and doesn't use other contacts" do
-			contact = FactoryGirl.create(:contact, email: "wrong@email.com", project_id: 1)
+			contact = FactoryGirl.create(:contact, email: "wrong@email.com")
 			post :create, :communication => communication, :contact_email => "test@email.com", :contact_name => "Test Name" 
 			expect(Communication.first.contact.email).to eq "test@email.com"
 			expect(Contact.count).to eq 2
@@ -63,6 +69,9 @@ RSpec.describe CommunicationsController do
 			expect {post :create, :communication => communication.attributes}.to raise_error
 		end
 	end
+
+	it 'has a reasonable create controller function (This is just a reminder to look at it)'
+	it 'has json create specs' 
 end
 
 

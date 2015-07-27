@@ -1,7 +1,8 @@
 class ContactsController < ApplicationController
   load_and_authorize_resource 
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :ajax, :js, :json
+  respond_to :html
+
   def index
     @contacts = Contact.filter(params.slice(:contact_name)).filter(params.slice(:project_id))
     respond_with(@contacts)
@@ -20,6 +21,7 @@ class ContactsController < ApplicationController
   end
 
   def create
+# Is there a better way of doing this? See communications for another example.
     @contact = Contact.new(contact_params)
      if @contact.save 
         respond_with(@contact) do |format|
@@ -33,13 +35,17 @@ class ContactsController < ApplicationController
   end
 
   def update
-    @contact.update(contact_params)
+    if not @contact.update(contact_params)
+			flash[:alert] = @contact.errors.full_messages 
+		end
     respond_with(@contact)
   end
 
   def destroy
-    @contact.destroy
-    respond_with(@contact)
+    if not @contact.destroy
+			flash[:alert] = @contact.errors.full_messages 
+		end
+		respond_with(@contact)
   end
 
   private

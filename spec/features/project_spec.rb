@@ -223,7 +223,7 @@ RSpec.describe Project, :type => :feature do
         comm_attributes = {'summary' => 'Summary', 'communication_type_id' => "1", 'communication_status_id' => "1", 'notes' => "Communication Notes" }
         within('#new_communication') do
           fill_attributes :communication, comm_attributes
-          find('input#communication_contact_contact').native.send_keys('Contact Name')
+          find('input#communication_contact_contact').native.send_keys('Contact')
           find('a', :text => "Contact").click
           click_button :Add
         end

@@ -1,7 +1,8 @@
 class CommunicationsController < ApplicationController
   load_and_authorize_resource 
   before_action :set_communication, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :js, :json, :ajax
+  respond_to :html
+	respond_to :json, :ajax, only: [:create]
 
 	def index
     @communications = Communication.all
@@ -28,6 +29,7 @@ class CommunicationsController < ApplicationController
 			@communication.create_contact(other_params.fetch(:contact_email), other_params.fetch(:contact_name, nil))
 		end
 
+# I don't know if messing with format is necessary.  
     if @communication.save
       respond_with(@communication) do |format|
         format.ajax {render :partial => 'communications/show_single', :object => @communication, :formats => [:html]}
@@ -40,12 +42,16 @@ class CommunicationsController < ApplicationController
   end
 
   def update
-    @communication.update(communication_params)
+    if not @communication.update(communication_params)
+			flash[:alert] = @communication.errors.full_messages 
+		end
     respond_with(@communication)
   end
 
   def destroy
-    @communication.destroy
+		if not @communication.destroy
+			flash[:alert] = @communication.errors.full_messages 
+		end
     respond_with(@communication)
   end
 

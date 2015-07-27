@@ -22,7 +22,7 @@ RSpec.shared_examples 'an update page' do |invalid_attributes, valid_attributes|
 			end
 
 			it 'saves the updated ' + described_class.controller_name.singularize do
-				expect(class_model.first.attributes[valid_attribute.to_s]).to eq valid_value
+				expect(class_model.last.attributes[valid_attribute.to_s]).to eq valid_value
 			end
 		
 			it 'assigns the updated ' + described_class.controller_name.singularize + ' to @' + described_class.controller_name.singularize do
@@ -52,7 +52,7 @@ RSpec.shared_examples 'an update page' do |invalid_attributes, valid_attributes|
 			end
 
 			it 'displays an error message in the flash'  do
-				expect(flash[:alert]).to eq [invalid_attribute.to_s.sub('_id', '').capitalize + " can't be blank"]
+				expect(flash[:alert]).to eq [invalid_attribute.to_s.sub('_id', '').capitalize.sub('_', ' ') + " can't be blank"]
 			end
 			
 			it 're-renders the :edit template' do

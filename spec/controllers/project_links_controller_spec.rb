@@ -11,6 +11,7 @@ RSpec.describe ProjectLinksController do
 	it_behaves_like 'an update page', {:name => ""}, {:name => "Example Name"}
 	it_behaves_like 'a user delete page' 
 
+	it 'has a clean controller'
 	it 'has some json tests'
 end
 

@@ -1,65 +1,46 @@
 class StatusesController < ApplicationController
   load_and_authorize_resource 
   before_action :set_status, only: [:show, :edit, :update, :destroy]
+	respond_to :html
 
-  # GET /statuses
-  # GET /statuses.json
   def index
     @statuses = Status.all
+		respond_with(@statuses)
   end
 
-  # GET /statuses/1
-  # GET /statuses/1.json
   def show
+		respond_with(@status)
   end
 
-  # GET /statuses/new
   def new
     @status = Status.new
+		respond_with(@status)
   end
 
-  # GET /statuses/1/edit
   def edit
+		respond_with(@status)
   end
 
-  # POST /statuses
-  # POST /statuses.json
   def create
     @status = Status.new(status_params)
-
-    respond_to do |format|
-      if @status.save
-        format.html { redirect_to @status, notice: 'Status was successfully created.' }
-        format.json { render :show, status: :created, location: @status }
-      else
-        format.html { render :new }
-        format.json { render json: @status.errors, status: :unprocessable_entity }
-      end
-    end
+		if not @status.save
+			flash[:alert] = @status.errors.full_messages 
+		end
+		respond_with(@status)
   end
 
-  # PATCH/PUT /statuses/1
-  # PATCH/PUT /statuses/1.json
   def update
-    respond_to do |format|
-      if @status.update(status_params)
-        format.html { redirect_to @status, notice: 'Status was successfully updated.' }
-        format.json { render :show, status: :ok, location: @status }
-      else
-        format.html { render :edit }
-        format.json { render json: @status.errors, status: :unprocessable_entity }
-      end
-    end
+		if not @status.update(status_params)
+			flash[:alert] = @status.errors.full_messages 
+		end
+		respond_with(@status)
   end
 
-  # DELETE /statuses/1
-  # DELETE /statuses/1.json
   def destroy
-    @status.destroy
-    respond_to do |format|
-      format.html { redirect_to statuses_url, notice: 'Status was successfully destroyed.' }
-      format.json { head :no_content }
+    if not @status.destroy
+			flash[:alert] = @status.errors.full_messages 
     end
+		respond_with(@status)
   end
 
   private

@@ -1,14 +1,7 @@
 class ProjectTypesController < ApplicationController
 	load_and_authorize_resource
-  
 	before_action :set_project_type, only: [:show, :edit, :update, :destroy]
-
   respond_to :html
-
-	rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = exception.message
-    render :edit
-  end
 
   def index
     search = ProjectType.search do
@@ -34,17 +27,23 @@ class ProjectTypesController < ApplicationController
 
   def create
     @project_type = ProjectType.new(project_type_params)
-    @project_type.save
+		if not @project_type.save
+			flash[:alert] = @project_type.errors.full_messages 
+		end
     respond_with(@project_type)
   end
 
   def update
-		flash[:alert] = @project_type.errors.full_messages unless @project_type.update(project_type_params)
+		if not @project_type.update(project_type_params)
+			flash[:alert] = @project_type.errors.full_messages 
+		end
     respond_with(@project_type)
   end
 
   def destroy
-    @project_type.destroy
+    if not @project_type.destroy
+			flash[:alert] = @project_type.errors.full_messages 
+		end
     respond_with(@project_type)
   end
 

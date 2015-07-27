@@ -1,6 +1,6 @@
 class RolesController < ApplicationController
   load_and_authorize_resource 
-  respond_to :html, :js, :json, :ajax
+  respond_to :html
   before_action :set_role, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -22,17 +22,23 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new(role_params)
-    @role.save
+		if not @role.save
+			flash[:alert] = @role.errors.full_messages 
+		end
     respond_with(@role)
   end
 
   def update
-    @role.update(role_params)
+    if not @role.update(role_params)
+			flash[:alert] = @role.errors.full_messages 
+		end
     respond_with(@role)
   end
 
   def destroy
-    @role.destroy
+    if not @role.destroy
+			flash[:alert] = @role.errors.full_messages 
+		end
     respond_with(@role)
   end
 

@@ -26,4 +26,5 @@ RSpec.describe "Application", :type => :feature do
   end
 
   it 'has a flash that is always displayed' 
+	it 'has tests for EmailToProject interface'
 end

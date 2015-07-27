@@ -1,65 +1,47 @@
 class StepStatusesController < ApplicationController
   load_and_authorize_resource 
   before_action :set_step_status, only: [:show, :edit, :update, :destroy]
+	respond_to :html	
 
-  # GET /step_statuses
-  # GET /step_statuses.json
   def index
     @step_statuses = StepStatus.all
+		respond_with(@step_statuses)
   end
 
-  # GET /step_statuses/1
-  # GET /step_statuses/1.json
   def show
+		respond_with(@step_status)
   end
 
-  # GET /step_statuses/new
   def new
     @step_status = StepStatus.new
+		respond_with(@step_status)
   end
 
-  # GET /step_statuses/1/edit
   def edit
+		respond_with(@step_status)
   end
 
-  # POST /step_statuses
-  # POST /step_statuses.json
   def create
     @step_status = StepStatus.new(step_status_params)
 
-    respond_to do |format|
-      if @step_status.save
-        format.html { redirect_to @step_status, notice: 'Step status was successfully created.' }
-        format.json { render :show, status: :created, location: @step_status }
-      else
-        format.html { render :new }
-        format.json { render json: @step_status.errors, status: :unprocessable_entity }
-      end
-    end
+    if not @step_status.save
+			flash[:alert] = @step_status.errors.full_messages 
+		end
+		respond_with(@step_status)
   end
 
-  # PATCH/PUT /step_statuses/1
-  # PATCH/PUT /step_statuses/1.json
   def update
-    respond_to do |format|
-      if @step_status.update(step_status_params)
-        format.html { redirect_to @step_status, notice: 'Step status was successfully updated.' }
-        format.json { render :show, status: :ok, location: @step_status }
-      else
-        format.html { render :edit }
-        format.json { render json: @step_status.errors, status: :unprocessable_entity }
-      end
+		if not @step_status.update(step_status_params)
+			flash[:alert] = @step_status.errors.full_messages 
     end
+		respond_with(@step_status)
   end
 
-  # DELETE /step_statuses/1
-  # DELETE /step_statuses/1.json
   def destroy
-    @step_status.destroy
-    respond_to do |format|
-      format.html { redirect_to step_statuses_url, notice: 'Step status was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    if not @step_status.destroy
+			flash[:alert] = @step_status.errors.full_messages 
+		end
+		respond_with(@step_status)
   end
 
   private

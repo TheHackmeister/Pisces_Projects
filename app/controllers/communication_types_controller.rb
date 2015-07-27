@@ -1,7 +1,8 @@
 class CommunicationTypesController < ApplicationController
   load_and_authorize_resource 
   before_action :set_communication_type, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :js, :json, :ajax
+  respond_to :html
+	respond_to :json, only: [:index]
 
 	def index
     @communication_types = CommunicationType.all
@@ -22,17 +23,23 @@ class CommunicationTypesController < ApplicationController
 
   def create
     @communication_type = CommunicationType.new(communication_type_params)
-    @communication_type.save
+		if not @communication_type.save
+			flash[:alert] = @communication_type.errors.full_messages 
+		end
     respond_with(@communication_type)
   end
 
   def update
-    @communication_type.update(communication_type_params)
+		if not @communication_type.update(communication_type_params)
+			flash[:alert] = @communication_type.errors.full_messages 
+		end
     respond_with(@communication_type)
   end
 
   def destroy
-    @communication_type.destroy
+		if not @communication_type.destroy
+			flash[:alert] = @communication_type.errors.full_messages 
+		end
     respond_with(@communication_type)
   end
 

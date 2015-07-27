@@ -1,11 +1,12 @@
 class TokenController < ApplicationController
 #	load_and_authorize_resource
-	respond_to :json
 	skip_before_action :authenticate_user!, :only => [:show, :update]
 	before_action :authorize, :only => [:show, :update]
+	respond_to :json
 
   def show
 		@user = current_user
+		respond_with(@user)
   end
 
 	def update

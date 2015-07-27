@@ -1,51 +1,47 @@
 class SamplesController < ApplicationController
   load_and_authorize_resource 
   before_action :set_sample, only: [:show, :edit, :update, :destroy]
+	respond_to :html
 
-	rescue_from CanCan::AccessDenied do |exception|
-    flash[:alert] = exception.message
-    render :edit
-  end
-  
   def index
 		@samples = Sample.all
+		respond_with(@samples)
   end
 
   def show
+		respond_with(@sample)
   end
 
   def edit
+		respond_with(@sample)
   end
 
   def update
-    if @sample.update sample_params
-      redirect_to @sample
-    else
+    if not @sample.update sample_params
       flash[:alert] = @sample.errors.full_messages 
-      render :edit
     end
+		respond_with(@sample)
   end
 
   def create
     @sample = Sample.new sample_params
-    if @sample.save
-      redirect_to @sample
-    else
-      @flash = flash
-      render :new
+    if not @sample.save
+      flash[:alert] = @sample.errors.full_messages 
     end
+		respond_with(@sample)
   end
 
   def new
     @sample = Sample.new
+		respond_with(@sample)
   end
 
   def destroy
-    @sample.destroy
-    respond_to do |format|
-      format.html { redirect_to samples_url, notice: 'Sample was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    if not @sample.destroy
+      flash[:alert] = @sample.errors.full_messages 
+		end
+
+		respond_with(@sample)
   end
 
 

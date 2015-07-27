@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
   method = "#{resource}_params"
   params[resource] &&= send(method) if respond_to?(method, true)
 
+	rescue_from CanCan::AccessDenied do |exception|
+    flash[:alert] = exception.message
+    render :edit
+  end
+  
 	private 
 	
 	def json_request?

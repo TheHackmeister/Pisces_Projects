@@ -19,20 +19,18 @@ RSpec.shared_examples 'a create page' do |invalid_attributes|
 		end
 
 		context 'and with valid attributes' do
-			before :each do
-				post :create, class_single.to_sym => valid_attributes 
-			end
-
 			it 'saves the ' +  described_class.controller_name.singularize + ' to the database' do
-				expect(class_model.count).to eq 1
+				expect{post :create, class_single.to_sym => valid_attributes}.to change{class_model.count}.by 1
 			end
 
 			it 'redirects to the ' + described_class.controller_name.singularize do
+				post :create, class_single.to_sym => valid_attributes 
 				expect(response).to redirect_to(class_model.last)
 			end
 
 			it 'assigns the newly created ' + described_class.controller_name.singularize + ' to @' + described_class.controller_name.singularize do
-				expect(assigns(class_single.to_sym)).to eq class_model.first
+				post :create, class_single.to_sym => valid_attributes 
+				expect(assigns(class_single.to_sym)).to eq class_model.last
 			end
 		end
 
@@ -43,8 +41,7 @@ RSpec.shared_examples 'a create page' do |invalid_attributes|
 			}
 			
 			it 'does not save the ' + described_class.controller_name.singularize + ' to the database' do
-				post :create, class_single.to_sym => invalid 
-				expect(class_model.count).to eq 0
+				expect{post :create, class_single.to_sym => invalid}.to change{class_model.count}.by 0
 			end
 
 			it 're-renders the :new template' do
