@@ -39,7 +39,7 @@ class ProjectTypesController < ApplicationController
   end
 
   def update
-    @project_type.update(project_type_params)
+		flash[:alert] = @project_type.errors.full_messages unless @project_type.update(project_type_params)
     respond_with(@project_type)
   end
 

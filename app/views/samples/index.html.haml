@@ -1,0 +1,21 @@
+%h1 Listing Samples
+
+%table
+  %tr
+    %th Pisces ID
+    %th Customer ID
+    %th
+    %th
+    %th
+
+  - @samples.each do |sample|
+    %tr
+      %td= sample.pisces_id
+      %td= sample.customer_id
+      %td= link_to 'Show', sample
+      %td= link_to 'Edit', edit_sample_path(sample)
+      %td= link_to 'Destroy', sample, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Sample', new_sample_path

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150701205627) do
+ActiveRecord::Schema.define(version: 20150721212227) do
 
   create_table "communication_statuses", force: true do |t|
     t.string   "text"
@@ -121,6 +121,15 @@ ActiveRecord::Schema.define(version: 20150701205627) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "samples", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "pisces_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "samples", ["customer_id"], name: "index_samples_on_customer_id", using: :btree
 
   create_table "statuses", force: true do |t|
     t.string   "text"
