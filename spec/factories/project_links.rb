@@ -4,6 +4,12 @@ FactoryGirl.define do
     name 'Project Link'
     url 'http://ProjectLinkURL'
     notes 'Link Notes'
-    project {FactoryGirl.create(:project)}
+		sequence(:project_id) {
+			if Project.count == 0
+				(create :project).id
+			else
+				Project.first.id
+			end
+		}
   end
 end

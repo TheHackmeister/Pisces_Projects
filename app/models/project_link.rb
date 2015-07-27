@@ -1,7 +1,6 @@
 class ProjectLink < ActiveRecord::Base
   belongs_to :project
-  validates :project_id, :presence => true
-  validates :url, :name, :presence => true
+  validates :project, :url, :name, :presence => true
 
 
   before_save{ |link|
