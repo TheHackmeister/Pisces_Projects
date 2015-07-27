@@ -143,7 +143,7 @@ RSpec.describe Project, :type => :feature do
     end
 
     it 'can be deleted' do
-      FactoryGirl.create(:project_link, :Project => @project, :notes => "Test notes.")
+      FactoryGirl.create(:project_link, :project => @project, :notes => "Test notes.")
       visit project_path @project
       within('#links') do
 	click_link "X"

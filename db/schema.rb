@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150721212227) do
+ActiveRecord::Schema.define(version: 20150727182012) do
 
   create_table "communication_statuses", force: true do |t|
     t.string   "text"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20150721212227) do
   end
 
   create_table "project_links", force: true do |t|
-    t.integer  "Project_id"
+    t.integer  "project_id"
     t.integer  "sort"
     t.string   "name"
     t.string   "url"
@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 20150721212227) do
     t.string   "notes"
   end
 
-  add_index "project_links", ["Project_id"], name: "index_project_links_on_Project_id", using: :btree
+  add_index "project_links", ["project_id"], name: "index_project_links_on_project_id", using: :btree
 
   create_table "project_types", force: true do |t|
     t.string   "text"

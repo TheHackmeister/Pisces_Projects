@@ -1,6 +1,6 @@
 class ProjectLink < ActiveRecord::Base
-  belongs_to :Project
-  validates :Project_id, :presence => true
+  belongs_to :project
+  validates :project_id, :presence => true
   validates :url, :name, :presence => true
 
 
