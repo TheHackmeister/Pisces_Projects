@@ -8,15 +8,12 @@ gem 'sorted', '1.0.1'
 gem 'ranked-model'
 gem 'jquery-ui-rails'
 gem 'kaminari'
-#gem 'sunspot_rails', "~>2.1.0", :git => 'https://github.com/sunspot/sunspot.git'
-#gem 'sunspot_solr', "~>2.1.0", :git => 'https://github.com/sunspot/sunspot.git'
 gem 'sunspot_rails', github: "betam4x/sunspot" # , '2.1.1'
 gem 'sunspot_solr', github: "betam4x/sunspot" # '2.1.1'
-#gem 'progress_bar'
 gem 'rsolr', "1.0.10"
 gem 'coffee-script-source', '1.8.0'
 gem 'american_date'
-gem 'rack', '1.6.1'
+gem 'rails', '4.2.3'
 gem 'thin'
 
 group :test do

@@ -2,6 +2,7 @@ class ContactsController < ApplicationController
   load_and_authorize_resource 
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
   respond_to :html
+	respond_to :json, only: [:index]
 
   def index
     @contacts = Contact.filter(params.slice(:contact_name)).filter(params.slice(:project_id))
@@ -28,9 +29,10 @@ class ContactsController < ApplicationController
           format.ajax {render :partial => 'contacts/show_single', :object => @contact, :formats => [:html]}
         end
      else
-       respond_with(@contact) do |format|
-          format.ajax {render :partial => 'contacts/bad_contact', :object => @contact, :formats => [:html]}
-        end
+			 flash[:alert] = @contact.errors.full_messages 
+			 respond_with(@contact) do |format|
+				 format.ajax {render :partial => 'contacts/bad_contact', :object => @contact, :formats => [:html]}
+			 end
      end
   end
 
