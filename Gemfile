@@ -13,7 +13,6 @@ gem 'sunspot_solr', github: "betam4x/sunspot" # '2.1.1'
 gem 'rsolr', "1.0.10"
 gem 'coffee-script-source', '1.8.0'
 gem 'american_date'
-gem 'rails', '4.2.3'
 gem 'thin'
 
 group :test do
@@ -38,7 +37,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.5'
+gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
