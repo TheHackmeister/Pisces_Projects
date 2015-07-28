@@ -7,7 +7,7 @@ module ApplicationHelper
     haml_tag(:div, :class => "search") do
       
       base = base.to_s.classify.constantize
-      base = base.reflections[associated].foreign_key
+      base = base.reflect_on_association(associated).foreign_key
       
       #Base.assocaited?to_s.classify.constantize
       haml_concat(form.label base, label)
