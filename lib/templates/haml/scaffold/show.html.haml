@@ -1,11 +1,11 @@
-%p#notice= notice
-
 <% for attribute in attributes -%>
 %p
-  %b <%= attribute.human_name %>:
-  = @<%= singular_table_name %>.<%= attribute.name %>
+  %b <%= attribute.human_name %>
+    = show_attribute_link_or_text @<%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
 
 = link_to 'Edit', edit_<%= singular_table_name %>_path(@<%= singular_table_name %>)
+\|
+= link_to 'Destroy', <%= singular_table_name %>_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
 \|
 = link_to 'Back', <%= index_helper %>_path

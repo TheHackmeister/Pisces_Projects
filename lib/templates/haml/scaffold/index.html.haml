@@ -1,4 +1,4 @@
-%h1 Listing <%= plural_table_name %>
+%h1 Listing <%= plural_table_name.humanize.upcase %>
 
 %table
   %thead
@@ -9,12 +9,11 @@
       %th
       %th
       %th
-
   %tbody
     - @<%= plural_table_name %>.each do |<%= singular_table_name %>|
       %tr
 <% for attribute in attributes -%>
-        %td= <%= singular_table_name %>.<%= attribute.name %>
+        %td= create_index_link_or_text <%= singular_table_name %>, <%= singular_table_name %>.<%= attribute.name %>
 <% end -%>
         %td= link_to 'Show', <%= singular_table_name %>
         %td= link_to 'Edit', edit_<%= singular_table_name %>_path(<%= singular_table_name %>)

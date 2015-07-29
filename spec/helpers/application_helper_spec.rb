@@ -20,18 +20,6 @@ RSpec.describe ApplicationHelper do
     end
   end 
   
-=begin 
-Should be an intigration test.
-  describe 'The title function' do
-    context 'when signed in' do
-      it 'shows the page title' #Can't figure this one out. 
-    end  
-  end
-
-  describe 'The search_html fuction' do
-    
-  end
-=end  
   describe 'The format_text_field function' do 
     #let(:example_text) {"Hello ***Bold***. Also, *r*Red*r*.\nNew line."}
     it 'returns none if no text is given' do
@@ -56,4 +44,12 @@ Should be an intigration test.
   describe 'The sub_tag function' do #Gets tested through format_text_field
     
   end
+
+	describe 'show_attribute_text_or_link' do
+		it 'has tests'	
+	end
+
+	describe 'create_index_text_or_link' do
+		it 'has tests'
+	end
 end
