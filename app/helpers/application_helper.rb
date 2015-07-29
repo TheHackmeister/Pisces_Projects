@@ -57,4 +57,28 @@ module ApplicationHelper
     end
   end
   alias_method :display_notice, :display_alert
+
+	def show_attribute_text_or_link attribute
+		if attribute.is_a?(ActiveRecord::Base) 
+			link_to attribute, polymorphic_path([attribute])
+		else
+			capture_haml() {
+				attribute.to_s
+			}
+		end
+	end
+	alias_method :show_attribute_link_or_text, :show_attribute_text_or_link
+
+	def create_index_text_or_link object, attribute
+		if attribute.is_a? Numeric
+			capture_haml() {
+				attribute.to_s
+			}
+		elsif attribute.is_a? ActiveRecord::Base
+			link_to attribute.to_s, attribute
+		else
+			link_to attribute.to_s, object
+		end
+	end
+	alias_method :create_index_link_or_text, :create_index_text_or_link
 end
