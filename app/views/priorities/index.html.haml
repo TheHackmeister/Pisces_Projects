@@ -1,20 +1,21 @@
-%h1 Listing priorities
+%h1 Listing Priorities
 
 %table
-  %tr
-    %th Text
-    %th Val
-    %th
-    %th
-    %th
-
-  - @priorities.each do |priority|
+  %thead
     %tr
-      %td= priority.text
-      %td= priority.val
-      %td= link_to 'Show', priority
-      %td= link_to 'Edit', edit_priority_path(priority)
-      %td= link_to 'Destroy', priority, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Text
+      %th Value
+      %th
+      %th
+      %th
+  %tbody
+    - @priorities.each do |priority|
+      %tr
+        %td= create_index_link_or_text priority, priority.text
+        %td= create_index_link_or_text priority, priority.val
+        %td= link_to 'Show', priority
+        %td= link_to 'Edit', edit_priority_path(priority)
+        %td= link_to 'Destroy', priority, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

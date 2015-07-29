@@ -322,3 +322,15 @@ label {
   display: none;
 }
 
+td {
+  padding-right: 20px;
+}
+
+th {
+  white-space:nowrap;
+  text-align:left;
+}
+
+.nowrap {
+  white-space:nowrap;
+}

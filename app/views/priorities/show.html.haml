@@ -1,12 +1,12 @@
-%p#notice= notice
-
 %p
   %b Text:
-  = @priority.text
+  = show_attribute_link_or_text @priority.text
 %p
   %b Val:
-  = @priority.val
+  = show_attribute_link_or_text @priority.val
 
 = link_to 'Edit', edit_priority_path(@priority)
+\|
+= link_to 'Destroy', priority_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
 \|
 = link_to 'Back', priorities_path

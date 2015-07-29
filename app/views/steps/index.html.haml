@@ -1,25 +1,27 @@
-%h1 Listing steps
+%h1 Listing Steps
 
 %table
-  %tr
-    %th Action
-    %th Note
-    %th Val
-    %th Step status
-    %th
-    %th
-    %th
-
-  - @steps.each do |step|
+  %thead
     %tr
-      %td= step.action
-      %td= step.note
-      %td= step.val
-      %td= step.step_status
-      %td= step.project_id
-      %td= link_to 'Show', step
-      %td= link_to 'Edit', edit_step_path(step)
-      %td= link_to 'Destroy', step, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Action
+      %th Step status
+      %th Project
+      %th Note
+      %th Value
+      %th
+      %th
+      %th
+  %tbody
+    - @steps.each do |step|
+      %tr
+        %td= create_index_link_or_text step, step.action
+        %td.nowrap= create_index_link_or_text step, step.step_status
+        %td.nowrap= create_index_link_or_text step, step.project
+        %td= create_index_link_or_text step, step.note
+        %td= create_index_link_or_text step, step.val
+        %td= link_to 'Show', step
+        %td= link_to 'Edit', edit_step_path(step)
+        %td= link_to 'Destroy', step, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

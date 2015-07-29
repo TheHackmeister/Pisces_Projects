@@ -1,26 +1,27 @@
-%h1 Listing contacts
+%h1 Listing Contacts
 
 %table
-  %tr
-    %th Name
-    %th Phone
-    %th Email
-    %th Address
-    %th Project
-    %th
-    %th
-    %th
-
-  - @contacts.each do |contact|
+  %thead
     %tr
-      %td= contact.contact_name
-      %td= contact.phone
-      %td= contact.email
-      %td= contact.address
-      %td= contact.project
-      %td= link_to 'Show', contact
-      %td= link_to 'Edit', edit_contact_path(contact)
-      %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %th Name
+      %th Project
+      %th Phone
+      %th Email
+      %th Address
+      %th
+      %th
+      %th
+  %tbody
+    - @contacts.each do |contact|
+      %tr
+        %td= create_index_link_or_text contact, contact.contact_name
+        %td= create_index_link_or_text contact, contact.project
+        %td= create_index_link_or_text contact, contact.phone
+        %td= create_index_link_or_text contact, contact.email
+        %td= create_index_link_or_text contact, contact.address
+        %td= link_to 'Show', contact
+        %td= link_to 'Edit', edit_contact_path(contact)
+        %td= link_to 'Destroy', contact, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 

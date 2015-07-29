@@ -4,4 +4,6 @@
 
 = link_to 'Show', @priority
 \|
+= link_to 'Destroy', priority_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+\|
 = link_to 'Back', priorities_path

@@ -1,15 +1,15 @@
-%p#notice= notice
-
 %p
   %b Text:
-  = @project_type.text
+  = show_attribute_link_or_text @project_type.text
 %p
   %b Val:
-  = @project_type.val
+  = show_attribute_link_or_text @project_type.val
 %p
   %b Sort:
-  = @project_type.sort
+  = show_attribute_link_or_text @project_type.sort
 
 = link_to 'Edit', edit_project_type_path(@project_type)
+\|
+= link_to 'Destroy', project_type_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
 \|
 = link_to 'Back', project_types_path

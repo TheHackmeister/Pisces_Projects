@@ -1,12 +1,12 @@
-%p#notice= notice
-
 %p
   %b Text:
-  = @step_status.text
+  = show_attribute_link_or_text @step_status.text
 %p
   %b Val:
-  = @step_status.val
+  = show_attribute_link_or_text @step_status.val
 
 = link_to 'Edit', edit_step_status_path(@step_status)
+\|
+= link_to 'Destroy', step_status_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
 \|
 = link_to 'Back', step_statuses_path

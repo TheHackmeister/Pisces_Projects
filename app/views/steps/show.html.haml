@@ -1,22 +1,22 @@
-%p#notice= notice
-
 %p
   %b Action:
-  = @step.action
+  = show_attribute_link_or_text @step.action
 %p
   %b Note:
-  = @step.note
+  = show_attribute_link_or_text @step.note
 %p
   %b Val:
-  = @step.val
+  = show_attribute_link_or_text @step.val
 %p
   %b Step status:
-  = @step.step_status.text
+  = show_attribute_link_or_text @step.step_status.text
 %p
   %b Step project:
-  = @step.project_id
+  = show_attribute_link_or_text @step.project_id
 
 
 = link_to 'Edit', edit_step_path(@step)
+\|
+= link_to 'Destroy', step_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
 \|
 = link_to 'Back', steps_path

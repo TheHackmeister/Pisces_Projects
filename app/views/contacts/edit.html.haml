@@ -4,4 +4,6 @@
 
 = link_to 'Show', @contact
 \|
+= link_to 'Destroy', contact_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+\|
 = link_to 'Back', contacts_path

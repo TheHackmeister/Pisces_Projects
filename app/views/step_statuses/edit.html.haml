@@ -4,4 +4,6 @@
 
 = link_to 'Show', @step_status
 \|
+= link_to 'Destroy', step_status_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+\|
 = link_to 'Back', step_statuses_path

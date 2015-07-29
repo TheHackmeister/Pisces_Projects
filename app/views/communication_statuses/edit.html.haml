@@ -4,4 +4,6 @@
 
 = link_to 'Show', @communication_status
 \|
+= link_to 'Destroy', communication_status_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+\|
 = link_to 'Back', communication_statuses_path

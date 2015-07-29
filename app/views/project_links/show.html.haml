@@ -1,18 +1,18 @@
-%p#notice= notice
-
 %p
   %b Project:
-  = @project_link.project
+  = show_attribute_link_or_text @project_link.project
 %p
   %b Sort:
-  = @project_link.sort
+  = show_attribute_link_or_text @project_link.sort
 %p
   %b Name:
-  = @project_link.name
+  = show_attribute_link_or_text @project_link.name
 %p
   %b Url:
-  = @project_link.url
+  = show_attribute_link_or_text @project_link.url
 
 = link_to 'Edit', edit_project_link_path(@project_link)
+\|
+= link_to 'Destroy', project_link_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
 \|
 = link_to 'Back', project_links_path

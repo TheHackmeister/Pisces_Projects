@@ -4,4 +4,6 @@
 
 = link_to 'Show', @role
 \|
+= link_to 'Destroy', role_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+\|
 = link_to 'Back', roles_path

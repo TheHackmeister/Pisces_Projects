@@ -4,4 +4,6 @@
 
 = link_to 'Show', @project_type
 \|
+= link_to 'Destroy', project_type_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+\|
 = link_to 'Back', project_types_path

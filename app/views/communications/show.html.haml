@@ -1,21 +1,21 @@
-%p#notice= notice
-
 %p
   %b Summary:
-  = @communication.summary
+  = show_attribute_link_or_text @communication.summary
 %p
   %b Notes:
-  = @communication.notes
+  = show_attribute_link_or_text @communication.notes
 %p
   %b Communication status:
-  = @communication.communication_status
+  = show_attribute_link_or_text @communication.communication_status
 %p
   %b Communication type:
-  = @communication.communication_type
+  = show_attribute_link_or_text @communication.communication_type
 %p
   %b Project:
-  = @communication.project
+  = show_attribute_link_or_text @communication.project
 
 = link_to 'Edit', edit_communication_path(@communication)
+\|
+= link_to 'Destroy', communication_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
 \|
 = link_to 'Back', communications_path

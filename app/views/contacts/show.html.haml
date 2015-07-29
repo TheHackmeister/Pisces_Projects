@@ -1,21 +1,21 @@
-%p#notice= notice
-
 %p
   %b Name:
-  = @contact.contact_name
+  = show_attribute_link_or_text @contact.contact_name
 %p
   %b Phone:
-  = @contact.phone
+  = show_attribute_link_or_text @contact.phone
 %p
   %b Email:
-  = @contact.email
+  = show_attribute_link_or_text @contact.email
 %p
   %b Address:
-  = @contact.address
+  = show_attribute_link_or_text @contact.address
 %p
   %b Project:
-  = @contact.project
+  = show_attribute_link_or_text @contact.project
 
 = link_to 'Edit', edit_contact_path(@contact)
+\|
+= link_to 'Destroy', contact_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
 \|
 = link_to 'Back', contacts_path

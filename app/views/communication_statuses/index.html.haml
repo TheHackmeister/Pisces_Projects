@@ -1,21 +1,21 @@
-%h1 Listing communication_statuses
+%h1 Listing Communication Statuses
 
 %table
-  %tr
-    %th Text
-    %th Val
-    %th
-    %th
-    %th
-
-  - @communication_statuses.each do |communication_status|
+  %thead
     %tr
-      %td= communication_status.text
-      %td= communication_status.val
-      %td= link_to 'Show', communication_status
-      %td= link_to 'Edit', edit_communication_status_path(communication_status)
-      %td= link_to 'Destroy', communication_status, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
+      %th Text
+      %th Value
+      %th
+      %th
+      %th
+  %tbody
+    - @communication_statuses.each do |communication_status|
+      %tr
+        %td= create_index_link_or_text communication_status, communication_status.text
+        %td= create_index_link_or_text communication_status, communication_status.val
+        %td= link_to 'Show', communication_status
+        %td= link_to 'Edit', edit_communication_status_path(communication_status)
+        %td= link_to 'Destroy', communication_status, :method => :delete, :data => { :confirm => 'Are you sure?' }
 %br
 
 = link_to 'New Communication status', new_communication_status_path
