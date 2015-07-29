@@ -131,4 +131,6 @@
           = render :partial => 'contacts/new_contact', locals: {:project => @project}          
     = link_to "Edit", edit_project_path(@project)
     \|
-    = link_to "Back", projects_path
+    = link_to "Destroy", project_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+    \|
+    = link_to "Projects Index", projects_path
