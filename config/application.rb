@@ -30,6 +30,8 @@ module PiscesProjects
       g.fixture_replacement :factory_girl, 
         :dir => "spec/factories" 
 			g.assets false
+			g.jbuilder false
+			g.helper false
     end
   end
 end
