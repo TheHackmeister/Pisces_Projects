@@ -88,6 +88,9 @@ class Project < ActiveRecord::Base
     string(:goal) { goal.downcase.sub(/^(a|an|the)\b/, '')}
   end
   
+	def to_s
+		title
+	end
   
   before_save{ |project| project.notes = project.notes.gsub("%28", "(").gsub("%29", ")").gsub("%20", " ")}  
 end

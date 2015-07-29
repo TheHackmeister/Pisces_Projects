@@ -27,5 +27,9 @@ class Customer < PiscesDatabase
     #return att['customer_id']
     name[0..name.length - 4]  #name #att['customer_name']#Customer.connection.select_all("SELECT customer_name FROM cst_customer WHERE id = '%#{id}%'")[0]
   end
+
+	def to_s
+		customer_name
+	end
 end
 
