@@ -1,7 +1,7 @@
 !!! 5
 %html
   %head
-    %title= content_for?(:title) ? "Pisces " + content_for(:title) : "Pisces " + controller_name
+    %title= content_for?(:title) ? "Pisces " + content_for(:title) : "Pisces: " + controller_name.humanize.titleize
 
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
@@ -11,7 +11,7 @@
     %div#header.clearfix
       %div#page-heading.clearfix
         %h1
-          = content_for?(:title) ? "Pisces " + content_for(:title) : "Pisces " + controller_name
+          = content_for?(:title) ? "Pisces " + content_for(:title) : "Pisces: " + controller_name.humanize.titleize
         %div#navigation.clearfix
           = link_to "Projects", projects_url
           = link_to "Projects (Sort: Type)", project_types_url
