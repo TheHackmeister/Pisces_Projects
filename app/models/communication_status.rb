@@ -1,8 +1,6 @@
 class CommunicationStatus < ActiveRecord::Base
+	include HasToS
   has_many :communications
 	validates :text, presence: true
 
-	def to_s
-		text
-	end
 end

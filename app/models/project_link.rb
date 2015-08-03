@@ -1,4 +1,5 @@
 class ProjectLink < ActiveRecord::Base
+	include HasToS
   belongs_to :project
   validates :project, :url, :name, :presence => true
 

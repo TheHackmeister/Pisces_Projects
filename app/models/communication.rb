@@ -1,4 +1,5 @@
 class Communication < ActiveRecord::Base
+	include HasToS
   belongs_to :communication_status
   belongs_to :communication_type
   belongs_to :project

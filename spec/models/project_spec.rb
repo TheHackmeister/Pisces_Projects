@@ -131,4 +131,5 @@ RSpec.describe Project do
 
   end
 # End tests for delegations.
+	it 'models have a to_s spec'
 end

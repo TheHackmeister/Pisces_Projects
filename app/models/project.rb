@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+	include HasToS
   belongs_to :customer
   belongs_to :priority
   belongs_to :status
@@ -87,10 +88,6 @@ class Project < ActiveRecord::Base
     integer :priority_val
     string(:goal) { goal.downcase.sub(/^(a|an|the)\b/, '')}
   end
-  
-	def to_s
-		title
-	end
   
   before_save{ |project| project.notes = project.notes.gsub("%28", "(").gsub("%29", ")").gsub("%20", " ")}  
 end

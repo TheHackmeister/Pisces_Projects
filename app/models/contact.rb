@@ -1,4 +1,5 @@
 class Contact < ActiveRecord::Base
+	include HasToS
   include Filterable
   belongs_to :project
   has_many :communications

@@ -1,4 +1,5 @@
 class Step < ActiveRecord::Base
+	include HasToS
   include RankedModel
   ranks :val
   
