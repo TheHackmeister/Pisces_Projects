@@ -13,11 +13,11 @@
 
   - @communications.each do |communication|
     %tr
-      %td= communication.summary
-      %td= communication.notes
-      %td= communication.communication_status
-      %td= communication.communication_type
-      %td= communication.project
+      %td= create_index_link_or_text communication, communication.summary
+      %td= create_index_link_or_text communication, communication.notes
+      %td= create_index_link_or_text communication, communication.communication_status
+      %td= create_index_link_or_text communication, communication.communication_type
+      %td= create_index_link_or_text communication, communication.project
       %td= link_to 'Show', communication
       %td= link_to 'Edit', edit_communication_path(communication)
       %td= link_to 'Destroy', communication, :method => :delete, :data => { :confirm => 'Are you sure?' }
