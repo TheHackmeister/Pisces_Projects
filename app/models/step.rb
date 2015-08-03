@@ -1,6 +1,8 @@
 class Step < ActiveRecord::Base
 	include HasToS
   include RankedModel
+	include ReferenceType
+  reference_type :drop_down
   ranks :val
   
   belongs_to :step_status
