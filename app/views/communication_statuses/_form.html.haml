@@ -1,16 +1,9 @@
 = form_for @communication_status do |f|
-  - if @communication_status.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@communication_status.errors.count, "error")} prohibited this communication_status from being saved:"
-      %ul
-        - @communication_status.errors.full_messages.each do |msg|
-          %li= msg
-
   .field
     = f.label :text
     = f.text_field :text
   .field
-    = f.label :val
+    = f.label :value
     = f.number_field :val
   .actions
     = f.submit 'Save'

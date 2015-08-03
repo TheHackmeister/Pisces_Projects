@@ -1,14 +1,6 @@
 = form_for @project_link do |f|
-  - if @project_link.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@project_link.errors.count, "error")} prohibited this project_link from being saved:"
-      %ul
-        - @project_link.errors.full_messages.each do |msg|
-          %li= msg
-
   .field
-    = f.label :Project
-    = f.text_field :project
+    - search_html f, :project_link, :project, 'Project: ', {path: projects_path, input: :q}, :title, @project_link.project.to_s
   .field
     = f.label :sort
     = f.number_field :sort

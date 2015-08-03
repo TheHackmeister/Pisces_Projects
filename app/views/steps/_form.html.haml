@@ -1,11 +1,4 @@
 = form_for @step do |f|
-  - if @step.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@step.errors.count, "error")} prohibited this step from being saved:"
-      %ul
-        - @step.errors.full_messages.each do |msg|
-          %li= msg
-
   .field
     = f.label :action
     = f.text_field :action
@@ -13,13 +6,12 @@
     = f.label :note
     = f.text_area :note
   .field
-    = f.label :val
+    = f.label :value
     = f.number_field :val
   .field
     = f.label :step_status
     = f.text_field :step_status
   .field
-    = f.label :project_id
-    = f.text_field :project_id
+    - search_html f, :step, :project, 'Project: ', {path: projects_path, input: :q}, :title, @step.project.to_s
   .actions
     = f.submit 'Save'

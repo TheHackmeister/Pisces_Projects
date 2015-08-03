@@ -51,7 +51,7 @@ function getURL(field, tag){
 			});
 		});
 	//}
-    url += input + "=" + field.val();
+    url += input + "=" + field.val() + "*";
     //console.log(url); 
     return  url;
 }
@@ -62,8 +62,10 @@ function searchAJAX(cont,url) {
         url: url,
         dataType: "json"
     }).done(function(results){
-            results = results.slice(0,7);  //Limits to the top 7 results
-            search_result(cont,results,"id",$(cont).data('display-field'));
+	for(var key in results) {break;}; // Gets the key.
+	results = results[key];
+        results = results.slice(0,7);  //Limits to the top 7 results
+        search_result(cont,results,"id",$(cont).data('display-field'));
         });
 }
 

@@ -1,18 +1,13 @@
 class CustomersController < ApplicationController
   load_and_authorize_resource 
-	respond_to :ajax, only: [:index]
+	respond_to :json, only: [:index]
 
   def index
+		params[:customer_name] = params[:customer_name].sub "*", ""
     params[:customer_name_search] = params.delete :customer_name
-
+		
     @customers = Customer.filter(params.slice(:customer_name_search))
-    respond_to do |format|
-#      format.html
-      format.json {
-        render :json => @customers
-			}
-    end
-#		respond_with(@customers)
+    respond_with @customers
   end
 
   private

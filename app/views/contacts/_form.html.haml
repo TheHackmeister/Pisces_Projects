@@ -1,14 +1,9 @@
 = form_for @contact do |f|
-  - if @contact.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@contact.errors.count, "error")} prohibited this contact from being saved:"
-      %ul
-        - @contact.errors.full_messages.each do |msg|
-          %li= msg
-
   .field
     = f.label :contact_name
     = f.text_field :contact_name
+  .field 
+    - search_html f, :contact, :project, 'Project: ', {:path => projects_path, :input => :q}, :title, @contact.project.to_s
   .field
     = f.label :phone
     = f.text_field :phone
@@ -18,8 +13,5 @@
   .field
     = f.label :address
     = f.text_area :address
-  .field
-    = f.label :references
-    = f.text_field :references
   .actions
     = f.submit 'Save'
