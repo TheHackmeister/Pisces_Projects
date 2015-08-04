@@ -21,6 +21,10 @@ RSpec.shared_examples 'a user delete page' do
 			expect(flash[:alert]).to eq nil
 		end
 
+		it 'displays a success notice' do
+			expect(flash[:notice]).to eq class_single.humanize + ' was successfully destroyed.'
+		end
+
 		it 'redirects to the ' + described_class.controller_name + ' page' do
 			expect(response).to redirect_to class_model
 		end

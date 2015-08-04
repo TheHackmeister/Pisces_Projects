@@ -28,6 +28,11 @@ RSpec.shared_examples 'a create page' do |invalid_attributes|
 				expect(response).to redirect_to(class_model.last)
 			end
 
+			it 'displays a success notice' do
+				post :create, class_single.to_sym => valid_attributes
+				expect(flash[:notice]).to eq class_single.humanize + ' was successfully created.'
+			end
+
 			it 'assigns the newly created ' + described_class.controller_name.singularize + ' to @' + described_class.controller_name.singularize do
 				post :create, class_single.to_sym => valid_attributes 
 				expect(assigns(class_single.to_sym)).to eq class_model.last
@@ -54,15 +59,10 @@ RSpec.shared_examples 'a create page' do |invalid_attributes|
 				expect(assigns(class_single.to_sym).attributes.to_s).to eq FactoryGirl.build(class_single.to_sym, invalid).attributes.to_s
 			end
 
-			it 'has a message with the reason for failure in .errors.messages' do
-				post :create, class_single.to_sym => invalid 
-				expect(assigns(class_single.to_sym).errors.messages).to eq invalid_attribute.to_s.sub('_id', '').to_sym => ["can't be blank"]
+			it 'displays an error message in the flash' do
+				post :create, class_single.to_sym => invalid
+				expect(flash[:alert]).to eq class_single.humanize + ' could not be created.'
 			end
-
-# This currently doesn't work and it's not as easy as changing the controller. I suspect the flash isn't ready.
-#			it 'displays an error message in the flash' do
-#				expect(flash[:alert]).to eq [invalid_attribute.to_s.sub('_id', '').capitalize + " can't be blank"]
-#			
 		end
 	end
 end

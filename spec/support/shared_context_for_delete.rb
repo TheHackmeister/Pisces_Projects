@@ -47,5 +47,10 @@ RSpec.shared_examples 'a delete page' do
 			post :destroy, id: object.id
 			expect(response).to redirect_to class_model
 		end
+
+		it 'displays succuss in the flash' do
+			post :destroy, id: object.id
+			expect(flash[:notice]).to eq class_single.humanize + ' was successfully destroyed.'
+		end	
 	end
 end

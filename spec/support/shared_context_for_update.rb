@@ -29,6 +29,10 @@ RSpec.shared_examples 'an update page' do |invalid_attributes, valid_attributes|
 				expect(assigns(class_single.to_sym)).to eq class_model.find(object.id)
 			end
 
+			it 'displays a success notice' do
+				expect(flash[:notice]).to eq class_single.humanize + ' was successfully updated.'
+			end
+
 			it 'redirects to the ' + described_class.controller_name.singularize do
 				expect(response).to redirect_to(class_model.last)
 			end
@@ -47,12 +51,8 @@ RSpec.shared_examples 'an update page' do |invalid_attributes, valid_attributes|
 				expect(object.attributes[invalid_attribute.to_s]).to_not eq invalid_value
 			end
 			
-			it 'has a message with the reason for failure in .errors.messages' do
-				expect(assigns(class_single.to_sym).errors.messages).to eq invalid_attribute.to_s.sub('_id', '').to_sym => ["can't be blank"]
-			end
-
 			it 'displays an error message in the flash'  do
-				expect(flash[:alert]).to eq [invalid_attribute.to_s.sub('_id', '').capitalize.sub('_', ' ') + " can't be blank"]
+				expect(flash[:alert]).to eq class_single.humanize + " could not be updated."
 			end
 			
 			it 're-renders the :edit template' do
