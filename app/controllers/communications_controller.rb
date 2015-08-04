@@ -42,16 +42,12 @@ class CommunicationsController < ApplicationController
   end
 
   def update
-    if not @communication.update(communication_params)
-			flash[:alert] = @communication.errors.full_messages 
-		end
+    @communication.update(communication_params)
     respond_with(@communication)
   end
 
   def destroy
-		if not @communication.destroy
-			flash[:alert] = @communication.errors.full_messages 
-		end
+		@communication.destroy
     respond_with(@communication)
   end
 

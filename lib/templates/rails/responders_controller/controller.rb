@@ -26,23 +26,17 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   def create
     @<%= singular_table_name %> = <%= orm_class.build(class_name, attributes_params) %>
-    if not @<%= orm_instance.save %>
-      flash[:alert] = <%= singular_table_name %>.errors.full_messages
-    end
+    @<%= orm_instance.save %>
     respond_with(@<%= singular_table_name %>)
   end
 
   def update
-    if not @<%= orm_instance_update(attributes_params) %>
-      flash[:alert] = <%= singular_table_name %>.errors.full_messages
-    end
+    @<%= orm_instance_update(attributes_params) %>
     respond_with(@<%= singular_table_name %>)
   end
 
   def destroy
-    if not @<%= orm_instance.destroy %>
-      flash[:alert] = <%= singular_table_name %>.errors.full_messages
-    end
+    @<%= orm_instance.destroy %>
     respond_with(@<%= singular_table_name %>)
   end
 

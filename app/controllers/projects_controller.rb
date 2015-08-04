@@ -30,7 +30,6 @@ class ProjectsController < ApplicationController
     if @project.update project_params
       redirect_to @project
     else
-      flash[:alert] = @project.errors.full_messages 
       render :edit
     end
   end

@@ -23,45 +23,17 @@ class PrioritiesController < ApplicationController
 
   def create
     @priority = Priority.new(priority_params)
-		
-  #  respond_to do |format|
-    if not @priority.save
-			flash[:alert] = @priority.errors.full_messages 
-		end
-  #      format.html { redirect_to @priority, notice: 'Priority was successfully created.' }
-  #      format.json { render :show, status: :created, location: @priority }
-  #    else
-  #      format.html { render :new }
-  #      format.json { render json: @priority.errors, status: :unprocessable_entity }
-  #    end
-  #  end
-		
+    @priority.save
 		respond_with(@priority)
   end
 
   def update
-#    respond_to do |format|
-      if not @priority.update(priority_params)
-				flash[:alert] = @priority.errors.full_messages 
-			end
-#        format.html { redirect_to @priority, notice: 'Priority was successfully updated.' }
-#        format.json { render :show, status: :ok, location: @priority }
-#      else
-#        format.html { render :edit }
-#        format.json { render json: @priority.errors, status: :unprocessable_entity }
-#      end
-#    end
+		@priority.update(priority_params)
 		respond_with(@priority)
   end
 
   def destroy
-		if not @priority.destroy
-			flash[:alert] = @priority.errors.full_messages 
-		end
-#    respond_to do |format|
-#      format.html { redirect_to priorities_url, notice: 'Priority was successfully destroyed.' }
-#      format.json { head :no_content }
-#    end
+		@priority.destroy
 		respond_with(@priority)
   end
 

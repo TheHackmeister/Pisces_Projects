@@ -23,23 +23,17 @@ class CommunicationStatusesController < ApplicationController
 
   def create
     @communication_status = CommunicationStatus.new(communication_status_params)
-		if not @communication_status.save
-			flash[:alert] = @communication_status.errors.full_messages 
-		end
+		@communication_status.save
     respond_with(@communication_status)
   end
 
   def update
-    if not @communication_status.update(communication_status_params)
-			flash[:alert] = @communication_status.errors.full_messages 
-		end
+    @communication_status.update(communication_status_params)
     respond_with(@communication_status)
   end
 
   def destroy
-    if not @communication_status.destroy
-			flash[:alert] = @communication_status.errors.full_messages 
-		end
+    @communication_status.destroy
     respond_with(@communication_status)
   end
 

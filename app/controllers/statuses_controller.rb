@@ -23,23 +23,17 @@ class StatusesController < ApplicationController
 
   def create
     @status = Status.new(status_params)
-		if not @status.save
-			flash[:alert] = @status.errors.full_messages 
-		end
+		@status.save
 		respond_with(@status)
   end
 
   def update
-		if not @status.update(status_params)
-			flash[:alert] = @status.errors.full_messages 
-		end
+		@status.update(status_params)
 		respond_with(@status)
   end
 
   def destroy
-    if not @status.destroy
-			flash[:alert] = @status.errors.full_messages 
-    end
+    @status.destroy
 		respond_with(@status)
   end
 

@@ -23,24 +23,17 @@ class StepStatusesController < ApplicationController
 
   def create
     @step_status = StepStatus.new(step_status_params)
-
-    if not @step_status.save
-			flash[:alert] = @step_status.errors.full_messages 
-		end
+    @step_status.save
 		respond_with(@step_status)
   end
 
   def update
-		if not @step_status.update(step_status_params)
-			flash[:alert] = @step_status.errors.full_messages 
-    end
+		@step_status.update(step_status_params)
 		respond_with(@step_status)
   end
 
   def destroy
-    if not @step_status.destroy
-			flash[:alert] = @step_status.errors.full_messages 
-		end
+    @step_status.destroy
 		respond_with(@step_status)
   end
 

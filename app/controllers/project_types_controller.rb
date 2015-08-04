@@ -27,23 +27,17 @@ class ProjectTypesController < ApplicationController
 
   def create
     @project_type = ProjectType.new(project_type_params)
-		if not @project_type.save
-			flash[:alert] = @project_type.errors.full_messages 
-		end
+		@project_type.save
     respond_with(@project_type)
   end
 
   def update
-		if not @project_type.update(project_type_params)
-			flash[:alert] = @project_type.errors.full_messages 
-		end
+		@project_type.update(project_type_params)
     respond_with(@project_type)
   end
 
   def destroy
-    if not @project_type.destroy
-			flash[:alert] = @project_type.errors.full_messages 
-		end
+    @project_type.destroy
     respond_with(@project_type)
   end
 

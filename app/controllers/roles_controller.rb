@@ -22,23 +22,17 @@ class RolesController < ApplicationController
 
   def create
     @role = Role.new(role_params)
-		if not @role.save
-			flash[:alert] = @role.errors.full_messages 
-		end
+		@role.save
     respond_with(@role)
   end
 
   def update
-    if not @role.update(role_params)
-			flash[:alert] = @role.errors.full_messages 
-		end
+    @role.update(role_params)
     respond_with(@role)
   end
 
   def destroy
-    if not @role.destroy
-			flash[:alert] = @role.errors.full_messages 
-		end
+    @role.destroy
     respond_with(@role)
   end
 

@@ -32,13 +32,11 @@ class ProjectLinksController < ApplicationController
         format.json { render :show, status: :created, location: @project_link }
         format.ajax { render :partial => 'project_links/show_single', :object => @project_link, :formats => [:html]}
       else
-				flash[:alert] = @project_link.errors.full_messages
         format.html { render :new }
         format.json { render json: @project_link.errors, status: :unprocessable_entity }
         format.ajax { render :partial => 'project_links/bad_link', :object => @project_link, :formats => [:html]}
       end
     end
-#		respond_with(@project_link)
   end
 
   def update
@@ -47,7 +45,6 @@ class ProjectLinksController < ApplicationController
         format.html { redirect_to @project_link, notice: 'Project link was successfully updated.' }
         format.json { render :show, status: :ok, location: @project_link }
       else
-				flash[:alert] = @project_link.errors.full_messages
         format.html { render :edit }
         format.json { render json: @project_link.errors, status: :unprocessable_entity }
       end
@@ -55,9 +52,7 @@ class ProjectLinksController < ApplicationController
   end
 
   def destroy
-    if not @project_link.destroy
-			flash[:alert] = @project_link.errors.full_messages
-		end
+    @project_link.destroy
 
     respond_with(@project_link) do |format|
       format.html { redirect_to project_links_url, notice: 'Project link was successfully destroyed.' }

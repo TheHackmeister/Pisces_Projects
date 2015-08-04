@@ -29,7 +29,6 @@ class ContactsController < ApplicationController
           format.ajax {render :partial => 'contacts/show_single', :object => @contact, :formats => [:html]}
         end
      else
-			 flash[:alert] = @contact.errors.full_messages 
 			 respond_with(@contact) do |format|
 				 format.ajax {render :partial => 'contacts/bad_contact', :object => @contact, :formats => [:html]}
 			 end
@@ -37,16 +36,12 @@ class ContactsController < ApplicationController
   end
 
   def update
-    if not @contact.update(contact_params)
-			flash[:alert] = @contact.errors.full_messages 
-		end
+    @contact.update(contact_params)
     respond_with(@contact)
   end
 
   def destroy
-    if not @contact.destroy
-			flash[:alert] = @contact.errors.full_messages 
-		end
+    @contact.destroy
 		respond_with(@contact)
   end
 

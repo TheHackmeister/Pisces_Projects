@@ -17,17 +17,13 @@ class SamplesController < ApplicationController
   end
 
   def update
-    if not @sample.update sample_params
-      flash[:alert] = @sample.errors.full_messages 
-    end
+    @sample.update sample_params
 		respond_with(@sample)
   end
 
   def create
     @sample = Sample.new sample_params
-    if not @sample.save
-      flash[:alert] = @sample.errors.full_messages 
-    end
+    @sample.save
 		respond_with(@sample)
   end
 
@@ -37,10 +33,7 @@ class SamplesController < ApplicationController
   end
 
   def destroy
-    if not @sample.destroy
-      flash[:alert] = @sample.errors.full_messages 
-		end
-
+    @sample.destroy
 		respond_with(@sample)
   end
 

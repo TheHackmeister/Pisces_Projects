@@ -31,7 +31,6 @@ class StepsController < ApplicationController
         format.json { render :show, status: :created, location: @step }
         format.ajax {render :partial => 'show_single', :object => @step, :formats => [:html]}
       else
-				flash[:alert] = @step.errors.full_messages 
         format.html { render :new }
         format.json { render json: @step.errors, status: :unprocessable_entity }
         format.ajax {render :partial => 'bad_step', :object => @step, :formats => [:html]}
@@ -40,16 +39,12 @@ class StepsController < ApplicationController
   end
 
   def update
-		if not @step.update(step_params)
-			flash[:alert] = @step.errors.full_messages 
-		end
+		@step.update(step_params)
 		respond_with(@step)
   end
 
   def destroy
-    if not @step.destroy
-			flash[:alert] = @step.errors.full_messages 
-		end
+    @step.destroy
 		respond_with(@step)
   end
   
