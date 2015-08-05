@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ProjectTypesController, type: :controller do	
 	include_context 'application'
 	
-	it_behaves_like 'an index page' do
+	it_behaves_like 'an index controller' do
 		context 'logged in' do 
 			before :each do
 				sign_in user
@@ -26,11 +26,11 @@ RSpec.describe ProjectTypesController, type: :controller do
 		end
 	end
 
-	it_behaves_like 'a show page' 
-	it_behaves_like 'an edit page'
-	it_behaves_like 'a new page' 
-	it_behaves_like 'a create page', {:text => ""}
-	it_behaves_like 'an update page', {:text => ""}, {:text => "Good Text"}
-	it_behaves_like 'a delete page'
+	it_behaves_like 'a show controller' 
+	it_behaves_like 'an edit controller'
+	it_behaves_like 'a new controller' 
+	it_behaves_like 'a create controller', {:text => ""}
+	it_behaves_like 'an update controller', {:text => ""}, {:text => "Good Text"}
+	it_behaves_like 'a delete controller'
 	
 end

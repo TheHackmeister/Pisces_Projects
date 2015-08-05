@@ -1,4 +1,4 @@
-RSpec.shared_examples 'a show page' do
+RSpec.shared_examples 'a show controller' do
 	let(:object) { FactoryGirl.create(described_class.controller_name.singularize.to_sym) }
 
 	context 'not logged in' do

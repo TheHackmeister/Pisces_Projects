@@ -1,4 +1,4 @@
-RSpec.shared_examples 'a user delete page' do 
+RSpec.shared_examples 'a user delete controller' do 
 
 	context 'not logged in' do
 		it 'redirects to the login page' do

@@ -1,4 +1,4 @@
-RSpec.shared_examples 'an index page' do
+RSpec.shared_examples 'an index controller' do
 	before(:each) {
 		objects	
 	}

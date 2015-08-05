@@ -1,4 +1,4 @@
-RSpec.shared_examples 'an update page' do |invalid_attributes, valid_attributes|
+RSpec.shared_examples 'an update controller' do |invalid_attributes, valid_attributes|
 	let(:invalid_attribute) {invalid_attributes.keys.first}
 	let(:invalid_value) { invalid_attributes.values.first}
 	let(:valid_attribute) { valid_attributes.keys.first}

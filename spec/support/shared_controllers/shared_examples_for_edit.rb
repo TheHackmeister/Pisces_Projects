@@ -1,4 +1,4 @@
-RSpec.shared_examples 'an edit page' do
+RSpec.shared_examples 'an edit controller' do
 	context 'not logged it' do
 		it 'redirects to the login page' do
 			get :edit, id: object.id

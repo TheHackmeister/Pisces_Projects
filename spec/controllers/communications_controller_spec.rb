@@ -4,13 +4,13 @@ RSpec.describe CommunicationsController do
 	
 	include_context 'application' # Sets up user, admin, and communication_status
 	
-	it_behaves_like 'an index page'
-	it_behaves_like 'a show page'
-	it_behaves_like 'an edit page'
-	it_behaves_like 'a new page'
-	it_behaves_like 'a create page', {:summary => nil}
-	it_behaves_like 'an update page', {:summary => nil}, {:summary => "Example Text"}
-	it_behaves_like 'a delete page' 
+	it_behaves_like 'an index controller'
+	it_behaves_like 'a show controller'
+	it_behaves_like 'an edit controller'
+	it_behaves_like 'a new controller'
+	it_behaves_like 'a create controller', {:summary => nil}
+	it_behaves_like 'an update controller', {:summary => nil}, {:summary => "Example Text"}
+	it_behaves_like 'a delete controller' 
 
 	describe "contact managament" do
 		before(:each) do 

@@ -1,4 +1,4 @@
-RSpec.shared_examples 'a json index page' do
+RSpec.shared_examples 'a json index controller' do
 	render_views
 	before(:each) do
 		request.accept = 'application/json'
