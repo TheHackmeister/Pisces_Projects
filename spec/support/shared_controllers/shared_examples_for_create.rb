@@ -1,7 +1,7 @@
 # invalid_attribute is the attribute that is invalid
 # invalid_value is the value that is invalid. 
 
-RSpec.shared_examples 'a create page' do |invalid_attributes|
+RSpec.shared_examples 'a create controller' do |invalid_attributes|
 	let(:valid_attributes) { FactoryGirl.attributes_for(class_single.to_sym) }
 	let(:invalid_attribute) { invalid_attributes.keys.first}
 	let(:invalid_value) { invalid_attributes.values.first}
