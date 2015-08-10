@@ -1,7 +1,4 @@
 class Communication < ActiveRecord::Base
-	include HasToS
-	include ReferenceType
-  reference_type :search
   belongs_to :communication_status
   belongs_to :communication_type
   belongs_to :project

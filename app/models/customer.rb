@@ -5,8 +5,6 @@ end
 
 class Customer < PiscesDatabase
   include Filterable
-	include ReferenceType
-  reference_type :search 
   self.primary_key = :id
 
   scope :customer_name_search, ->(customer_name) { where('lower(customer_name) LIKE ?', "%#{customer_name.downcase}%")}

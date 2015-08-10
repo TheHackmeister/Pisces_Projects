@@ -1,7 +1,4 @@
 class Project < ActiveRecord::Base
-	include HasToS
-	include ReferenceType
-	reference_type :search
   belongs_to :customer
   belongs_to :priority
   belongs_to :status

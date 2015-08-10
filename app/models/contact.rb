@@ -1,8 +1,5 @@
 class Contact < ActiveRecord::Base
-	include HasToS
   include Filterable
-	include ReferenceType
-  reference_type :search
   belongs_to :project
   has_many :communications
   scope :contact_name, ->(contact_name) {where('lower(contact_name) LIKE ?', "%#{contact_name.downcase}%")}

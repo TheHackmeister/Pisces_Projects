@@ -1,7 +1,4 @@
 class ProjectLink < ActiveRecord::Base
-	include HasToS
-	include ReferenceType
-  reference_type :drop_down
   belongs_to :project
   validates :project, :url, :name, :presence => true
 

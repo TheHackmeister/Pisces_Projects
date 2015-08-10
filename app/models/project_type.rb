@@ -1,7 +1,4 @@
 class ProjectType < ActiveRecord::Base
-	include HasToS
-	include ReferenceType
-  reference_type :drop_down
 	has_many :projects
 	validates :text, :presence => true
 
@@ -11,4 +8,5 @@ class ProjectType < ActiveRecord::Base
 		text :text
 		integer :sort
 	end
+	reference_type_is_not_search true
 end
