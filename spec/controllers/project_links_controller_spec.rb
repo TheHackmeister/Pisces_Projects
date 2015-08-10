@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProjectLinksController do
-	include_context 'application' # Sets up user, admin, and sample
+	include_context 'controllers' # Sets up user, admin, and sample
 
 	it_behaves_like 'an index controller'
 	it_behaves_like 'a show controller'

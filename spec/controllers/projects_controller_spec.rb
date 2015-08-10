@@ -7,7 +7,7 @@ RSpec.describe ProjectsController do
    let(:project) {FactoryGirl.create(:project)}
    let(:admin) {FactoryGirl.create(:user, role_title: 'admin', role_val: '2')}
 =end 
-	include_context 'application' # Sets up user, admin, and sample
+	include_context 'controllers' # Sets up user, admin, and sample
 
 	it_behaves_like 'an index controller' do
 		context 'searching' do

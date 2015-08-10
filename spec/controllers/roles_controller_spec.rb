@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe RolesController do
-	include_context 'application' # Sets up user, admin, and role
+	include_context 'controllers' # Sets up user, admin, and role
 	
 	it_behaves_like 'an index controller'
 	it_behaves_like 'a show controller'

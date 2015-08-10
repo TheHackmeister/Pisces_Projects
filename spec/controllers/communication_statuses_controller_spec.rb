@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CommunicationStatusesController do
-	include_context 'application' # Sets up user, admin, and communication_status
+	include_context 'controllers' # Sets up user, admin, and communication_status
 	
 	it_behaves_like 'an index controller'
 	it_behaves_like 'a show controller'

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CommunicationTypesController do
-	include_context 'application' # Sets up user, admin, and communication_type
+	include_context 'controllers' # Sets up user, admin, and communication_type
 	
 	it_behaves_like 'an index controller'
 	it_behaves_like 'a show controller'

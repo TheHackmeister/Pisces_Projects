@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe ProjectTypesController, type: :controller do	
-	include_context 'application'
+	include_context 'controllers'
 	
 	it_behaves_like 'an index controller' do
 		context 'logged in' do 
