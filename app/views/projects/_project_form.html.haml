@@ -1,38 +1,38 @@
 = form_for @project, :html => {:autocomplete => "off"} do |f|
   %div.flex.grow
-    %div
+    .field
       = f.label :tile, 'Title: '
       = f.text_field :title
-    %div
+    .field
       = f.label :priority, 'Priority: '
       = f.collection_select(:priority_id, Priority.all, :id, :text.to_s)
-    %div
+    .field
       = f.label :status_id, 'Status: '
       = f.collection_select(:status_id, Status.all, :id, :text.to_s)
-    %div
+    .field
       = f.label :project_type_id, 'Project Type:'
       = f.collection_select(:project_type_id, ProjectType.all, :id, :text.to_s)
-    %div
+    .field
       - search_html f, :project, :customer, "Customer: ", {:path => customers_path, :input => :customer_name}, :customer_name, @project.customer_name 
-    %div
+    .field
       = f.label :started, 'Date started: '
       = f.date_select :started
-    %div
+    .field
       = f.label :soft_deadline, 'Soft Deadline: '
       = f.date_select :soft_deadline
-    %div
+    .field
       = f.label :goal, 'Goal: '
       = f.text_field :goal
   %hr
   %div.flex.three
-    %div.no_wrap
+    .field.no_wrap
       = f.label :notes, 'Pisces Notes: '
       = f.text_area :notes
       = render :partial => 'settings/notes_cheat_sheet'
-    %div
+    .field
       = f.label :customer_notes, 'Customer Notes: '
       = f.text_area :customer_notes
-    %div
+    .field
       = f.label :stumbling_blocks, 'Potential Stumbling Blocks: '
       = f.text_area :stumbling_blocks
   %hr
