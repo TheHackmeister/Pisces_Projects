@@ -47,5 +47,28 @@ FactoryGirl.define do
         project.reload
       end
     end
+
+		factory :project_alt do
+			sequence :project_type_id do
+				if ProjectType.count < 2
+					FactoryGirl.create(:project_type).id
+				else
+					ProjectType[1].id
+				end
+			end
+			started '01/11/2012'
+			sequence :priority_id do
+				if(Priority.count == 0) then 
+					FactoryGirl.create(:priority, text: 'Urgent', val: 1)
+					FactoryGirl.create(:priority, text: 'Medium', val: 2)
+					FactoryGirl.create(:priority, text: 'Low', val: 3)
+				end
+				2
+			end
+			notes 'Alt notes'
+			customer_notes 'Alt customer notes'
+			stumbling_blocks 'Alt stumbling blocks'
+
+		end
   end
 end

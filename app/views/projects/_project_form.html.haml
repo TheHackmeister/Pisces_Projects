@@ -66,8 +66,10 @@
         %div.flex.two
           = render :partial => 'contacts/edit_contact', :object => ff 
   %hr
-  = f.submit 'Submit'
+  = f.submit 'Save'
   \|
   = link_to 'Cancel', @project
   \|
   = link_to 'Destroy Project', @project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+  \|
+  = link_to 'Projects Index', projects_path
