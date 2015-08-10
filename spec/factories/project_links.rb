@@ -12,4 +12,18 @@ FactoryGirl.define do
 			end
 		}
   end
+
+	factory :project_link_alt, class: :project_link do
+		sort 1
+		name 'Alt link'
+		url 'alt_url'
+		notes 'Alt notes'
+		sequence(:project_id) {
+			if Project.count < 2
+				(create :project).id
+			else
+				Project[1].id
+			end
+		}
+	end
 end

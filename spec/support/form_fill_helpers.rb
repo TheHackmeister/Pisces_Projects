@@ -3,14 +3,6 @@
 module FormFillHelper 
   def cap_login 
     login_as FactoryGirl.create(:user), :scope => :user
-    #page.driver.render('./log/screen_1Home.png', :full => true)
-    #visit new_user_session_path
-    #fill_attributes :user, FactoryGirl.attributes_for(:user).slice(:email, :password)
-    #fill_in :user_email, :with => 'example@example.com'
-    #fill_in :user_password, :with => 'example123'
-    #click_button 'Log in'
-    #page.driver.render('./log/screen_2Home.png', :full => true)
-    #expect(page).to have_content "Signed in successfully"
   end
 
 
@@ -49,7 +41,7 @@ module FormFillHelper
       if field.index('_id') != nil  
         field_class = field[0..field.length - 4].classify.constantize      
         #I had to do it this way because expect(page).to have_content("Pisces Molecular") looked for the customer ID instead. WEIRD.
-        expect(has_text?(field_class.find_by_id(value).text)).to eq true
+        expect(has_text?(field_class.find_by_id(value).to_s)).to eq true
       else
         expect(page).to have_content value
       end
@@ -58,16 +50,36 @@ module FormFillHelper
 
   def fill_attributes model_name, attributes
     attributes.each do |field, value|
-      #page.driver.render('./log/screen_1Home.png', :full => true)
-      next if field == 'id' 
+			# Skip if own ID. 
+			next if field == 'id' 
+
+			# If it's a reference. 
       if field.to_s.index('_id') != nil
         field_class = field[0..field.length - 4].classify.constantize 
-        select(field_class.find_by_id(value).text, :from => model_name.to_s + "_" + field)
-      else
+			
+				# Searchable reference.
+				if field_class.reference_type_is_search? 
+					finder = 'input#' + model_name.to_s + "_" + to_name(field_class) + "_" + to_name(field_class)
+					find(finder).set ''
+					find(finder).native.send_keys(field_class.find_by_id(value).to_s)
+					find('a', text: field_class.find_by_id(value).to_s).click
+				else # Drop down reference.
+					select(field_class.find_by_id(value).to_s, :from => model_name.to_s + "_" + field.to_s)
+				end
+
+			# it's a Date
+			elsif (model_name.to_s.classify.constantize.column_for_attribute(field).type) == :date 
+				select_date value.to_date, from: model_name.to_s + '_' + field.to_s
+			else
         fill_in model_name.to_s + "_" + field.to_s, :with => value
       end
     end
   end
+
+	private
+	def to_name model
+		model.name.underscore
+	end
 
 end
 
