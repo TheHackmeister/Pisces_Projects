@@ -18,4 +18,8 @@ class Contact < ActiveRecord::Base
 		reindex_project
 		yield
 	end
+
+	def to_s
+		self.contact_name.to_s 
+	end
 end

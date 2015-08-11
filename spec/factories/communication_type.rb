@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :communication_type do
-    text "Phone"
-    val 1
+		sequence(:text) { |n| "Phone " + n.to_s}
+    sequence(:val) { |n| n}
 
 
 		factory :communication_type_alt do

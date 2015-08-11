@@ -12,6 +12,13 @@
     = f.label :communication_type
     = f.collection_select(:communication_type_id, CommunicationType.all, :id, :text.to_s) 
   .field
-    - search_html f, :communication, :project, 'Project: ', {:path => projects_path, :input => :q}, :title, @communication.project.to_s
+    = # f.label :contact
+    =# f.collection_select(:contact_id, Contact.find_by_project_id(@communication.project_id), :id, :text.to_s)
+    - search_html f, :communication, :contact, 'Contact ', {:path => contacts_path, :input=> :search}, :contact_name, @communication.contact.to_s
+  .field
+    = f.label :comunication_date
+    = f.date_select :comm_date
+  .field
+    - search_html f, :communication, :project, 'Project ', {:path => projects_path, :input => :q}, :title, @communication.project.to_s
   .actions
     = f.submit 'Save'

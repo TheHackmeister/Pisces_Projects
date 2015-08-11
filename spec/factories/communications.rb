@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :communication do
     summary 'Communication summary'
     notes 'Communication notes'
+		comm_date '10/11/2012'
 		sequence(:communication_type_id){
 			if CommunicationType 
 				(create :communication_type).id
@@ -35,6 +36,7 @@ FactoryGirl.define do
 		factory :communication_alt do
 			summary 'Alt Communication summary'
 			notes 'Alt Communication notes'
+			comm_date '07/08/2008'
 			sequence(:communication_type_id){
 				if CommunicationType.count < 2
 					(create :communication_type).id
