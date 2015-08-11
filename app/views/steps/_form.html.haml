@@ -10,8 +10,11 @@
     = f.number_field :val
   .field
     = f.label :step_status
-    = f.text_field :step_status
+    = f.collection_select(:step_status_id, StepStatus.all, :id, :text.to_s)
   .field
+    = f.label :due
+    = f.date_select :due
+  %div
     - search_html f, :step, :project, 'Project: ', {path: projects_path, input: :q}, :title, @step.project.to_s
   .actions
     = f.submit 'Save'

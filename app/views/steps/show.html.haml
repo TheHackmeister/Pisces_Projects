@@ -11,11 +11,13 @@
   = show_attribute_link_or_text @step.val
 %p
   %b Step status:
-  = show_attribute_link_or_text @step.step_status.text
+  = show_attribute_link_or_text @step.step_status
+%p
+  %b Due:
+  = show_attribute_link_or_text @step.due
 %p
   %b Step project:
   = show_attribute_link_or_text @step.project
-
 
 = link_to 'Edit', edit_step_path(@step)
 \|
