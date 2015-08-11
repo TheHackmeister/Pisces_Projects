@@ -10,7 +10,8 @@ RSpec.shared_examples 'a show page' do
 		end
 		
 		it 'lists all of the attributes' do
-			has_attributes object.attributes
+			expect(page).to have_attributes object.attributes
+#			has_attributes object.attributes
 		end
 
 		it 'has an edit link' do

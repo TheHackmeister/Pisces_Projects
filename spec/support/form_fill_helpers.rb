@@ -34,7 +34,7 @@ module FormFillHelper
     select_by_id date.month, :from => "#{field}_2i"
     select date.day.to_s,    :from => "#{field}_3i"  
   end
-
+=begin
   def has_attributes attributes
     attributes.each do |field, value|
       next if field == 'id' || field == 'created_at' || field == 'updated_at'
@@ -47,7 +47,7 @@ module FormFillHelper
       end
     end
   end
-
+=end
   def fill_attributes model_name, attributes
     attributes.each do |field, value|
 			# Skip if own ID. 

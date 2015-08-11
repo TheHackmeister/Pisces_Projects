@@ -86,7 +86,8 @@ RSpec.describe Project, :type => :feature do
             fill_attributes :contact, contact_attributes 
             click_button :Add
           end
-          has_attributes contact_attributes
+          expect(page).to have_attributes contact_attributes
+					sleep 1 
           expect(Contact.count).to eq 1
         end
       end
@@ -179,7 +180,7 @@ RSpec.describe Project, :type => :feature do
    it 'should be seen in the project' do
      step = FactoryGirl.create(:step, :project => @project)
      visit project_path @project
-     has_attributes step.attributes.except 'project_id'
+     expect(page).to have_attributes step.attributes.except 'project_id'
    end
  end
   
