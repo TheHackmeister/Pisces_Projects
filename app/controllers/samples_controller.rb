@@ -45,6 +45,6 @@ class SamplesController < ApplicationController
   end
 
   def sample_params
-    params.require(:sample).permit :customer_id, :pisces_id
+    params.require(:sample).permit :customer_id, :pisces_number
   end
 end

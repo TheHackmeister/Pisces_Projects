@@ -1,1 +1,1 @@
-json.extract! @sample, :id, :customer_id, :pisces_id, :created_at, :updated_at
+json.extract! @sample, :id, :customer_id, :pisces_number, :created_at, :updated_at

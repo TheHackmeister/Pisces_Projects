@@ -11,7 +11,7 @@
   %tbody
     - @samples.each do |sample|
       %tr
-        %td= create_index_link_or_text sample, sample.pisces_id
+        %td= create_index_link_or_text sample, sample.pisces_number
         %td= create_index_link_or_text sample, sample.customer
         %td= link_to 'Show', sample
         %td= link_to 'Edit', edit_sample_path(sample)

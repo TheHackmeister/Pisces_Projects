@@ -3,6 +3,6 @@
     - search_html f, :sample, :customer, 'Customer Name: ', {path: customers_path, input: :customer_name}, :customer_name, @sample.customer.to_s
   .field
     = f.label 'Pisces ID'
-    = f.number_field :pisces_id
+    = f.number_field :pisces_number
   .actions
     = f.submit 'Save'
