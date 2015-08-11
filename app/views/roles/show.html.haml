@@ -1,5 +1,12 @@
 %h1 Showing: Role
 
+%p
+  %b Title:
+  = show_attribute_link_or_text @role.title
+%p
+  %b Value:
+  = show_attribute_link_or_text @role.val
+
 = link_to 'Edit', edit_role_path(@role)
 \|
 = link_to 'Destroy', role_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
