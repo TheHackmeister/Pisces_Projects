@@ -1,7 +1,7 @@
 require 'rails_helper'
 include Warden::Test::Helpers
 
-RSpec.describe ProjectLink, :type => :feature do
+RSpec.describe Contact, :type => :feature do
 	include_context 'features'
 
 	it_behaves_like 'a create page'
