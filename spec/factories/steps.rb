@@ -21,5 +21,26 @@ FactoryGirl.define do
 				Project.first.id
 			end
 		}
-  end
+
+		factory :step_alt do
+			f.action 'Alt Step Action'
+			f.note 'Alt Step note'
+			f.due "8/9/2015"
+
+			sequence(:step_status_id) {
+				if StepStatus.count < 2 
+					(create :step_status).id
+				else
+					StepStatus.all[1].id
+				end
+			}
+			sequence(:project_id) {
+				if Project.count < 2
+					(create :project).id
+				else
+					Project.all[1].id
+				end
+			}
+		end
+	end
 end

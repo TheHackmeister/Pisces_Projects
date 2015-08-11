@@ -3,5 +3,11 @@ FactoryGirl.define do
   factory :role do
     title "userRole"
     val 1
-  end
+
+
+		factory :role_alt do
+			title "AltUserRole"
+			val 2
+		end
+	end
 end
