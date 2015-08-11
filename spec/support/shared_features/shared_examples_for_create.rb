@@ -20,13 +20,13 @@ RSpec.shared_examples 'a create page' do
 		it 'can be filled in' do
 			fill_attributes class_name.to_sym, valid_attributes
 			click_button :Save
-			expect(described_class.first.attributes).to have_attributes valid_attributes
+			expect(described_class.last.attributes).to have_attributes valid_attributes
 		end
 
 		it 'gets saved to the database' do
+			expect{
 			fill_attributes class_name.to_sym, valid_attributes
-			click_button :Save
-			expect(described_class.count).to eq 1
+			click_button :Save}.to change{described_class.count}.by 1
 		end
 
 	end

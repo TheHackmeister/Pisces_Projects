@@ -6,8 +6,8 @@ RSpec.shared_examples 'a delete page' do
 		end
 	
 		it 'deletes the ' + described_class.name.underscore do
-			find('a', text: 'Destroy').click
-			expect(object.class.count).to eq 0
+			expect{find('a', text: 'Destroy').click}.to change{
+				object.class.count}.by -1
 		end
 	end
 end

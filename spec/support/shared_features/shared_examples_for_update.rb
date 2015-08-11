@@ -17,8 +17,8 @@ RSpec.shared_examples 'an update page' do
 			visit edit_class_path object
 			fill_attributes class_single.to_sym, alt_attributes 
 			click_button :Save
-			expect(object.class.count).to eq 1
-			expect(object.class.first).to have_attributes alt_attributes
+			object.reload
+			expect(object).to have_attributes alt_attributes
 		end
 
 		it 'has an index link' do

@@ -1,9 +1,16 @@
-RSpec.shared_examples 'an index page' do |pagation_limit|
+RSpec.shared_examples 'an index page' do 
 	context 'when logged in' do
-		let :index_count do 3 end
+		let :unmodified_index_count do 3 end
+		let :index_count do 
+			if described_class.name == 'Role' 
+				unmodified_index_count + 1
+			else
+				unmodified_index_count
+			end
+		end
 		before :each do
 			login_as user
-			index_count.times do
+			unmodified_index_count.times do
 				FactoryGirl.create class_single.to_sym
 			end
 			visit class_path
