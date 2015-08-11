@@ -87,7 +87,7 @@ RSpec.describe Project, :type => :feature do
             click_button :Add
           end
           expect(page).to have_attributes contact_attributes
-					sleep 1 
+					sleep 1 # Not a good fix, but was getting a DB locked error consistantly. Consider addressing it in have_attributes
           expect(Contact.count).to eq 1
         end
       end
