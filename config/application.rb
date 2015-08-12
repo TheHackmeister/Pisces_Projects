@@ -38,5 +38,4 @@ module PiscesProjects
 			g.fallbacks[:rspec_scaffold_include_features] = :rspec
     end
   end
-
 end
