@@ -1,8 +1,8 @@
-require 'rails_helper'
-###################################################################
-# You must manual set a validation for create and update to work. #
-###################################################################
+#############################################################################
+# You must manually set a validation in the model and for create and update.#
+#############################################################################
 
+require 'rails_helper'
 # This assumes that we're using FactoryGirl
 # That there is a :user factory
 # and that there is a factory for <%= file_name %>. 

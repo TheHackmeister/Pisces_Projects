@@ -6,4 +6,4 @@
 \|
 = link_to 'Destroy', <%= singular_table_name %>_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
 \|
-= link_to 'Back', <%= index_helper %>_path
+= link_to '<%= plural_table_name.titleize %> Index', <%= index_helper %>_path

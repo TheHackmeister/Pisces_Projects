@@ -1,3 +1,7 @@
+############################################
+# You must manually create the _alt factory#
+############################################
+
 require 'rails_helper'
 include Warden::Test::Helpers
 
