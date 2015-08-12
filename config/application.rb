@@ -24,7 +24,7 @@ module PiscesProjects
     # config.i18n.default_locale = :de
     
     config.generators do |g| 
-      g.test_framework :rspec_scaffold_include_features, 
+      g.test_framework :rspec, 
         :fixtures => true, 
         :view_specs => false, 
         :routing_specs => false, 
@@ -35,7 +35,6 @@ module PiscesProjects
 			g.assets false
 			g.jbuilder false
 			g.helper false
-			g.fallbacks[:rspec_scaffold_include_features] = :rspec
     end
   end
 end
