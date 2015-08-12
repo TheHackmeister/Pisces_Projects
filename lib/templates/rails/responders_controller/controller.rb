@@ -1,7 +1,7 @@
 <% module_namespacing do -%>
 class <%= controller_class_name %>Controller < ApplicationController
   load_and_authorize_resource
-  before_action :set_<%= singular_table_name %>, only: [:show, :edit, :update, :destroy]
+  <%= controller_before_filter %> :set_<%= singular_table_name %>, only: [:show, :edit, :update, :destroy]
   respond_to :html
 
 <% unless options[:singleton] -%>
@@ -31,7 +31,7 @@ class <%= controller_class_name %>Controller < ApplicationController
   end
 
   def update
-    @<%= orm_instance.update(attributes_params) %>
+    @<%= orm_instance_update(attributes_params) %>
     respond_with(@<%= singular_table_name %>)
   end
 
@@ -44,6 +44,7 @@ class <%= controller_class_name %>Controller < ApplicationController
     def set_<%= singular_table_name %>
       @<%= singular_table_name %> = <%= orm_class.find(class_name, "params[:id]") %>
     end
+    <%- if strong_parameters_defined? -%>
 
     def <%= "#{singular_table_name}_params" %>
       <%- if attributes_names.empty? -%>
@@ -52,5 +53,6 @@ class <%= controller_class_name %>Controller < ApplicationController
       params.require(:<%= singular_table_name %>).permit(<%= attributes_names.map { |name| ":#{name}" }.join(', ') %>)
       <%- end -%>
     end
+    <%- end -%>
 end
 <% end -%>
