@@ -1,30 +1,10 @@
 FactoryGirl.define do
   factory :project_link do
-    sort 0
-    name 'Project Link'
-    url 'http://ProjectLinkURL'
-    notes 'Link Notes'
-		sequence(:project_id) {
-			if Project.count == 0
-				(create :project).id
-			else
-				Project.first.id
-			end
-		}
+		sequence :name do |n| 'Project Link' + n.to_s end
+		sequence :url do |n| 'http://ProjectLinkURL' + n.to_s end
+		sequence :notes do |n| 'Link Notes' + n.to_s end
+		sequence :sort do |n| n end
 
-
-		factory :project_link_alt do
-			sort 1
-			name 'Alt link'
-			url 'alt_url'
-			notes 'Alt notes'
-			sequence(:project_id) {
-				if Project.count < 2
-					(create :project).id
-				else
-					Project.all[1].id
-				end
-			}
-		end
+		project_id do (create :project).id end
 	end
 end

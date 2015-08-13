@@ -1,11 +1,6 @@
 FactoryGirl.define do
   factory :communication_status do
-    text "Follow Up"
-    val 1
-
-		factory :communication_status_alt do
-			text "Alt Text"
-			val 2		
-		end
+		sequence :text do |n| 'Text' + n.to_s end
+		sequence :val do |n| n end
   end
 end

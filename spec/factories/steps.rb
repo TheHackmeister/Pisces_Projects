@@ -1,46 +1,9 @@
-require 'faker'
 FactoryGirl.define do
   factory :step do 
-		sequence(:step_status_id) {
-			if StepStatus.count == 0 
-				(create :step_status).id
-			else
-				StepStatus.first.id
-			end
-		}
-    
-    action 'Step Action'
-    note 'Step note'
-    due "10/10/2010"
-    
-
-		sequence(:project_id) {
-			if Project.count == 0
-				(create :project).id
-			else
-				Project.first.id
-			end
-		}
-
-		factory :step_alt do
-			action 'Alt Step Action'
-			note 'Alt Step note'
-			due "08/09/2015"
-
-			sequence(:step_status_id) {
-				if StepStatus.count < 2 
-					(create :step_status).id
-				else
-					StepStatus.all[1].id
-				end
-			}
-			sequence(:project_id) {
-				if Project.count < 2
-					(create :project).id
-				else
-					Project.all[1].id
-				end
-			}
-		end
+		sequence :action do |n| 'Step Action' + n.to_s end
+		sequence :note do |n| 'Step note' + n.to_s end
+		sequence :due do |n| (Date.today + n).to_s end
+		step_status_id do (create :step_status).id end
+		project_id do (create :project).id end
 	end
 end

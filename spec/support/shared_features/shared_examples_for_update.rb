@@ -4,7 +4,7 @@ RSpec.shared_examples 'an update page' do
 			login_as user
 		end
 		let :alt_attributes do
-			FactoryGirl.attributes_for((class_single + '_alt').to_sym)
+			FactoryGirl.attributes_for((class_single).to_sym)
 		end
 
 		it 'has an edit page' do
@@ -27,8 +27,12 @@ RSpec.shared_examples 'an update page' do
 		end
 	end
 
-	it 'has an alternate factory' do
-		FactoryGirl.create((class_single + '_alt').to_sym)
-		expect(object.class.count).to eq 2
+	it 'has a factory that creates a completely unique object' do
+		object
+		attributes = FactoryGirl.attributes_for class_single.to_sym
+		
+		attributes.each {|key, value|
+			expect(object.send(key)).to_not eq value
+		}
 	end
 end

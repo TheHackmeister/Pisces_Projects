@@ -1,31 +1,11 @@
 FactoryGirl.define do
   factory :contact do
-    contact_name "Contact Name"
-    phone "123-456-7980"
-    email "Contact@email.com"
-    address "123 Test Lane"
-		sequence(:project_id) { 
-			if(Project.count == 0) then
-				(create :project).id
-			else
-				Project.find(1).id
-			end
-		}
+		sequence :contact_name do |n| 'Contact Name' + n.to_s end
+		sequence :phone do |n| '123-456-7980' + n.to_s end
+		sequence :email do |n| 'Contact' + n.to_s + '@email.com' end
+		sequence :address do |n| '123 Test Lane' + n.to_s end
 
-
-		factory :contact_alt do
-			contact_name "Alt Contact Name"
-			phone "098-765-4321"
-			email "AltContact@email.com"
-			address "Alt 123 Test Lane"
-			sequence(:project_id) { 
-				if Project.count < 2
-					(create :project).id
-				else
-					Project.all[1].id
-				end
-			}
-		end
+		project_id do (create :project).id end
 	end
 end
 

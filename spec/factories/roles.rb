@@ -1,13 +1,7 @@
 FactoryGirl.define do
   # Define a basic devise user.
   factory :role do
-    title "userRole"
-    val 1
-
-
-		factory :role_alt do
-			title "AltUserRole"
-			val 2
-		end
+		sequence :title do |n| 'Role Title' + n.to_s end
+		sequence :val do |n| n end
 	end
 end

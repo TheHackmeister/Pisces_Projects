@@ -2,13 +2,7 @@ require 'faker'
 
 FactoryGirl.define do
   factory :priority do
-    text 'Urgent'
-    val 1
-
-
-		factory :priority_alt do 
-			text 'Alt text'
-			val 2
-		end    
+		sequence :text do |n| 'Urgent' + n.to_s end
+		sequence :val do |n| n end
 	end    
 end

@@ -5,22 +5,6 @@ module FormFillHelper
     login_as FactoryGirl.create(:user), :scope => :user
   end
 
-
-  #def fill_in_model(model, form, options = {}) 
-  #  exclude = options[:exclude] | ['created_on', 'updated_on']
-  #  model.data.attributes.each do |att, val| 
-  ##    next if exclude.indexOf att != -1
-  ##    if model.column_for_attribute(att) == :date 
-  #      select_date(val, form + '_' + att)
-  #    else if model.column_for_attribute(att) == :references 
-  #      #Need to figure out how to do HTML_search.
-  #    else 
-  #      fill_in form + "_" + att, :with => val
-  ##    end
-  #  end
-  #end
-
-
   def select_by_id(id, options = {})
     field = options[:from]
     option_xpath = "//*[@id='#{field}']/option[#{id}]"

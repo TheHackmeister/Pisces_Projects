@@ -1,12 +1,6 @@
 FactoryGirl.define do
   factory :sample do
-    customer_id 381
-		pisces_number 1
-
-
-		factory :sample_alt do
-			customer_id 382
-			pisces_number 2
-		end
+		sequence :customer_id do |n| 100 + n end
+		sequence :pisces_number do |n| n end
 	end
 end

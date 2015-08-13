@@ -2,13 +2,7 @@ require 'faker'
 
 FactoryGirl.define do
   factory :status do 
-    text 'Not Started'
-    val 1
-
-
-		factory :status_alt do 
-			text 'Alt Text'
-			val 2
-		end
+		sequence :text do |n| 'Status text' + n.to_s end
+		sequence :val do |n| n end
 	end
 end
