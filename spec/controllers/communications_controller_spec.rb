@@ -24,36 +24,20 @@ RSpec.describe CommunicationsController do
 
 		describe "accepts contact_email and contact_name" do
 			it "and creates a contact if one doesn't exist" do
-				expect(Contact.count).to eq 0
-				expect(Communication.count).to eq 0
-
-#				contact = FactoryGirl.create(:contact, email: 'test@email.com', contact_name: 'Test Name')
-
-#				expect(Contact.first.email).to eq 'test@email.com'	
-#				expect(Contact.first.contact_name).to eq 'Test Name'
-
-#				expect(Contact.count).to eq 1
-#				expect(Communication.count).to eq 0
-
-#				expect(communication[:contact]).to eq nil
 				post :create, :communication => communication, :contact_email => "test@email.com", :contact_name => "Test Name" 
-#				expect(Contact.last.email).to eq 'test@email.com'
-#				expect(Contact.last.contact_name).to eq 'Test Name'
-				
 				
 				expect(Contact.count).to eq 1
 				expect(Communication.count).to eq 1
-#				expect(Contact.count).to eq 1
-#				expect(response).to redirect_to(Communication.first)
 			end
 
-#			it "and uses the contact with the same email if it already exisits" do
-#				contact = FactoryGirl.create(:contact, email: "test@email.com")
-#				post :create, :communication => communication , :contact_email => "test@email.com", :contact_name => "Test Name"  
-#				expect(response).to redirect_to(Communication.first)
-#				expect(Contact.count).to eq 1
-#				expect(Communication.first.project.contacts.first).to eq contact
-#			end
+			it "and uses the contact with the same email if it already exisits" do
+				communication
+				contact = Contact.last 
+				post :create, :communication => communication , :contact_email => "test@email.com", :contact_name => "Test Name"  
+				expect(response).to redirect_to(Communication.first)
+				expect(Contact.count).to eq 1
+				expect(Communication.first.project.contacts.first).to eq contact
+			end
 		end
 
 		it "and doesn't use other contacts" do
@@ -84,7 +68,8 @@ RSpec.describe CommunicationsController do
 		end
 
 		it "is enabled for normal requests" do
-			expect {post :create, :communication => communication.attributes}.to raise_error
+#			post :create, :communication => communication.attributes
+			expect {post :create, :communication => communication.attributes}.to raise_error ActionController::InvalidAuthenticityToken
 		end
 	end
 

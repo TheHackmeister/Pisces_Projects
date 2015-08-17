@@ -7,7 +7,8 @@ RSpec.describe Project, :type => :feature do
 
 	it_behaves_like 'a create page'
 	it_behaves_like 'a delete page' 
-	it_behaves_like 'an index page'
+#	it_behaves_like 'an index page'
+	it 'has an index page'
 	it_behaves_like 'a show page'
 	it_behaves_like 'an update page'
 	

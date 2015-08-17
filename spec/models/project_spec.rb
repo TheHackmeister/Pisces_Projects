@@ -85,15 +85,15 @@ RSpec.describe Project do
     #end
   
     it 'will respond with priority text' do
-      expect(project.priority_text).to eq("Urgent")      
+      expect(project.priority_text).to eq(Priority.find(project.priority_id).text)      
     end
     
     it 'will respond with priority value' do
-      expect(project.priority_val).to eq(1)
+      expect(project.priority_val).to eq(Priority.find(project.priority_id).val)
     end
     
     it 'will respond with customer name' do
-      expect(project.customer_name).to eq("Pisces Molecular")
+      expect(project.customer_name).to eq(Customer.find(project.customer_id).customer_name)
     end
     
     it 'gives empty string if there is no step, and thus no action' do
