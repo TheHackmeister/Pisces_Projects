@@ -48,9 +48,8 @@ module FactoryGirl
 
       def factory_definition
 <<-RUBY
-	#example!
   factory :#{singular_table_name}#{explicit_class_option} do
-    #{factory_attributes}
+#{factory_attributes}
   end
 RUBY
       end
@@ -65,7 +64,17 @@ RUBY
 
       def factory_attributes
         attributes.map do |attribute|
-          "#{attribute.name} #{attribute.default.inspect}"
+					if attribute.type == :string or attribute.type == :text
+						"    sequence :#{attribute.name} do |n| '#{attribute.human_name}' + n.to_s end"
+					elsif attribute.type == :integer 
+						"    sequence :#{attribute.name} do |n| n end"
+					elsif attribute.type == :references
+						"    #{attribute.name}_id do (create :#{attribute.index_name.gsub(/_id$/, '')}).id end"
+					elsif attribute.type == :date
+						"    sequence :#{attribute.name} do |n| Date.today() + n.days end"
+					else 
+	          "    #{attribute.name} #{attribute.default.inspect}"
+					end
         end.join("\n")
       end
 
