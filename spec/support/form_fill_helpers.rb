@@ -18,21 +18,8 @@ module FormFillHelper
     select_by_id date.month, :from => "#{field}_2i"
     select date.day.to_s,    :from => "#{field}_3i"  
   end
-=begin
-  def has_attributes attributes
-    attributes.each do |field, value|
-      next if field == 'id' || field == 'created_at' || field == 'updated_at'
-      if field.index('_id') != nil  
-        field_class = field[0..field.length - 4].classify.constantize      
-        #I had to do it this way because expect(page).to have_content("Pisces Molecular") looked for the customer ID instead. WEIRD.
-        expect(has_text?(field_class.find_by_id(value).to_s)).to eq true
-      else
-        expect(page).to have_content value
-      end
-    end
-  end
-=end
-  def fill_attributes model_name, attributes
+
+  def fill_attributes model_name, attributes, driver=nil
     attributes.each do |field, value|
 			# Skip if own ID. 
 			next if field == 'id' 
@@ -43,10 +30,21 @@ module FormFillHelper
 			
 				# Searchable reference.
 				if field_class.reference_type_is_search? 
+					# This makes sure any created indexes are up to date. 
+					if field_class.respond_to? :reindex
+						field_class.reindex
+					end
+
 					finder = 'input#' + model_name.to_s + "_" + to_name(field_class) + "_" + to_name(field_class)
 					find(finder).set ''
-					find(finder).native.send_keys(field_class.find_by_id(value).to_s)
-					find('a', text: field_class.find_by_id(value).to_s).click
+					find(finder).native.send_keys(field_class.find_by_id(value).to_s[0..-2])
+					5.times do 
+						if has_css?('a', text: field_class.find_by_id(value).to_s.strip, match: :prefer_exact)
+							find('a', text: field_class.find_by_id(value).to_s.strip, match: :prefer_exact).click
+						else
+							break
+						end
+					end
 				else # Drop down reference.
 					select(field_class.find_by_id(value).to_s, :from => model_name.to_s + "_" + field.to_s)
 				end
