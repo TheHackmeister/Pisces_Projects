@@ -3,22 +3,24 @@ module ApplicationHelper
     content_for(:title) { page_title }
   end
 
-  def search_html form, base, associated, label, search, display, value
-    haml_tag(:div, :class => "search") do
-      
-      base = base.to_s.classify.constantize
-      base = base.reflect_on_association(associated).foreign_key
-      
-      #Base.assocaited?to_s.classify.constantize
-      haml_concat(form.label base, label)
-      haml_concat(form.hidden_field base, :class => 'search_id')
-      haml_concat((form.fields_for associated.to_s.classify.constantize do |t|
-        t.text_field associated, :class => 'search_field', :data => {:path => search.as_json, 'display-field' => display}, :value => value
-      end))
-      haml_tag(:div, :class => "search_results") do
-      end
-    end
-  end
+	ActionView::Helpers::FormBuilder.class_eval do
+		def search_html associated
+			base = @object.class.reflect_on_association(associated).foreign_key
+			path = Rails.application.routes.path_for controller: associated.to_s.pluralize, action: :index 
+
+			@template.content_tag :div, class: 'search' do 
+				hidden = self.hidden_field base, class: 'search_id'
+				input =	self.fields_for associated.to_s.classify.constantize do |t|
+					t.text_field associated, 
+						class: 'search_field', 
+						data: {:path => {path: path, input: :search}.as_json, 'display-field' => 'to_s'}, 
+						value: @object.send(associated).to_s
+				end
+				results =	@template.content_tag :div, class: 'search_results' do end
+				(hidden + input + results)
+			end
+		end
+	end
 
   def format_text_field text
     if text == ""

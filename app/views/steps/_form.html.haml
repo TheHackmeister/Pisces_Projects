@@ -15,6 +15,7 @@
     = f.label :due
     = f.date_select :due
   %div
-    - search_html f, :step, :project, 'Project: ', {path: projects_path, input: :q}, :title, @step.project.to_s
+    = f.label :project
+    = f.search_html :project
   .actions
     = f.submit 'Save'

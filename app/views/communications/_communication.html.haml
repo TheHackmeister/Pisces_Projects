@@ -2,7 +2,9 @@
   = communication.label :summary, 'Summary: '
   = communication.text_field :summary
 %div
-  - search_html communication, :communication, :contact, "Contact: ", {:path => contacts_path, :input => :contact_name, :project_id => project.id.to_s}, :contact_name, communication.object.contact.contact_name 
+  = communication.label :contact, 'Contact: '
+  = communication.search_html :contact
+  = #communication.search_html :contact, "Contact: ", {:path => contacts_path, :input => :contact_name, :project_id => project.id.to_s}, :contact_name, communication.object.contact.contact_name 
 %div
   = communication.label :communication_type_id, 'Type: '
   = communication.collection_select(:communication_type_id, CommunicationType.all, :id, :text)

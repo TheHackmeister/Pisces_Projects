@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
 	respond_to :json, only: [:index]
 
   def index
-		params[:customer_name] = params[:customer_name].sub "*", ""
+		params[:customer_name] = params[:search].sub "*", ""
     params[:customer_name_search] = params.delete :customer_name
 		
     @customers = Customer.filter(params.slice(:customer_name_search))

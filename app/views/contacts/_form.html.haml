@@ -3,7 +3,8 @@
     = f.label :contact_name
     = f.text_field :contact_name
   .field 
-    - search_html f, :contact, :project, 'Project: ', {:path => projects_path, :input => :q}, :title, @contact.project.to_s
+    = f.label :project
+    = f.search_html :project
   .field
     = f.label :phone
     = f.text_field :phone

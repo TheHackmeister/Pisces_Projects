@@ -1,6 +1,7 @@
 = form_for @project_link do |f|
   .field
-    - search_html f, :project_link, :project, 'Project: ', {path: projects_path, input: :q}, :title, @project_link.project.to_s
+    = f.label :project
+    = f.search_html :project
   .field
     = f.label :sort
     = f.number_field :sort
