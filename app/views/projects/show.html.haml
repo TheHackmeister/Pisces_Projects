@@ -8,7 +8,7 @@
         %b
           Customer:
         %br
-        = Customer.find_by_id(@project.customer_id).customer_name
+        = Customer.find_by_id(@project.customer_id).to_s
       %div
         %b
           Priority:
