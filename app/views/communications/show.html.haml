@@ -15,6 +15,12 @@
 %p
   %b Project:
   = show_attribute_link_or_text @communication.project
+%p
+  %b Contact:
+  = show_attribute_link_or_text @communication.contact
+%p
+  %b Communication date:
+  = show_attribute_link_or_text @communication.comm_date
 
 = link_to 'Edit', edit_communication_path(@communication)
 \|
