@@ -9,7 +9,7 @@ RSpec.describe TokenController do
 			expect{
 				sign_in user
 				get :show, :format => :html, :email => user.email, :token => user.token
-			}.to raise_error
+			}.to raise_error ActionView::MissingTemplate
 		end
 
 		context 'take a username and password' do
