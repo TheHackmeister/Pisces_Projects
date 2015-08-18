@@ -13,6 +13,7 @@ RSpec.shared_examples 'an update page' do
 		end
 
 		it 'updates the ' + described_class.table_name.singularize.humanize.downcase, :js do
+			object
 			alt_attributes
 			visit edit_class_path object
 			fill_attributes class_single.to_sym, alt_attributes 
