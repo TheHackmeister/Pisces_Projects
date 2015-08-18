@@ -9,7 +9,15 @@
 <% for attribute in attributes -%>
   .field
     = f.label :<%= attribute.name %>
+<% if attribute.reference? -%>
+<% if attribute.name.classify.constantize.reference_type_is_search? -%>
+    = f.search_html :<%= attribute.name %>
+<% else -%>
+    = f.collection_select :<%= attribute.index_name %>, <%= attribute.name.classify %>.all, :id, :to_s
+<% end -%>
+<% else -%>
     = f.<%= attribute.field_type %> :<%= attribute.name %>
+<% end -%>
 <% end -%>
   .actions
     = f.submit 'Save'
