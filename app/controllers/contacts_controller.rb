@@ -5,7 +5,12 @@ class ContactsController < ApplicationController
 	respond_to :json, only: [:index]
 
   def index
-    @contacts = Contact.filter(params.slice(:contact_name)).filter(params.slice(:project_id))
+		if params[:search]
+			params[:contact_name] = params[:search].sub '*', '' 
+			@contacts = Contact.filter(params.slice(:contact_name)).filter(params.slice(:project_id))
+		else
+			@contacts = Contact.all
+		end
     respond_with(@contacts)
   end
 

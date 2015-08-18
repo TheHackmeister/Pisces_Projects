@@ -13,7 +13,7 @@
     = f.collection_select(:communication_type_id, CommunicationType.all, :id, :text.to_s) 
   .field
     = f.label :contact
-    = f.search_html :contact
+    = f.search_html :contact, extra_path: {project_id: @communication.project_id.to_s}
   .field
     = f.label :comunication_date
     = f.date_select :comm_date

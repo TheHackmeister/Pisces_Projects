@@ -4,7 +4,9 @@ class ProjectsController < ApplicationController
 
   def index
     @search = Project.joins(:priority).search do 
-      fulltext params[:q]
+			
+
+      fulltext params[:search]
       
       #This splits the sort pram call. 
       view_context.set_sort_order(params[:sort], :priority_val_asc) do |call,dir| 

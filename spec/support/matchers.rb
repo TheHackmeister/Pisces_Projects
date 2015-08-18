@@ -19,7 +19,6 @@ RSpec::Matchers.define :have_attributes do |expected|
 				if not has_text?(search) 
 					return false
 				end
-				return true
 			}
 		# Given a model. 
 		else 
@@ -29,8 +28,9 @@ RSpec::Matchers.define :have_attributes do |expected|
 					return false
 				end
 			}
-			true
 		end 
+
+		return true
   end
 	failure_message do |actual|
 		# Given page instead of a model. 
@@ -48,7 +48,7 @@ RSpec::Matchers.define :have_attributes do |expected|
 			
 				# If page doesn't have text, throw failure. 
 				if not has_text?(search)
-					return 'Could not find "' + value + '" in ' + page.text.to_s
+					return 'Could not find "' + search + '" in ' + page.text.to_s
 				end	
 			}
 		# Given a model. 
