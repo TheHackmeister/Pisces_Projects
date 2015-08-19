@@ -37,7 +37,7 @@ module FormFillHelper
 					finder = 'input#' + model_name.to_s + "_" + to_name(field_class) + "_" + to_name(field_class)
 					find(finder).set ''
 					find(finder).native.send_keys(field_class.find_by_id(value).to_s.strip.gsub(/^.*:/, "")) # /^.*:/ takes care of searching for customers, who you can search for the id or name, but not both. 
-					find("a", text: field_class.find_by_id(value).to_s.strip, match: :prefer_exact).trigger 'click'
+					find("a", text: field_class.find_by_id(value).to_s.strip, match: :prefer_exact).trigger 'click' # Have to use trigger click. Just click doesn't consistantly work. 
 				else # Drop down reference.
 					select(field_class.find_by_id(value).to_s, :from => model_name.to_s + "_" + field.to_s)
 				end
