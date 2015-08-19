@@ -36,16 +36,8 @@ module FormFillHelper
 					end
 					finder = 'input#' + model_name.to_s + "_" + to_name(field_class) + "_" + to_name(field_class)
 					find(finder).set ''
-					find(finder).native.send_keys(field_class.find_by_id(value).to_s)#[0..-2])
-					
-					2.times do |n|
-						if has_css?("a[data-id='" + value.to_s + "']", text: field_class.find_by_id(value).to_s.strip, match: :prefer_exact)
-							find("a[data-id='" + value.to_s + "']", text: field_class.find_by_id(value).to_s.strip, match: :prefer_exact).click
-							if has_no_css?("a[data-id='" + value.to_s + "']", match: :prefer_exact)
-								break
-							end
-						end
-					end
+					find(finder).native.send_keys(field_class.find_by_id(value).to_s.strip.gsub(/^.*:/, "")) # /^.*:/ takes care of searching for customers, who you can search for the id or name, but not both. 
+					find("a", text: field_class.find_by_id(value).to_s.strip, match: :prefer_exact).trigger 'click'
 				else # Drop down reference.
 					select(field_class.find_by_id(value).to_s, :from => model_name.to_s + "_" + field.to_s)
 				end
