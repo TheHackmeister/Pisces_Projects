@@ -1,8 +1,3 @@
-class PiscesDatabase < ActiveRecord::Base
-  self.abstract_class = true
-  establish_connection :pisces_database_production
-end
-
 class Customer < PiscesDatabase
   include Filterable
   self.primary_key = :id

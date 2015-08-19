@@ -1,0 +1,61 @@
+%h1 Showing: Pisces Sample
+
+
+%p
+  %b Sample
+  = show_attribute_link_or_text @pisces_sample.sample_id
+
+%p
+  %b Customer
+  = show_attribute_link_or_text @pisces_sample.customer
+
+%p
+  %b Cd batch
+  = show_attribute_link_or_text @pisces_sample.cd_batch_id
+
+%p
+  %b Source information
+  = show_attribute_link_or_text @pisces_sample.source_information
+
+%p
+  %b Form code
+  = show_attribute_link_or_text @pisces_sample.form_code
+
+%p
+  %b Cond code
+  = show_attribute_link_or_text @pisces_sample.cond_code
+
+%p
+  %b Logged by
+  = show_attribute_link_or_text @pisces_sample.logged_by
+
+%p
+  %b Lysis buf vol
+  = show_attribute_link_or_text @pisces_sample.lysis_buf_vol
+
+%p
+  %b Gred
+  = show_attribute_link_or_text @pisces_sample.GRed
+
+%p
+  %b Public comments
+  = show_attribute_link_or_text @pisces_sample.public_comments
+
+%p
+  %b Pcr comments
+  = show_attribute_link_or_text @pisces_sample.pcr_comments
+
+%p
+  %b Gel comments
+  = show_attribute_link_or_text @pisces_sample.gel_comments
+
+%p
+  %b Private comments
+  = show_attribute_link_or_text @pisces_sample.private_comments
+
+
+=# link_to 'Edit', edit_pisces_sample_path(@pisces_sample)
+\|
+=# link_to 'Destroy', pisces_sample_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+\|
+= link_to 'Pisces Samples Index', pisces_samples_path

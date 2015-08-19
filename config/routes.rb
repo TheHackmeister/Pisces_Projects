@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :pisces_samples, only: [:show, :index]
 	resources :samples
 
   resources :project_types

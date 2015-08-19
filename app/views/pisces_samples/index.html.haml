@@ -1,0 +1,72 @@
+%h1 Listing: Pisces Samples
+
+%table
+  %thead
+    %tr
+
+      %th Sample
+
+      %th Customer
+
+      %th Cd batch
+
+      %th Source information
+
+      %th Form code
+
+      %th Cond code
+
+      %th Logged by
+
+      %th Lysis buf vol
+
+      %th Gred
+
+      %th Public comments
+
+      %th Pcr comments
+
+      %th Gel comments
+
+      %th Private comments
+
+      %th
+      %th
+      %th
+  %tbody
+    - @pisces_samples.each do |pisces_sample|
+      %tr
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.sample_id
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.customer
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.cd_batch_id
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.source_information
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.form_code
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.cond_code
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.logged_by
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.lysis_buf_vol
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.GRed
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.public_comments
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.pcr_comments
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.gel_comments
+
+        %td= create_index_link_or_text pisces_sample, pisces_sample.private_comments
+
+        %td= link_to 'Show', pisces_sample
+        %td=# link_to 'Edit', edit_pisces_sample_path(pisces_sample)
+        %td=# link_to 'Destroy', pisces_sample, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+= paginate @pisces_samples
+=# link_to 'New Pisces sample', new_pisces_sample_path
