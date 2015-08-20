@@ -1,0 +1,17 @@
+%h1 Showing: Cdb Batch Project
+
+
+%p
+  %b Cdb batch
+  = show_attribute_link_or_text @cdb_batch_project.cdb_batch
+
+%p
+  %b Project
+  = show_attribute_link_or_text @cdb_batch_project.project
+
+
+= link_to 'Edit', edit_cdb_batch_project_path(@cdb_batch_project)
+\|
+= link_to 'Destroy', cdb_batch_project_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+\|
+= link_to 'Cdb Batch Projects Index', cdb_batch_projects_path

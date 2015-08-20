@@ -1,0 +1,27 @@
+= form_for @cdb_batch_project do |f|
+  - if @cdb_batch_project.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cdb_batch_project.errors.count, "error")} prohibited this cdb_batch_project from being saved:"
+      %ul
+        - @cdb_batch_project.errors.full_messages.each do |msg|
+          %li= msg
+
+
+  .field
+    = f.label :cdb_batch
+
+
+    = f.search_html :cdb_batch
+
+
+
+  .field
+    = f.label :project
+
+
+    = f.search_html :project
+
+
+
+  .actions
+    = f.submit 'Save'

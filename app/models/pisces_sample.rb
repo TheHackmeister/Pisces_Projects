@@ -3,6 +3,7 @@ class PiscesSample < PiscesDatabase
 	self.table_name = :smp_sample
 
 	belongs_to :customer, primary_key: 'customer_id'
+	belongs_to :cd_batch, class_name: 'CdbBatch'
 
 	searchable do
 		text :sample_id

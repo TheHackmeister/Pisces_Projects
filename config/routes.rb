@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :cdb_batch_projects
   resources :cdb_batches, only: [:show, :index]
   resources :pisces_samples, only: [:show, :index]
 	resources :samples

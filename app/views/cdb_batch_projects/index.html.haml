@@ -1,0 +1,28 @@
+%h1 Listing: Cdb Batch Projects
+
+%table
+  %thead
+    %tr
+
+      %th Cdb batch
+
+      %th Project
+
+      %th
+      %th
+      %th
+  %tbody
+    - @cdb_batch_projects.each do |cdb_batch_project|
+      %tr
+
+        %td= create_index_link_or_text cdb_batch_project, cdb_batch_project.cdb_batch
+
+        %td= create_index_link_or_text cdb_batch_project, cdb_batch_project.project
+
+        %td= link_to 'Show', cdb_batch_project
+        %td= link_to 'Edit', edit_cdb_batch_project_path(cdb_batch_project)
+        %td= link_to 'Destroy', cdb_batch_project, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Cdb batch project', new_cdb_batch_project_path
