@@ -27,5 +27,10 @@ RSpec.shared_examples 'an index page' do
 		it 'has a new link' do
 			expect(page).to have_css 'a', text: 'New ' + class_single.humanize
 		end
+
+		it 'has a settings link' do
+			visit settings_path
+			expect(page).to have_css "a", text: class_name.pluralize.titleize, count: 1, match: :prefer_exact
+		end
 	end
 end
