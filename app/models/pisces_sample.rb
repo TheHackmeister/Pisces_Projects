@@ -5,6 +5,7 @@ class PiscesSample < PiscesDatabase
 	belongs_to :customer, primary_key: 'customer_id'
 
 	searchable do
+		text :sample_id
 		integer :sample_id
 		text :customer_id
 		text :form_code

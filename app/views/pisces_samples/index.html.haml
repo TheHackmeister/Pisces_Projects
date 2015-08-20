@@ -1,4 +1,9 @@
-%h1 Listing: Pisces Samples
+%h1.left Listing: Pisces Samples
+%span.right
+  %form{:action => pisces_samples_path, :method => :get , :class => :inline}  
+    %input{:type => :text, :value => params[:search], :name => :search}
+    %button{:value => :Search}
+      Search 
 
 %table
   %thead
