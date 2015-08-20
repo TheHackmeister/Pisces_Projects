@@ -1,0 +1,46 @@
+%h1 Listing: Cdb Batches
+
+%table
+  %thead
+    %tr
+
+      %th Cd batch
+
+      %th Invoiced date
+
+      %th Invoice number
+
+      %th Customer
+
+      %th Deadline date
+
+      %th Sample count
+
+      %th Batch status
+
+      %th
+  %tbody
+    - @cdb_batches.each do |cdb_batch|
+      %tr
+
+        %td= create_index_link_or_text cdb_batch, cdb_batch.cd_batch_id
+
+        %td= create_index_link_or_text cdb_batch, cdb_batch.invoiced_date
+
+        %td= create_index_link_or_text cdb_batch, cdb_batch.invoice_number
+
+        %td= create_index_link_or_text cdb_batch, cdb_batch.customer
+
+        %td= create_index_link_or_text cdb_batch, cdb_batch.deadline_date
+
+        %td= create_index_link_or_text cdb_batch, cdb_batch.sample_count
+
+        %td= create_index_link_or_text cdb_batch, cdb_batch.batch_status
+
+        %td= link_to 'Show', cdb_batch
+        -#%td= link_to 'Edit', edit_cdb_batch_path(cdb_batch)
+        -#%td= link_to 'Destroy', cdb_batch, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+= paginate @cdb_batches
+=# link_to 'New Cdb batch', new_cdb_batch_path

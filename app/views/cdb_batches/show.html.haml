@@ -1,0 +1,93 @@
+%h1 Showing: Cdb Batch
+
+
+%p
+  %b Cd batch
+  = show_attribute_link_or_text @cdb_batch.cd_batch_id
+
+%p
+  %b Received date
+  = show_attribute_link_or_text @cdb_batch.received_date
+
+%p
+  %b Reported date
+  = show_attribute_link_or_text @cdb_batch.reported_date
+
+%p
+  %b Invoiced date
+  = show_attribute_link_or_text @cdb_batch.invoiced_date
+
+%p
+  %b Invoice number
+  = show_attribute_link_or_text @cdb_batch.invoice_number
+
+%p
+  %b Open by
+  = show_attribute_link_or_text @cdb_batch.open_by
+
+%p
+  %b Customer
+  = show_attribute_link_or_text @cdb_batch.customer_id
+
+%p
+  %b Priority code
+  = show_attribute_link_or_text @cdb_batch.priority_code
+
+%p
+  %b Deadline date
+  = show_attribute_link_or_text @cdb_batch.deadline_date
+
+%p
+  %b Sample count
+  = show_attribute_link_or_text @cdb_batch.sample_count
+
+%p
+  %b Any to be pooled
+  = show_attribute_link_or_text @cdb_batch.any_to_be_pooled
+
+%p
+  %b Leads or contam
+  = show_attribute_link_or_text @cdb_batch.leaks_or_contam
+
+%p
+  %b Spec cust instructions
+  = show_attribute_link_or_text @cdb_batch.spec_cust_instructions
+
+%p
+  %b Spec piscesinstructions
+  = show_attribute_link_or_text @cdb_batch.spec_pisces_instructions
+
+%p
+  %b Observations problems
+  = show_attribute_link_or_text @cdb_batch.observations_problems
+
+%p
+  %b Batch status
+  = show_attribute_link_or_text @cdb_batch.batch_status
+
+%p
+  %b Geo location
+  = show_attribute_link_or_text @cdb_batch.geo_location
+
+%p
+  %b Geo location 2
+  = show_attribute_link_or_text @cdb_batch.geo_location_2
+
+%p
+  %b Hyperlink report
+  = show_attribute_link_or_text @cdb_batch.hyperlink_report
+
+%p
+  %b Hyperlink spreadsheet
+  = show_attribute_link_or_text @cdb_batch.hyperlink_spreadsheet
+
+%p
+  %b Remove by
+  = show_attribute_link_or_text @cdb_batch.remove_by
+
+
+=# link_to 'Edit', edit_cdb_batch_path(@cdb_batch)
+\|
+=# link_to 'Destroy', cdb_batch_path, :method => :delete, :data => {:confirm => 'Are you sure?' }
+\|
+= link_to 'Cdb Batches Index', cdb_batches_path
