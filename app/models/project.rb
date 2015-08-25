@@ -9,9 +9,7 @@ class Project < ActiveRecord::Base
   has_many :communications, :dependent => :destroy
 
 	has_many :cdb_batch_projects
-	has_many :cdb_batches, through: :cdb_batch_projects, primary_key: 'cd_batch_id'#, forign_key: 'cd_batch_id'
-
-
+	has_many :cd_batches, through: :cdb_batch_projects, class_name: :CdbBatch
 
   accepts_nested_attributes_for :customer
   accepts_nested_attributes_for :project_links
