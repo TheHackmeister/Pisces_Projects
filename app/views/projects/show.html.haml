@@ -60,13 +60,41 @@
       %div
         %b
           Links
+        %div#results_links
+          %div.flex.two.list
+            %div
+              Link
+            %div
+              Notes
+          - @project.results_links.each do |link|
+            = render :partial => '/project_links/show_single', :object => link
+        %br
+        New link
+        = render :partial => "/project_links/new_link", locals: {:project => @project, is_result: true}
+      %div
+        %div
+          %b
+            Result notes
+          %div.indent
+            = format_text_field @project.results_notes
+        %div
+          %b
+            CD Batches
+          %div.indent
+            Thing
+            one
+    %hr
+    %div.flex.two
+      %div
+        %b
+          Links
         %div#links
           %div.flex.two.list
             %div
               Link
             %div
               Notes
-          - @project.project_links.each do |link|
+          - @project.links.each do |link|
             = render :partial => '/project_links/show_single', :object => link
         %br
         New link

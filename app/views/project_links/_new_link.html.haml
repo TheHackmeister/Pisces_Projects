@@ -1,6 +1,9 @@
-= form_for ProjectLink.new, :url => {:controller => 'project_links', :action => 'create', :format => :ajax}, :remote => true, :html => {'data-update-target' => 'links'}, :method => 'POST' do |pl|
+- is_result ||= false
+- target = is_result ? 'results_links' : 'links'
+= form_for ProjectLink.new, :url => {:controller => 'project_links', :action => 'create', :format => :ajax}, :remote => true, :html => {'data-update-target' => target}, :method => 'POST' do |pl|
   %div.flex.two
     = pl.hidden_field :project_id, :value => project.id
+    = pl.hidden_field :is_results, value: is_result
     = render :partial => 'project_links/edit_link', :object => pl
     %div.o_one
       %label        

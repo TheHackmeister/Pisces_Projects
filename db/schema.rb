@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820210213) do
+ActiveRecord::Schema.define(version: 20150820230852) do
 
   create_table "cdb_batch_projects", force: :cascade do |t|
     t.integer  "cdb_batch_id", limit: 4
@@ -77,6 +77,13 @@ ActiveRecord::Schema.define(version: 20150820210213) do
     t.datetime "updated_at"
   end
 
+  create_table "project_link_types", force: :cascade do |t|
+    t.string   "text",       limit: 255
+    t.integer  "val",        limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
   create_table "project_links", force: :cascade do |t|
     t.integer  "project_id", limit: 4
     t.integer  "sort",       limit: 4
@@ -85,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150820210213) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "notes",      limit: 255
+    t.boolean  "is_results",             default: false
   end
 
   add_index "project_links", ["project_id"], name: "index_project_links_on_project_id", using: :btree
@@ -111,6 +119,7 @@ ActiveRecord::Schema.define(version: 20150820210213) do
     t.text     "stumbling_blocks", limit: 65535
     t.date     "soft_deadline"
     t.integer  "project_type_id",  limit: 4
+    t.text     "results_notes",    limit: 65535
   end
 
   add_index "projects", ["customer_id"], name: "index_projects_on_customer_id", using: :btree

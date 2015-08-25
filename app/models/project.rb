@@ -11,6 +11,8 @@ class Project < ActiveRecord::Base
 	has_many :cdb_batch_projects
 	has_many :cdb_batches, through: :cdb_batch_projects, primary_key: 'cd_batch_id'#, forign_key: 'cd_batch_id'
 
+
+
   accepts_nested_attributes_for :customer
   accepts_nested_attributes_for :project_links
   accepts_nested_attributes_for :steps
@@ -52,6 +54,14 @@ class Project < ActiveRecord::Base
       return self.customer.customer_name
     end
   end
+
+	def links
+		project_links.where(is_results: false)
+	end
+
+	def results_links
+		project_links.where(is_results: true)
+	end
 
   #text :customer
   #text :communications
