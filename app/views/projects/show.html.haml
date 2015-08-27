@@ -80,9 +80,17 @@
         %div
           %b
             CD Batches
-          %div.indent
-            Thing
-            one
+          %div.indent#cd_batches
+            - @project.cdb_batch_projects.each do |cd_batch|
+              %div
+                %div
+                  = link_to cd_batch.cdb_batch_id, cdb_batch_path(cd_batch.cdb_batch_id)
+                  = link_to 'X', cdb_batch_project_path(cd_batch.id, format: :ajax), method: :delete, data: { confirm: 'Are you certain you want to remove this CD Batch from the project?' }, remote: true, class: 'remove_button right'
+          %div
+            = form_for CdbBatchProject.new, url: {controller: 'cdb_batch_projects', action: 'create', format: :ajax}, remote: true, html: {'data-update-target' => 'cd_batches'}, method: 'POST' do |f|
+              = f.hidden_field :project_id, value: @project.id
+              = f.text_field :cdb_batch_id
+              = f.submit 'Add Cd Batches'
     %hr
     %div.flex.two
       %div

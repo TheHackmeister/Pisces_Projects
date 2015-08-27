@@ -1,0 +1,6 @@
+- multiple.each do |cd_batch|
+  %div
+    %div
+      = link_to cd_batch.cdb_batch_id, cdb_batch_path(cd_batch.cdb_batch_id)
+      = link_to 'X', cdb_batch_project_path(cd_batch.id, format: :ajax), method: :delete, data: { confirm: 'Are you certain you want to remove this CD Batch from the project?' }, remote: true, class: 'remove_button right'
+

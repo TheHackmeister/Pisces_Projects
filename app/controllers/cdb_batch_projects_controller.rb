@@ -2,7 +2,7 @@
 class CdbBatchProjectsController < ApplicationController
   load_and_authorize_resource
   before_action :set_cdb_batch_project, only: [:show, :edit, :update, :destroy]
-  respond_to :html
+  respond_to :html, :ajax, :json, :js
 
 
   def index
@@ -25,9 +25,10 @@ class CdbBatchProjectsController < ApplicationController
   end
 
   def create
-    @cdb_batch_project = CdbBatchProject.new(cdb_batch_project_params)
-    @cdb_batch_project.save
-    respond_with(@cdb_batch_project)
+    @cdb_batch_project = view_context.new_cd_batch_projects cdb_batch_project_params
+    respond_with(@cdb_batch_project) do |format|
+			format.ajax { render partial: 'multiple', object: @cdb_batch_project, formats: [:html]}
+		end
   end
 
   def update
@@ -37,7 +38,9 @@ class CdbBatchProjectsController < ApplicationController
 
   def destroy
     @cdb_batch_project.destroy
-    respond_with(@cdb_batch_project)
+    respond_with(@cdb_batch_project) do |format|
+			format.ajax { render partial: 'cdb_batch_projects/ajax_delete', object: @cdb_batch_project, formats: [:html] }
+		end
   end
 
   private
@@ -47,7 +50,7 @@ class CdbBatchProjectsController < ApplicationController
 
     def cdb_batch_project_params
 
-      params.require(:cdb_batch_project).permit(:cdb_batch_id, :project_id)
+      params.require(:cdb_batch_project).permit(:cdb_batch_id, :project_id, :cd_batch_id)
 
     end
 end
