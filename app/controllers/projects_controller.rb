@@ -20,7 +20,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    #@project = Project.find params[:id]
   end
 
   def edit
@@ -28,12 +27,22 @@ class ProjectsController < ApplicationController
   end
 
   def update
-    @project = Project.find params[:id]
-    if @project.update project_params
-      redirect_to @project
-    else
-      render :edit
-    end
+
+		respond_to do |format|
+			format.html do 
+				if @project.update project_params
+					redirect_to @project
+				else
+					render :edit
+				end
+			end
+			format.js do
+				@project.update project_params
+				@project.format_text_fields 
+				render :show
+			end
+		end
+
   end
 
   def create

@@ -1,7 +1,8 @@
-%div
+%div{ 'data-path' => '', 'data-id' => @project.id.to_s, 'data-model' => @project.class.table_name.singularize}
   %h2
     Project:
-    = @project.title
+    %div.inline{ 'data-model-field' => 'title', 'data-field-type' => 'input'}
+      = @project.title
   %div
     %div.flex.six
       %div
@@ -18,7 +19,9 @@
         %b
           Status:
         %br
-        = @project.status.text
+
+        = @project.status
+        = collection_select :project, :status_id, Status.all, :id, :text.to_s
       %div
         %b
           Project Type:
@@ -43,17 +46,17 @@
       %div
         %b
           Pisces Notes:
-        %div.indent
+        %div.indent{ 'data-model-field' => 'notes', 'data-field-type' => 'textarea'}
           = format_text_field @project.notes
       %div
         %b
           Customer Notes:
-        %div
+        %div.indent{ 'data-model-field' => 'customer_notes', 'data-field-type' => 'textarea'}  
           = format_text_field @project.customer_notes
       %div
         %b
           Potential Stumbling Blocks:
-        %div.indent
+        %div.indent{ 'data-model-field' => 'stumbling_blocks', 'data-field-type' => 'textarea'}
           = format_text_field @project.stumbling_blocks
     %hr
     %div.flex.two
@@ -64,7 +67,7 @@
           %div.flex.two.list
             %div
               Link
-            %div
+            %div.indent{ 'data-model-field' => 'results_notes', 'data-field-type' => 'textarea'}
               Notes
           - @project.results_links.each do |link|
             = render :partial => '/project_links/show_single', :object => link

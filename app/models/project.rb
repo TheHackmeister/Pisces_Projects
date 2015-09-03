@@ -29,6 +29,9 @@ class Project < ActiveRecord::Base
   #delegate :name, :url, :notes, :to => :project_links, :allow_nil => true, :prefix => true
   #delegate :summary, :notes, :to => :communications, :allow_nil => true, :prefix => true
   
+	include HasFormattedFields
+	formattable_text_fields :notes, :customer_notes, :stumbling_blocks, :results_notes
+
   def get_first_step_action
     if self.steps.length == 0
         return ""
@@ -44,7 +47,8 @@ class Project < ActiveRecord::Base
       return self.steps.first.due
     end
   end
-  
+
+	
   def customer_name
     if self.customer.blank?
       return ""

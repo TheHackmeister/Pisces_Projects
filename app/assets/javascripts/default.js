@@ -103,39 +103,174 @@ function select_search(e) {
 
 }
 
+
+
+
+
+
+// Start field updates.
+function thing() {
+		var text_area = $('<textarea>');
+		text_area.addClass('edit_field');
+		text_area.html(text.text().replace(/^[ \t]*/gm, "").trim());
+		text.after(text_area); // Inserts text_area after the text. 
+		text_area.focus();
+}
+
+
+function insert_successful_edit(response){
+  var text = $(this);	
+  text.removeClass('waiting');
+  text.hide();
+
+  var text_area = $('<' + text.data('field-type') + '>');
+  text_area.val(response['results'][text.data('model-field')]);
+  text_area.addClass('edit_field');
+  text.after(text_area); // Inserts text_area after the text. 
+  text_area.focus();
+}
+
+function insert_successful_edit_response(response) {
+
+  if(response['error']) {
+    insert_flash_message(response['error']);
+    $(this).removeClass('waiting');
+    return;
+  }
+
+  var text_area = $(this);
+  var text = text_area.prev('div');
+  var field_name = text.data('model-field');
+
+  text.html(response['results'][field_name]);
+  text_area.remove();
+  text.show();
+  insert_flash_message('Updated ' + field_name.replace('_', ' ') + ' successfully.');
+}
+
+function insert_flash_message(message){
+  message = message + "<br>";
+  $('#flash').append(message);
+  setTimeout(function(){$('#flash').html($('#flash').html().replace(message,''));}, 5000);
+}
+
+function insert_error_message(e) {
+  $(this).removeClass('waiting');
+  insert_flash_message("Could not connect with server.");
+}
+// End field updates
+
+
+
+
+
+
+
 function window_ready() {
-    $('.search_field').keypress(function(event) { if(event.keyCode == 13) {return false;} else {return true;}});
-    $('.search_field').on('keyup', search_field);
-    $('body').on('click', 'a.search_selector', select_search);
-    $('body').on('click', '.hide_toggle', function(e) {
-    	$('#' + $(e.target).data('target')).toggle();
-    	if($(e.target).html().indexOf('Show') > -1) {
-    		$(e.target).html($(e.target).html().replace('Show', 'Hide'));	
-    	} else {
-    		$(e.target).html($(e.target).html().replace('Hide', 'Show'));
-    	}
-    	
-    	});
-    $('body').on('ajax:success', '.remove_button', function(evt, data) {
-	var element = $(this);
-	element.parent().parent().html(data); // Assumption is div(row) > div(column) > a(link).
+	
+// Begin play-pin content. 
+/*    $('body').on('click', 'div[data-field-type]', function(e) {
+      var text = $(this);
+      var text_area = $('<textarea>');
+      
+      text_area.addClass('edit_field');
+      text.hide();
+      text_area.html(text.text().replace(/^[ \t]/gm, "").trim());
+      text.after(text_area); // Inserts text_area after the text. 
+      text_area.focus();
     });
-    $('form[data-update-target]').on('ajax:success', function(evt, data) {
-        var target = $(this).data('update-target');
-        var result = $('#' + target).append(data);
-        if(!result.children().last().hasClass('validation_error')) {
-            this.reset(); //Clears the form as long as their wasn't an error.
-        }
+*/
+// End play-pin content. 
+
+
+
+// Start field updates.
+// This is for creating input box.
+    $('body').on('click', 'div[data-model-field]', function(e) {
+      var text = $(this);
+      text.addClass('waiting');
+
+      var path = text.parents('[data-path]').data('path');
+      path = path ? path + '/' : ''; // If there isn't any extra path, don't add anything. 
+      var id = text.parents('[data-id]').data('id');
+
+		// Make json request. 
+      $.ajax({
+	context: this,
+	url: path + id,
+	dataType: 'json',
+	method: 'GET',
+	data: '',
+	success: insert_successful_edit,
+	error: insert_error_message 
+      });
     });
-    $('form[data-update-target]').on('ajax:error', function(evt, data) {
-        var target = $(this).data('update-target');
-        $('#' + target).append('<div class="validation_error">There was an error communicating with the server. Please try again. Refresh to remove this error.</div>');
+
+
+// This is for saving. 
+    $('body').on('blur', '.edit_field', function(e) {
+      var text_area = $(e.target);
+      var text = text_area.prev('div');
+
+      var path = text.parents('[data-path]').data('path');
+      path = path ? path + '/' : ''; // If there isn't any extra path, don't add anything. 
+      var id = text.parents('[data-id]').data('id');
+      var model = text.parents('[data-model]').data('model');
+
+      text_area.addClass('waiting');
+
+      // This creates the data hash with a dynamic key. Normally hashs can't have dynamic keys. 
+      var key = model + '[' + text.data('model-field') + ']'
+      var data_hash = (function(hash) { hash[key]= text_area.val(); return hash;})({});
+      $.ajax({
+        context: text_area,
+        url: path + id,
+        dataType: 'json',
+        method: 'PUT',
+        data: data_hash, 
+	success: insert_successful_edit_response,
+	error: insert_error_message
+      });
     });
-    $('.full_text').autosize();    
-    $('body').on('click', '.outline', function(){
-	    $(this).toggleClass("outline_expanded");
-    });
-    update_steps_sort_order();
+
+	// End field updates.
+
+
+
+
+
+	$('.search_field').keypress(function(event) { if(event.keyCode == 13) {return false;} else {return true;}});
+	$('.search_field').on('keyup', search_field);
+	$('body').on('click', 'a.search_selector', select_search);
+	$('body').on('click', '.hide_toggle', function(e) {
+	  $('#' + $(e.target).data('target')).toggle();
+	  if($(e.target).html().indexOf('Show') > -1) {
+	    $(e.target).html($(e.target).html().replace('Show', 'Hide'));	
+	  } else {
+	    $(e.target).html($(e.target).html().replace('Hide', 'Show'));
+	  }
+
+	});
+	$('body').on('ajax:success', '.remove_button', function(evt, data) {
+	  var element = $(this);
+	  element.parent().parent().html(data); // Assumption is div(row) > div(column) > a(link).
+	});
+	$('form[data-update-target]').on('ajax:success', function(evt, data) {
+	  var target = $(this).data('update-target');
+	  var result = $('#' + target).append(data);
+	  if(!result.children().last().hasClass('validation_error')) {
+	    this.reset(); //Clears the form as long as their wasn't an error.
+	  }
+	});
+	$('form[data-update-target]').on('ajax:error', function(evt, data) {
+	  var target = $(this).data('update-target');
+	  $('#' + target).append('<div class="validation_error">There was an error communicating with the server. Please try again. Refresh to remove this error.</div>');
+	});
+	$('.full_text').autosize();    
+	$('body').on('click', '.outline', function(){
+	  $(this).toggleClass("outline_expanded");
+	});
+	update_steps_sort_order();
 }
 
 $(window).ready(window_ready);
