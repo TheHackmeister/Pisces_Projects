@@ -33,8 +33,8 @@
       %div
         %b
           Start Date:
-        %br
-        = @project.started
+        %div{ 'data-field' => 'started'}
+          = @project.started
     %div
       %b
         Goal:

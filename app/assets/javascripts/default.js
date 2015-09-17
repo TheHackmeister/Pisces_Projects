@@ -128,7 +128,6 @@ function insert_successful_edit_response(response) {
   }
 
   var text_area = $(this);
-	console.log(text_area);
   var text = text_area.prev('div');
   var field_name = text_area.data('field-name').replace(/_id$/, '');
   text.html(response['results']);
@@ -200,7 +199,6 @@ function window_ready() {
 	  // This creates the data hash with a dynamic key. Normally hashs can't have dynamic keys. 
 	  var key = model + '[' + edit_container.data('field-name') + ']'
 		  var data_hash = (function(hash) { hash[key]= edit_field.val(); return hash;})({});
-	  console.log(id);
 	  $.ajax({
 		  context: edit_container,
 		  url: path + id + '.js',
