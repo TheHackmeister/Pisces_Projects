@@ -23,6 +23,26 @@ module ApplicationHelper
 		end
 	end
 
+	def search_html object, associated, extra_path = {}
+		base = object.class.reflect_on_association(associated).foreign_key
+		path = Rails.application.routes.path_for controller: associated.to_s.pluralize, action: :index 
+
+
+
+		content_tag :div, class: 'search' do 
+			hidden = self.hidden_field object.class.table_name.singularize, base , class: 'search_id'
+			input =	self.fields_for associated.to_s.classify.constantize do |t|
+				t.text_field associated, 
+					class: 'search_field', 
+					data: {:path => ({path: path, input: :search}.merge(extra_path)).as_json, 'display-field' => 'to_s'}, 
+					autocomplete: 'off',
+					value: object.send(associated).to_s
+			end
+			results =	content_tag :div, class: 'search_results' do end
+			(hidden + input + results)
+		end
+	end
+
   def format_text_field text
     if text == ""
       return "None"

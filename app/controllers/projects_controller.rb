@@ -20,29 +20,46 @@ class ProjectsController < ApplicationController
   end
 
   def show
+		respond_to do |format|
+			format.html
+			format.js do 
+				render plain: "OK"
+			end
+		end
   end
 
   def edit
-    #@project = Project.find params[:id]
+		respond_to do |format|
+			format.html
+			format.js do
+				dynamic_field_edit @project, params['field_name']
+				#dynamic_text_area @project, params['field_name'], ajax: true
+			end
+		end
   end
 
   def update
-
-		respond_to do |format|
-			format.html do 
-				if @project.update project_params
+		if @project.update project_params
+			respond_to do |format|
+				format.html do
 					redirect_to @project
-				else
-					render :edit
+				end
+				format.js do
+					@project.format_text_fields
+					@show = params[:project].keys.first.sub(/_id$/,'')
+					render :show
 				end
 			end
-			format.js do
-				@project.update project_params
-				@project.format_text_fields 
-				render :show
+		else
+			respond_to do |format|
+				format.html do
+					render :edit
+				end
+				format.js do
+					render :show
+				end
 			end
 		end
-
   end
 
   def create
@@ -69,13 +86,16 @@ class ProjectsController < ApplicationController
 
 
   private
+	def test
+		render plain: "New text"
+	end
 
   def set_project
     @project = Project.find(params[:id])
   end
 
   def project_params
-    params.require(:project).permit :started, :customer_id, :status_id, :project_type_id, :goal, :priority_id, :title, :soft_deadline, :notes, :stumbling_blocks, :customer_notes,
+    params.require(:project).permit :started, :customer_id, :status_id, :project_type_id, :goal, :priority_id, :title, :soft_deadline, :notes, :stumbling_blocks, :customer_notes, :results_notes,
         :project_links_attributes => [:id, :name, :url, :notes, :is_results],
         :steps_attributes => [:action, :note, :val, :step_status_id, :id, :due],
         :contacts_attributes => [:contact_name, :phone, :email, :address, :id],

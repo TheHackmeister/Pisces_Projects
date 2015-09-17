@@ -97,11 +97,11 @@ function get_search_container(elm) {
 function select_search(e) {
     var elm = $(e.target);
     var search_container = elm.parent().parent();
-    search_container.find(".search_field").val(elm.html());
+    search_container.find(".search_field").val(elm.html()).focus();
     search_container.find(".search_id").val(elm.data('id'));
     search_container.find('.search_results').html("");
-
 }
+
 
 
 
@@ -109,29 +109,18 @@ function select_search(e) {
 
 
 // Start field updates.
-function thing() {
-		var text_area = $('<textarea>');
-		text_area.addClass('edit_field');
-		text_area.html(text.text().replace(/^[ \t]*/gm, "").trim());
-		text.after(text_area); // Inserts text_area after the text. 
-		text_area.focus();
-}
-
 
 function insert_successful_edit(response){
   var text = $(this);	
   text.removeClass('waiting');
   text.hide();
 
-  var text_area = $('<' + text.data('field-type') + '>');
-  text_area.val(response['results'][text.data('model-field')]);
-  text_area.addClass('edit_field');
-  text.after(text_area); // Inserts text_area after the text. 
-  text_area.focus();
+	var edit_area = $(response);
+  text.after(edit_area); // Inserts text_area after the text. 
+  edit_area.find(':input').filter(':visible:first').focus();
 }
 
 function insert_successful_edit_response(response) {
-
   if(response['error']) {
     insert_flash_message(response['error']);
     $(this).removeClass('waiting');
@@ -139,10 +128,10 @@ function insert_successful_edit_response(response) {
   }
 
   var text_area = $(this);
+	console.log(text_area);
   var text = text_area.prev('div');
-  var field_name = text.data('model-field');
-
-  text.html(response['results'][field_name]);
+  var field_name = text_area.data('field-name').replace(/_id$/, '');
+  text.html(response['results']);
   text_area.remove();
   text.show();
   insert_flash_message('Updated ' + field_name.replace('_', ' ') + ' successfully.');
@@ -167,81 +156,75 @@ function insert_error_message(e) {
 
 
 function window_ready() {
-	
-// Begin play-pin content. 
-/*    $('body').on('click', 'div[data-field-type]', function(e) {
-      var text = $(this);
-      var text_area = $('<textarea>');
-      
-      text_area.addClass('edit_field');
-      text.hide();
-      text_area.html(text.text().replace(/^[ \t]/gm, "").trim());
-      text.after(text_area); // Inserts text_area after the text. 
-      text_area.focus();
+  // Dynamic fields request html.
+  $('body').on('click', 'div[data-field]', function(e) {
+    var text = $(this);
+    text.addClass('waiting');
+
+    var path = text.parents('[data-path]').data('path');
+    path = path ? path + '/' : ''; // If there isn't any extra path, don't add anything. 
+    var id = text.parents('[data-id]').data('id');
+
+    // Make json request. 
+    $.ajax({
+      context: this,
+      url: path + id + '/edit.js',
+      //accepts: 'json',
+      dataType: 'html',
+
+      method: 'GET',
+      data: {'field_name': text.data('field')},
+      success: insert_successful_edit,
+      error: insert_error_message 
     });
-*/
-// End play-pin content. 
+  });
+  // Dynamic fields send data. 	
+  $('body').on('blur', '.edit_field', function(e) {
+	  edit_container = $(this);
+	  if(select_search_check == true) {
+		  select_search_check = false;
+		  console.log("Blur cancled!");
+		  return;
+	  }
 
+	  var edit_field = edit_container.find(':input').first();
+	  var text = edit_container.prev('div');
 
+	  var path = text.parents('[data-path]').data('path');
+	  path = path ? path + '/' : ''; // If there isn't any extra path, don't add anything. 
+	  var id = text.parents('[data-id]').data('id');
+	  var model = text.parents('[data-model]').data('model');
 
-// Start field updates.
-// This is for creating input box.
-    $('body').on('click', 'div[data-model-field]', function(e) {
-      var text = $(this);
-      text.addClass('waiting');
+	  edit_field.addClass('waiting');
 
-      var path = text.parents('[data-path]').data('path');
-      path = path ? path + '/' : ''; // If there isn't any extra path, don't add anything. 
-      var id = text.parents('[data-id]').data('id');
-
-		// Make json request. 
-      $.ajax({
-	context: this,
-	url: path + id,
-	dataType: 'json',
-	method: 'GET',
-	data: '',
-	success: insert_successful_edit,
-	error: insert_error_message 
-      });
-    });
-
-
-// This is for saving. 
-    $('body').on('blur', '.edit_field', function(e) {
-      var text_area = $(e.target);
-      var text = text_area.prev('div');
-
-      var path = text.parents('[data-path]').data('path');
-      path = path ? path + '/' : ''; // If there isn't any extra path, don't add anything. 
-      var id = text.parents('[data-id]').data('id');
-      var model = text.parents('[data-model]').data('model');
-
-      text_area.addClass('waiting');
-
-      // This creates the data hash with a dynamic key. Normally hashs can't have dynamic keys. 
-      var key = model + '[' + text.data('model-field') + ']'
-      var data_hash = (function(hash) { hash[key]= text_area.val(); return hash;})({});
-      $.ajax({
-        context: text_area,
-        url: path + id,
-        dataType: 'json',
-        method: 'PUT',
-        data: data_hash, 
-	success: insert_successful_edit_response,
-	error: insert_error_message
-      });
-    });
-
+	  // This creates the data hash with a dynamic key. Normally hashs can't have dynamic keys. 
+	  var key = model + '[' + edit_container.data('field-name') + ']'
+		  var data_hash = (function(hash) { hash[key]= edit_field.val(); return hash;})({});
+	  console.log(id);
+	  $.ajax({
+		  context: edit_container,
+		  url: path + id + '.js',
+		  dataType: 'json',
+		  method: 'PUT',
+		  data: data_hash, 
+		  success: insert_successful_edit_response,
+		   error: insert_error_message
+	  });
+  });
+ 
 	// End field updates.
 
 
-
-
-
-	$('.search_field').keypress(function(event) { if(event.keyCode == 13) {return false;} else {return true;}});
-	$('.search_field').on('keyup', search_field);
+	$('body').on('keypress', '.search_field', function(event) { if(event.keyCode == 13) {return false;} else {return true;}});
+	$('body').on('keyup', '.search_field', search_field);
+	
 	$('body').on('click', 'a.search_selector', select_search);
+	// These are needed to be able to skip invalid blurs when in an ajax field. 
+	var select_search_check = false;
+	$('body').on('mousedown', 'a.search_selector', function(event) { select_search_check = true;});
+	$('body').on('mouseup', 'a.search_selector', function(event) { select_search_check = false;});
+
+
 	$('body').on('click', '.hide_toggle', function(e) {
 	  $('#' + $(e.target).data('target')).toggle();
 	  if($(e.target).html().indexOf('Show') > -1) {
