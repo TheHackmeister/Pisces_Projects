@@ -342,7 +342,38 @@ th {
 .right {
   float:right;
 }
+.right_text{
+  text-align: right;
+} 
 
 .waiting {
 	background-color: lightgrey;
 }
+
+#lightbox_container {
+	position:fixed;
+  text-align: center;
+  background: rgba(0,0,0,0.8);
+  height: 100%;
+	width:100%;
+	display:none;
+	z-index:100;
+}
+ 
+#lightbox_container:before {
+  content: '';
+  display: inline-block;
+  height: 100%; 
+  vertical-align: middle;
+ }
+ 
+#lightbox {
+  display: inline-block;
+  vertical-align: middle;
+  padding: 15px;
+  background: white;
+ }
+
+#lightbox_container.show{
+	display:block;
+ }

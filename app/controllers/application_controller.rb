@@ -90,6 +90,7 @@ class ApplicationController < ActionController::Base
 		view.render partial: 'date_select', locals: {
 			field_name: field_name, 
 			model_name: instance.class.table_name.singularize, 
+			model: instance,
 			ajax_class: ajax ? 'edit_field' : ''
 		}
 	end
@@ -109,6 +110,20 @@ class ApplicationController < ActionController::Base
 		else 
 			view_context
 		end
+	end
+
+	def js_show object
+		headers['error'] = object.errors.count != 0 ? object.errors.full_messages : ''
+		headers['replace_item'] = object.js_name
+		headers['replace_id'] = object.id.to_s
+		render partial: 'show_single', object: object
+	end
+
+	def js_delete object
+		headers['error'] = object.errors.count != 0 ? object.errors.full_messages : ''
+		headers['replace_item'] = object.js_name
+		headers['replace_id'] = object.id.to_s
+		render plain: "Successfully deleted " + object.js_name.sub("_", " ") + "."
 	end
 
 	helper_method :dynamic_text_field, :dynamic_text_area, :dynamic_collection_select,
