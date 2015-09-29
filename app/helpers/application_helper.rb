@@ -27,8 +27,6 @@ module ApplicationHelper
 		base = object.class.reflect_on_association(associated).foreign_key
 		path = Rails.application.routes.path_for controller: associated.to_s.pluralize, action: :index 
 
-
-
 		content_tag :div, class: 'search' do 
 			hidden = self.hidden_field object.class.table_name.singularize, base , class: 'search_id'
 			input =	self.fields_for associated.to_s.classify.constantize do |t|
@@ -44,7 +42,7 @@ module ApplicationHelper
 	end
 
   def format_text_field text
-    if text == ""
+    if !text or text == ""
       return "None"
     end
 
