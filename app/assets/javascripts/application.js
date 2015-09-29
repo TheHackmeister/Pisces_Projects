@@ -16,3 +16,6 @@
 //= require_tree .
 //= require default.js
 //= require jquery-ui/sortable
+//= require search_html.js
+//= require edit_field.js
+//= require edit_object.js
