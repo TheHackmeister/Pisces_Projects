@@ -19,11 +19,21 @@ class ContactsController < ApplicationController
   end
 
   def new
-    @contact = Contact.new
-    respond_with(@contact)
+		respond_to do |format|
+			format.html
+			format.js do
+				render :new, layout: false
+			end
+		end
   end
 
   def edit
+		respond_to do |format|
+			format.html
+			format.js do
+				render :edit, layout: false
+			end
+		end
   end
 
   def create
@@ -32,6 +42,9 @@ class ContactsController < ApplicationController
      if @contact.save 
         respond_with(@contact) do |format|
           format.ajax {render :partial => 'contacts/show_single', :object => @contact, :formats => [:html]}
+					format.js do
+						js_show @contact
+					end
         end
      else
 			 respond_with(@contact) do |format|
@@ -42,12 +55,16 @@ class ContactsController < ApplicationController
 
   def update
     @contact.update(contact_params)
-    respond_with(@contact)
+    respond_with(@contact)  do |format|
+			format.js { js_show @contact}
+		end
   end
 
   def destroy
     @contact.destroy
-		respond_with(@contact)
+		respond_with(@contact) do |format|
+			format.js {js_delete @contact}
+		end
   end
 
   private

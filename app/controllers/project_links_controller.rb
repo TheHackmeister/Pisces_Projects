@@ -14,12 +14,23 @@ class ProjectLinksController < ApplicationController
   end
 
   def new
-    @project_link = ProjectLink.new
-		respond_with(@project_link)
+		#respond_with(@project_link)
+		respond_to do |format|
+			format.html
+			format.js do
+				render :new, layout: false
+			end
+		end
   end
 
   def edit
-		respond_with(@project_link)
+		respond_to do |format|
+			format.html
+			format.js do
+				render :edit, layout: false
+			end
+		end
+#		respond_with(@project_link)
   end
 
   def create
@@ -31,6 +42,7 @@ class ProjectLinksController < ApplicationController
         format.html { redirect_to @project_link, notice: 'Project link was successfully created.' }
         format.json { render :show, status: :created, location: @project_link }
         format.ajax { render :partial => 'project_links/show_single', :object => @project_link, :formats => [:html]}
+				format.js { js_show @project_link } 
       else
         format.html { render :new }
         format.json { render json: @project_link.errors, status: :unprocessable_entity }
@@ -44,6 +56,7 @@ class ProjectLinksController < ApplicationController
       if @project_link.update(project_link_params)
         format.html { redirect_to @project_link, notice: 'Project link was successfully updated.' }
         format.json { render :show, status: :ok, location: @project_link }
+				format.js { js_show @project_link} 
       else
         format.html { render :edit }
         format.json { render json: @project_link.errors, status: :unprocessable_entity }
@@ -58,6 +71,7 @@ class ProjectLinksController < ApplicationController
       format.html { redirect_to project_links_url, notice: 'Project link was successfully destroyed.' }
       format.json { head :no_content }
       format.ajax { render :partial => 'project_links/ajax_delete', :object => @project_link, :formats => [:html] }
+			format.js { js_delete @project_link}
     end
   end
 

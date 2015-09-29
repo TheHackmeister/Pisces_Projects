@@ -62,7 +62,7 @@
       %div
         %b
           Result Links
-        %div#results_links
+        %div#results_links{ 'data-project_link_results' => 'container'}
           %div.flex.two.list
             %div
               Link
@@ -71,8 +71,7 @@
           - @project.results_links.each do |link|
             = render :partial => '/project_links/show_single', :object => link
         %br
-        New link
-        = render :partial => "/project_links/new_link", locals: {:project => @project, is_result: true}
+        = link_to "New Link", new_project_link_path(method: :js, 'project_link[project_id]' => @project.id, 'project_link[is_results]' => true), remote: true, class: 'edit_object'
       %div
         %div
           %b
@@ -98,7 +97,7 @@
       %div
         %b
           Links
-        %div#links
+        %div#links{ 'data-project_link' => 'container'}
           %div.flex.two.list
             %div
               Link
@@ -107,13 +106,12 @@
           - @project.links.each do |link|
             = render :partial => '/project_links/show_single', :object => link
         %br
-        New link
-        = render :partial => "/project_links/new_link", locals: {:project => @project}
+        = link_to "New Link", new_project_link_path(method: :js, 'project_link[project_id]' => @project.id), remote: true, class: 'edit_object'
       %div
         %b
           Steps
-        %div#steps
-          %div.flex.four.list
+        %div#steps{ 'data-step' => 'container'}
+          %div.flex.five.list
             %div
               Action
             %div
@@ -125,15 +123,14 @@
           - @project.steps.each do |step|
             = render :partial => '/steps/show_single', :object => step
         %br
-          New step
-          = render :partial => '/steps/new_step', locals: {:project => @project}
+        = link_to "New Step", new_step_path(method: :js, 'step[project_id]' => @project.id), remote: true, class: 'edit_object'
     %hr
     %div.flex.two
       %div
         %b
           Communications      
-        %div#communications_table
-          %div.flex.five.label_br
+        %div#communications_table{ 'data-communication' => 'container'}
+          %div.flex.six.label_br
             %div
               Summary
             %div
@@ -147,13 +144,12 @@
           - @project.communications.each do |communication|
             = render :partial => 'communications/show_single', :object => communication
         %br
-          New Communication
-          = render :partial => 'communications/new_communication', locals: {:project => @project}  
+          = link_to 'New Communication', new_communication_path('communication[project_id]' => @project.id), remote: true, class: 'edit_object'
       %div
         %b
           Contacts      
-        %div#contacts_table
-          %div.flex.four.list
+        %div#contacts_table{ 'data-contact' => 'container'}
+          %div.flex.five.list
             %div
               Name
             %div
@@ -165,8 +161,7 @@
           - @project.contacts.each do |contact|
             = render :partial => 'contacts/show_single', :object => contact
         %br
-          New Contact
-          = render :partial => 'contacts/new_contact', locals: {:project => @project}          
+          = link_to 'New Contact', new_contact_path('contact[project_id]' => @project.id), remote: true, class: 'edit_object'
     = link_to "Edit", edit_project_path(@project)
     \|
     = link_to "Destroy", project_path, :method => :delete, :data => {:confirm => 'Are you sure?' }

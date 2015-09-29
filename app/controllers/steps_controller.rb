@@ -14,12 +14,22 @@ class StepsController < ApplicationController
   end
 
   def new
-    @step = Step.new
-		respond_with(@step)
+		respond_to do |format|
+			format.html
+			format.js do 
+				render :new, format: false
+			end
+		end
+
   end
 
   def edit
-		respond_with(@step)
+		respond_to do |format|
+			format.html
+			format.js do
+				render :edit, format: false
+			end
+		end
   end
 
   def create
@@ -30,6 +40,7 @@ class StepsController < ApplicationController
         format.html { redirect_to @step, notice: 'Step was successfully created.' }
         format.json { render :show, status: :created, location: @step }
         format.ajax {render :partial => 'show_single', :object => @step, :formats => [:html]}
+				format.js { js_show @step } 
       else
         format.html { render :new }
         format.json { render json: @step.errors, status: :unprocessable_entity }
@@ -39,13 +50,22 @@ class StepsController < ApplicationController
   end
 
   def update
-		@step.update(step_params)
-		respond_with(@step)
+		respond_to do |format|
+			if @step.update(step_params)
+				format.html
+				format.js { js_show @step }
+			else
+				format.html { render :edit}
+
+			end
+		end
   end
 
   def destroy
     @step.destroy
-		respond_with(@step)
+		respond_with(@step) do |format|
+			format.js {js_delete @step}
+		end
   end
   
   def update_row_order

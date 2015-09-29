@@ -1,4 +1,4 @@
-%div.flex.four.list.item{:data => {'item-id' => show_single.id}}
+%div.flex.five.list.item{:data => { show_single.js_name => show_single.id}}
   %div
     = show_single.action
   %div
@@ -7,3 +7,7 @@
     = show_single.note
   %div
     = show_single.due
+  %span.right
+    = link_to "E", edit_step_path(show_single), remote: true, class: 'edit_object'
+    != "&nbsp&nbsp"
+    = link_to "X", step_path(show_single, format: :js), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, remote: true, class: :remove_button

@@ -14,11 +14,21 @@ class CommunicationsController < ApplicationController
   end
 
   def new
-    @communication = Communication.new
-    respond_with(@communication)
+		respond_to do |format|
+			format.html
+			format.js do
+				render :new, layout: false
+			end
+		end
   end
 
   def edit
+		respond_to do |format|
+			format.html
+			format.js do
+				render :edit, layout: false
+			end
+		end
   end
 
   def create
@@ -33,6 +43,9 @@ class CommunicationsController < ApplicationController
     if @communication.save
       respond_with(@communication) do |format|
         format.ajax {render :partial => 'communications/show_single', :object => @communication, :formats => [:html]}
+				format.js do
+					js_show @communication
+				end
       end
     else 
       respond_with(@communication) do |format|
@@ -43,12 +56,20 @@ class CommunicationsController < ApplicationController
 
   def update
     @communication.update(communication_params)
-    respond_with(@communication)
+    respond_with(@communication) do |format|
+			format.js do
+				js_show @communication
+			end
+		end
   end
 
   def destroy
 		@communication.destroy
-    respond_with(@communication)
+    respond_with(@communication) do |format|
+			format.js do
+				js_delete @communication
+			end
+		end
   end
 
   private

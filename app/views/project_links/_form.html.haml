@@ -2,6 +2,9 @@
   .field
     = f.label :project
     = f.search_html :project
+  .field 
+    = f.label :is_result
+    =f.check_box :is_results
   .field
     = f.label :sort
     = f.number_field :sort
@@ -16,3 +19,4 @@
     = f.text_field :notes
   .actions
     = f.submit 'Save'
+    = f.submit 'Cancel', value: :Cancel

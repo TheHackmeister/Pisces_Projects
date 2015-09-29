@@ -1,4 +1,4 @@
-%div.flex.four.list
+%div.flex.five.list{ 'data-' + show_single.js_name => show_single.id}
   %div
     = show_single.contact_name
   %div
@@ -7,4 +7,8 @@
     = show_single.email
   %div
     = show_single.address
+  %span
+    = link_to "E", edit_contact_path(show_single), remote: true, class: 'edit_object'
+    != "&nbsp&nbsp"
+    = link_to "X", contact_path(show_single, format: :js), method: :delete, data: { confirm: 'Are you certain you want to delete this?' }, remote: true, class: :remove_button
   

@@ -2,6 +2,14 @@ class ProjectLink < ActiveRecord::Base
   belongs_to :project
   validates :project, :url, :name, :presence => true
 
+	def js_name 
+		if is_results
+			super + "_results"
+		else
+			super
+		end
+	end
+
 
   before_save{ |link|
     # This changes FF auto replacement in URLs
